@@ -1,0 +1,5 @@
+com\projectBackEnd\rest\EntityManagerProducer.class
+com\projectBackEnd\model\Todo.class
+com\projectBackEnd\rest\RestApplication.class
+com\projectBackEnd\rest\HelloWorldEndpoint.class
+com\projectBackEnd\dao\TodoDAO.class
