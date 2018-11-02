@@ -38,6 +38,20 @@ public class CustomerResource {
         return Response.ok(customer).build();
     }
 	
+	@PUT
+    @Path("{id}")
+    public Response update(@PathParam("id") final String id, final Customer customer) {
+        final Customer updateCustomer = customerDAO.findById(id);
+
+        updateCustomer.setFirstName(customer.getFirstName());
+        updateCustomer.setSecondName(customer.getSecondName());
+        updateCustomer.setAddress(customer.getAddress());
+        updateCustomer.setAge(customer.getAge());
+        customerDAO.update(updateCustomer);
+
+        return Response.ok().build();
+    }
+	
 	@POST
     public Response create(final Customer customer) {
 		customerDAO.create(customer);
