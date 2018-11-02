@@ -19,7 +19,7 @@ public class Customer {
 	private String id;
 	private String firstName;
 	private String secondName;
-	private String[] address;
+	private String address;
 	private int age;
 
 	public String getId() {
@@ -46,11 +46,13 @@ public class Customer {
 		this.secondName = secondName;
 	}
 
-	public String[] getAddress() {
+	
+
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String[] address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
@@ -65,7 +67,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", address="
-				+ Arrays.toString(address) + ", age=" + age + "]";
+				+ ", age=" + age + "]";
 	}
 
 }
