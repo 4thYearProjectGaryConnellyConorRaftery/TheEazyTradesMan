@@ -28,6 +28,29 @@ public class WorkerResource {
 	public Response getAll() {
 		return Response.ok(workerDAO.getAll()).build();
 	}
+	
+	@GET
+    @Path("{id}")
+    public Response getWorker(@PathParam("id") final String id) {
+        final Worker worker = workerDAO.findById(id);
+
+        return Response.ok(worker).build();
+    }
+	
+	@PUT
+    @Path("{id}")
+    public Response update(@PathParam("id") final String id, final Worker worker) {
+        final Worker updateWorker = workerDAO.findById(id);
+        updateWorker.setFirstName(worker.getFirstName());
+        updateWorker.setSecondName(worker.getSecondName());
+        updateWorker.setAddress(worker.getAddress());
+        updateWorker.setAge(worker.getAge());
+        updateWorker.setTrade(worker.getTrade());
+        updateWorker.setRating(worker.getRating());
+        workerDAO.update(updateWorker);
+        
+		return Response.ok().build();
+	}
 
 	@POST
 	public Response create(final Worker worker) {
