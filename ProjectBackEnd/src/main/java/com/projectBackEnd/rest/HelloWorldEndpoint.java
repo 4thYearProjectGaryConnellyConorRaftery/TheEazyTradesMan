@@ -17,7 +17,7 @@ import com.projectBackEnd.dao.TodoDAO;
 import com.projectBackEnd.model.Todo;
 
 @ApplicationScoped
-@Path("todos")
+@Path("todos") // tester resource
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class HelloWorldEndpoint {
