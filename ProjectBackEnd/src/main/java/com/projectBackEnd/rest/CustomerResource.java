@@ -58,5 +58,15 @@ public class CustomerResource {
        
         return Response.ok().build();
     }
+	
+	 @DELETE
+	    @Path("{id}")
+	    public Response delete(@PathParam("id") final String id) {
+	        final Customer getCustomer = customerDAO.findById(id);
+
+	        customerDAO.delete(getCustomer);
+
+	        return Response.ok().build();
+	    }
 
 }
