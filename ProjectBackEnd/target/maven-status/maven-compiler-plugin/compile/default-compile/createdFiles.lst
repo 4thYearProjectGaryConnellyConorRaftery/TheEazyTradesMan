@@ -2,7 +2,10 @@ com\projectBackEnd\model\Todo.class
 com\projectBackEnd\rest\RestApplication.class
 com\projectBackEnd\rest\HelloWorldEndpoint.class
 com\projectBackEnd\dao\TodoDAO.class
+com\projectBackEnd\model\Worker.class
 com\projectBackEnd\rest\EntityManagerProducer.class
 com\projectBackEnd\dao\CustomerDAO.class
 com\projectBackEnd\model\Customer.class
+com\projectBackEnd\rest\WorkerResource.class
+com\projectBackEnd\dao\WorkerDAO.class
 com\projectBackEnd\rest\CustomerResource.class
