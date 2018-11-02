@@ -58,5 +58,15 @@ public class WorkerResource {
 
 		return Response.ok().build();
 	}
+	
+	 @DELETE
+	    @Path("{id}")
+	    public Response delete(@PathParam("id") final String id) {
+	        final Worker getWorker = workerDAO.findById(id);
+
+	        workerDAO.delete(getWorker);
+
+	        return Response.ok().build();
+	    }
 
 }
