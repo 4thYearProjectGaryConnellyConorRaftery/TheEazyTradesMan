@@ -17,48 +17,53 @@ public class Job {
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 	private String trade;
-	private Customer customer;
 	private String description;
+	private String customer;
 	
-	public Job(String id, String trade, Customer customer, String description) {
-		super();
-		this.id = id;
-		this.trade = trade;
-		this.customer = customer;
-		this.description = description;
-	}
+	
 
 	public String getId() {
 		return id;
 	}
 
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 
 	public String getTrade() {
 		return trade;
 	}
 
+
 	public void setTrade(String trade) {
 		this.trade = trade;
 	}
 
-	public Customer getCustomer() {
+	
+	public String getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+
+	public void setCustomer(String customer) {
 		this.customer = customer;
 	}
+
 
 	public String getDescription() {
 		return description;
 	}
 
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
+	
+	
 	
 	
 	

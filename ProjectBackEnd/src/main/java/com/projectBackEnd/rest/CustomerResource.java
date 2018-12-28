@@ -22,6 +22,7 @@ import com.projectBackEnd.model.Customer;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CustomerResource {
+
 	@Inject
 	private CustomerDAO customerDAO;
 
@@ -29,46 +30,44 @@ public class CustomerResource {
 	public Response getAll() {
 		return Response.ok(customerDAO.getAll()).build();
 	}
-	
+
 	@GET
-    @Path("{id}")
-    public Response getCustomer(@PathParam("id") final String id) {
-        final Customer customer = customerDAO.findById(id);
+	@Path("{id}")
+	public Response getCustomer(@PathParam("id") final String id) {
+		final Customer customer = customerDAO.findById(id);
 
-        return Response.ok(customer).build();
-    }
-	
+		return Response.ok(customer).build();
+	}
+
 	@PUT
-    @Path("{id}")
-    public Response update(@PathParam("id") final String id, final Customer customer) {
-        final Customer updateCustomer = customerDAO.findById(id);
+	@Path("{id}")
+	public Response update(@PathParam("id") final String id, final Customer customer) {
+		final Customer updateCustomer = customerDAO.findById(id);
 
-        updateCustomer.setFirstName(customer.getFirstName());
-        updateCustomer.setSecondName(customer.getSecondName());
-        updateCustomer.setAddress(customer.getAddress());
-        updateCustomer.setAge(customer.getAge());
-        customerDAO.update(updateCustomer);
+		updateCustomer.setFirstName(customer.getFirstName());
+		updateCustomer.setSecondName(customer.getSecondName());
+		updateCustomer.setAddress(customer.getAddress());
+		updateCustomer.setAge(customer.getAge());
+		customerDAO.update(updateCustomer);
 
-        return Response.ok().build();
-    }
-	
+		return Response.ok().build();
+	}
+
 	@POST
-    public Response create(final Customer customer) {
+	public Response create(final Customer customer) {
 		customerDAO.create(customer);
-       
-        return Response.ok().build();
-    }
-	
-	 @DELETE
-	    @Path("{id}")
-	    public Response delete(@PathParam("id") final String id) {
-	        final Customer getCustomer = customerDAO.findById(id);
 
-	        customerDAO.delete(getCustomer);
+		return Response.ok().build();
+	}
 
-	        return Response.ok().build();
-	    }
-	 
-	
+	@DELETE
+	@Path("{id}")
+	public Response delete(@PathParam("id") final String id) {
+		final Customer getCustomer = customerDAO.findById(id);
+
+		customerDAO.delete(getCustomer);
+
+		return Response.ok().build();
+	}
 
 }

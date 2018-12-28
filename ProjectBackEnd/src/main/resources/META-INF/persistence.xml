@@ -9,6 +9,7 @@
         <class>com.projectBackEnd.model.Todo</class>
          <class>com.projectBackEnd.model.Customer</class>
           <class>com.projectBackEnd.model.Worker</class>
+           <class>com.projectBackEnd.model.Job</class>
         <properties>
 			<property name="hibernate.transaction.jta.platform"
                       value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform" />
