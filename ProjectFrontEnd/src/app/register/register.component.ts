@@ -28,7 +28,7 @@ export class RegisterComponent {
        password: ['',Validators.required]
      });
    }
-
+/*
    tryFacebookLogin(){
      this.authService.doFacebookLogin()
      .then(res =>{
@@ -52,7 +52,7 @@ export class RegisterComponent {
      }, err => console.log(err)
      )
    }
-
+*/
    tryRegister(value){
      this.authService.doRegister(value)
      .then(res => {
