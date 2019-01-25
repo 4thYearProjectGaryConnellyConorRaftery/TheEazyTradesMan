@@ -6,12 +6,12 @@ export const environment = {
  production: false,
 //Firebase credentials
   firebase: {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "YOUR_DATABASE_URL",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_SENDER_ID"
+    apiKey: "AIzaSyCKMcXk3ixcUH6CiEglf8cWBHwetaUlQVs",
+    authDomain: "theeazytradesman.firebaseapp.com",
+    databaseURL: "https://theeazytradesman.firebaseio.com",
+    projectId: "theeazytradesman",
+    storageBucket: "theeazytradesman.appspot.com",
+    messagingSenderId: "838547571245"
   }
 };
 
