@@ -52,6 +52,7 @@ export class LoginComponent {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
+      //Depending on user, we can switch landing page.
       this.router.navigate(['/user']);
     }, err => {
       console.log(err);

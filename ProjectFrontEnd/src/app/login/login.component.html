@@ -12,6 +12,10 @@
           <input type="password" class="form-control" formControlName="password">
           <label class="error">{{errorMessage}}</label>
         </div>
+        <p class="card-text">
+          Once email and password is verified, we check the email against our MongoDB database to see 
+          wether the user is a customer or tradesperson. Then redirect to corresponding landing page.
+        </p>
         <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-default">Login</button>
       </form>
     </div>

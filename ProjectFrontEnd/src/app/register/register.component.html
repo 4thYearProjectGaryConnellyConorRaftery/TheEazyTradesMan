@@ -13,10 +13,18 @@
           <label class="error">{{errorMessage}}</label>
           <label class="success">{{successMessage}}</label>
         </div>
+        <p class="card-text">
+          We need to include 2 click boxes, one for customer registration, and one for tradesperson. Only allowed
+          to select one. We save this in our mongoDB database, with the corresponding email address for reference.
+        </p>
         <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
       </form>
     </div>
   </div>
+  <p class="card-text">
+    Not set up at the moment but have the functions created for them. Just need to get specific codes to 
+    activate these sign ups.
+  </p>
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
       <button type="button" class="btn btn-primary btn-block" (click)="tryFacebookLogin()">Register with Facebook</button>
