@@ -24,6 +24,7 @@ import { RequestDetailsComponent } from './Customer/request-details.component';
 import { ReviewJobComponent } from './Customer/review-job.component';
 import { EditProfileComponent } from './Worker/edit-profile.component';
 import { ViewProfileComponent } from './Worker/view-profile.component';
+import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ViewProfileComponent } from './Worker/view-profile.component';
     RequestDetailsComponent,
     ReviewJobComponent,
     EditProfileComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    ListWorkerJobsComponent
   ],
   imports: [
     BrowserModule,
