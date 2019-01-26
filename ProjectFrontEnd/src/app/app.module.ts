@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListJobsComponent } from './Customer/list-jobs.component';
 import { MyJobsComponent } from './Customer/my-jobs.component';
 import { PostJobComponent } from './Customer/post-job.component';
+import { RequestDetailsComponent } from './Customer/request-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PostJobComponent } from './Customer/post-job.component';
     RegisterComponent,
     ListJobsComponent,
     MyJobsComponent,
-    PostJobComponent
+    PostJobComponent,
+    RequestDetailsComponent
   ],
   imports: [
     BrowserModule,
