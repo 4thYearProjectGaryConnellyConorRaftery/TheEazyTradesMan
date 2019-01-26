@@ -18,6 +18,7 @@ import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListJobsComponent } from './Customer/list-jobs.component';
+import { MyJobsComponent } from './Customer/my-jobs.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ListJobsComponent } from './Customer/list-jobs.component';
     LoginComponent,
     UserComponent,
     RegisterComponent,
-    ListJobsComponent
+    ListJobsComponent,
+    MyJobsComponent
   ],
   imports: [
     BrowserModule,
