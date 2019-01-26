@@ -23,6 +23,7 @@ import { PostJobComponent } from './Customer/post-job.component';
 import { RequestDetailsComponent } from './Customer/request-details.component';
 import { ReviewJobComponent } from './Customer/review-job.component';
 import { EditProfileComponent } from './Worker/edit-profile.component';
+import { ViewProfileComponent } from './Worker/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EditProfileComponent } from './Worker/edit-profile.component';
     PostJobComponent,
     RequestDetailsComponent,
     ReviewJobComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,
