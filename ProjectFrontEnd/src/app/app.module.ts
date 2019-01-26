@@ -21,6 +21,7 @@ import { ListJobsComponent } from './Customer/list-jobs.component';
 import { MyJobsComponent } from './Customer/my-jobs.component';
 import { PostJobComponent } from './Customer/post-job.component';
 import { RequestDetailsComponent } from './Customer/request-details.component';
+import { ReviewJobComponent } from './Customer/review-job.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RequestDetailsComponent } from './Customer/request-details.component';
     ListJobsComponent,
     MyJobsComponent,
     PostJobComponent,
-    RequestDetailsComponent
+    RequestDetailsComponent,
+    ReviewJobComponent
   ],
   imports: [
     BrowserModule,
