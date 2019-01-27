@@ -47,6 +47,9 @@ public class WorkerResource {
         updateWorker.setAge(worker.getAge());
         updateWorker.setTrade(worker.getTrade());
         updateWorker.setRating(worker.getRating());
+        updateWorker.setPhoneNumber(worker.getPhoneNumber());
+        updateWorker.setEmail(worker.getEmail());
+        updateWorker.setWebsite(worker.getWebsite());
         workerDAO.update(updateWorker);
         
 		return Response.ok().build();

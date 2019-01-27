@@ -1,5 +1,7 @@
 package com.projectBackEnd.model;
 
+import java.util.Arrays;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,8 +21,37 @@ public class Job {
 	private String trade;
 	private String description;
 	private String customer;
+	private boolean isComplete;
+	private String requests;
 	
 	
+	
+	
+
+	
+
+
+	
+
+	public String getRequests() {
+		return requests;
+	}
+
+
+	public void setRequests(String requests) {
+		this.requests = requests;
+	}
+
+
+	public boolean isComplete() {
+		return isComplete;
+	}
+
+
+	public void setComplete(boolean isComplete) {
+		this.isComplete = isComplete;
+	}
+
 
 	public String getId() {
 		return id;
@@ -59,6 +90,13 @@ public class Job {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Job [id=" + id + ", trade=" + trade + ", description=" + description + ", customer=" + customer
+				+ ", isComplete=" + isComplete  +"]";
 	}
 	
 	

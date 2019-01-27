@@ -31,6 +31,7 @@ public class JobResource {
 	
 	@GET
 	public Response getAll() {
+		
 		return Response.ok(jobDAO.getAll()).build();
 	}
 	
@@ -50,6 +51,8 @@ public class JobResource {
         updateJob.setTrade(job.getTrade());
         updateJob.setCustomer(job.getCustomer());
         updateJob.setDescription(job.getDescription());
+        updateJob.setComplete(job.isComplete());
+       // updateJob.setRequests(job.getRequests());
         jobDAO.update(updateJob);
        
 
@@ -58,8 +61,9 @@ public class JobResource {
 	
 	@POST
     public Response create(final Job job) {
+		System.out.println(job.toString());
 		jobDAO.create(job);
-       
+		
         return Response.ok().build();
     }
 	
