@@ -52,7 +52,9 @@ public class JobResource {
         updateJob.setCustomer(job.getCustomer());
         updateJob.setDescription(job.getDescription());
         updateJob.setComplete(job.isComplete());
-       // updateJob.setRequests(job.getRequests());
+        updateJob.setRequests(job.getRequests());
+        updateJob.setDate(job.getDate());
+        updateJob.setLocation(job.getLocation());
         jobDAO.update(updateJob);
        
 
