@@ -4,7 +4,7 @@ export class Job {
     description: string;
     customer: string;
     requests: string;
-    isComplete: boolean;
+    isCompleted: boolean;
     location: string;
     date: string;
 

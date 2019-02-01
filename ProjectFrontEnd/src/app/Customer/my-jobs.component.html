@@ -13,6 +13,26 @@
 </nav>
 
 
-<p>
-  my-jobs works!
-</p>
+<div class="container">
+ <div class="row">
+<div class="col-sm-8">
+<div class = "panel panel-primary" *ngFor="let job of jobs">
+  <div class="panel-heading">
+   <h3>09-01-2018</h3>
+  </div>
+
+  <div class = "panel-body">
+      <h2>{{job.id}}</h2>
+      <h3>Trade: </h3><h4>{{job.trade}}</h4>
+      <h3>Description: </h3><h4>{{job.description}}</h4>
+      <h3>Requests: </h3><h4>{{job.requests}}</h4>
+      <h3>Is completed? </h3><h4>{{job.isCompleted}}</h4>
+      
+
+  </div>
+
+</div>
+</div>
+
+</div>
+</div>
