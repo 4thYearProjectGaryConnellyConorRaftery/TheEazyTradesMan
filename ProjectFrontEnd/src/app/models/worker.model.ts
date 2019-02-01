@@ -3,10 +3,10 @@ export class Worker {
     firstName: string;
     secondName: string;
     address: string;
-    age: number;
+    //age: number;
     trade: string;
-    rating: number;
-    phoneNumber: number;
+    rating: string;
+    phoneNumber: string;
     email?: string;
     website?: string;
     photoPath?: string;
