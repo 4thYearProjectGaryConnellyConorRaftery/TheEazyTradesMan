@@ -9,4 +9,5 @@ export class Worker {
     phoneNumber: number;
     email?: string;
     website?: string;
+    photoPath?: string;
 }

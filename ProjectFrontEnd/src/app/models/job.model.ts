@@ -3,6 +3,9 @@ export class Job {
     trade: string;
     description: string;
     customer: string;
-    isComplete: boolean;
     requests: string;
+    isComplete: boolean;
+    location: string;
+    date: string;
+
 }
