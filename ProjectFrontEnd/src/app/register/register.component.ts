@@ -14,6 +14,10 @@ export class RegisterComponent {
   errorMessage: string = '';
   successMessage: string = '';
 
+AccountTypeSelection(){
+  
+}
+
   constructor(
     public authService: AuthService,
     private router: Router,
@@ -65,5 +69,8 @@ export class RegisterComponent {
        this.successMessage = "";
      })
    }
+
+
+   
 
 }

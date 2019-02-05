@@ -25,6 +25,7 @@ import { ReviewJobComponent } from './Customer/review-job.component';
 import { EditProfileComponent } from './Worker/edit-profile.component';
 import { ViewProfileComponent } from './Worker/view-profile.component';
 import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    FormsModule, 
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]

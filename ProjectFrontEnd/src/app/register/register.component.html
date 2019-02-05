@@ -13,10 +13,20 @@
           <label class="error">{{errorMessage}}</label>
           <label class="success">{{successMessage}}</label>
         </div>
-        <p class="card-text">
-          We need to include 2 click boxes, one for customer registration, and one for tradesperson. Only allowed
-          to select one. We save this in our mongoDB database, with the corresponding email address for reference.
-        </p>
+        
+        <form name="accTypeForm" ng-controller="AccountTypeController">
+          <label>
+            <input type="radio" ng-model="account.type" value="customer" name='type'>
+            Customer
+          </label><br/>
+          <label>
+            <input type="radio" ng-model="account.type" value="Tradesman" name='type'>
+            Tradesman
+          </label><br/>
+          <br/>
+          
+         </form>
+
         <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
       </form>
     </div>
