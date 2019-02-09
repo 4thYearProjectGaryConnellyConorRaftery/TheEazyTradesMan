@@ -26,6 +26,7 @@ import { EditProfileComponent } from './Worker/edit-profile.component';
 import { ViewProfileComponent } from './Worker/view-profile.component';
 import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
 import { FormsModule } from '@angular/forms';
+import { EditJobComponentComponent } from './Customer/edit-job-component.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     ReviewJobComponent,
     EditProfileComponent,
     ViewProfileComponent,
-    ListWorkerJobsComponent
+    ListWorkerJobsComponent,
+    EditJobComponentComponent
   ],
   imports: [
     BrowserModule,
