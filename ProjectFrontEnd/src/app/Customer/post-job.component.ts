@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-post-job',
@@ -10,6 +11,10 @@ export class PostJobComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  postJob(postJobForm: NgForm): void{
+    console.log(postJobForm.value);
   }
 
 }
