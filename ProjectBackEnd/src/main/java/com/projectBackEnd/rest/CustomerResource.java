@@ -42,7 +42,7 @@ public class CustomerResource {
 		return Response.ok(customer)
 				.header("Access-Control-Allow-Origin", "*")
 				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+				.allow("OPTIONS").build(); // CORS filter problem.
 	}
 
 	@PUT
