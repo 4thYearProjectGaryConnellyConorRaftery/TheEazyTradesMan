@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 //firebase imports
@@ -27,6 +28,7 @@ import { ViewProfileComponent } from './Worker/view-profile.component';
 import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
 import { FormsModule } from '@angular/forms';
 import { EditJobComponentComponent } from './Customer/edit-job-component.component';
+import { JobsService } from './Services/jobs.service';
 
 @NgModule({
   declarations: [
@@ -52,8 +54,9 @@ import { EditJobComponentComponent } from './Customer/edit-job-component.compone
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     FormsModule, 
+    HttpClientModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard],
+  providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
