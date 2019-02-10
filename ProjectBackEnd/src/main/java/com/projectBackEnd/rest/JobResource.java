@@ -32,7 +32,11 @@ public class JobResource {
 	@GET
 	public Response getAll() {
 		
-		return Response.ok(jobDAO.getAll()).build();
+		//return Response.ok(jobDAO.getAll()).build();
+		return Response.ok(jobDAO.getAll())
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.allow("OPTIONS").build();
 	}
 	
 	@GET
@@ -40,7 +44,10 @@ public class JobResource {
     public Response getCustomer(@PathParam("id") final String id) {
         final Job job = jobDAO.findById(id);
 
-        return Response.ok(job).build();
+        return Response.ok(job)
+        		.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.allow("OPTIONS").build();
     }
 	
 	@PUT
@@ -58,7 +65,10 @@ public class JobResource {
         jobDAO.update(updateJob);
        
 
-        return Response.ok().build();
+        return Response.ok()
+        		.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.allow("OPTIONS").build();
     }
 	
 	@POST
@@ -66,7 +76,10 @@ public class JobResource {
 		System.out.println(job.toString());
 		jobDAO.create(job);
 		
-        return Response.ok().build();
+        return Response.ok()
+        		.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.allow("OPTIONS").build();
     }
 	
 	@DELETE
@@ -76,7 +89,10 @@ public class JobResource {
 
 		jobDAO.delete(getJob);
 
-		return Response.ok().build();
+		return Response.ok()
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.allow("OPTIONS").build();
 	}
 
 
