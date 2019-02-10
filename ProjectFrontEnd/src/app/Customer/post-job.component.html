@@ -13,7 +13,7 @@
 </nav>
 
 
-<form #postJobForm="ngForm" (ngSubmit)="postJob(postJobForm)">
+<form #postJobForm="ngForm" (ngSubmit)="postJob(job)">
 <div class = "panel panel-primary">
   <div class="panel-heading">
    <h3>Post a Job</h3>
@@ -22,17 +22,17 @@
   <div class = "panel-body">
     <div class="form-group">
       <label for="trade">Trade</label>
-      <input id="trade" name="trade" [(ngModel)]="trade" type="text" class="form-control">
+      <input id="trade" name="trade" [(ngModel)]="job.trade" type="text" class="form-control" #tradeVar = "ngModel">
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
-      <input id="description" name="description" [(ngModel)]="description" type="text" class="form-control">
+      <input id="description" name="job.description" [(ngModel)]="description" type="text" class="form-control" #descriptionVar = "ngModel">
     </div>
 
     <div class="form-group">
       <label for="location">Location</label>
-      <input id="location" name="location" [(ngModel)]="location" type="text" class="form-control">
+      <input id="location" name="location" [(ngModel)]="job.location" type="text" class="form-control" #locationVar = "ngModel">
     </div>
 
     
@@ -48,3 +48,6 @@
     </form>
 
     {{postJobForm.value | json}}
+
+    <br/>
+    {{job | json}}

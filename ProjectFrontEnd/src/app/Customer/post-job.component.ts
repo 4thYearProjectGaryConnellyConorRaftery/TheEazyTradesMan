@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Job } from '../models/job.model';
+import { JobsService } from '../Services/jobs.service';
+
 
 @Component({
   selector: 'app-post-job',
@@ -8,13 +11,34 @@ import { NgForm } from '@angular/forms';
 })
 export class PostJobComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jobService: JobsService) { }
 
-  ngOnInit() {
+   job: Job = {
+    id : null,
+    trade: null,
+    description: null,
+    customer: null,
+    isCompleted: null,
+    requests: null,
+    location: null,
+    date: null
+  };
+
+  ngOnInit() { // Some default data for testing.
+    this.job.customer = "0000110101010";
+    this.job.isCompleted = false;
+    this.job.requests = "";
+    this.job.date = "10/02/2019";
   }
 
-  postJob(postJobForm: NgForm): void{
-    console.log(postJobForm.value);
+   postJob(newJob: Job): void{
+   // console.log(postJobForm.value);
+   
+   console.log(newJob);
+
+   this.jobService.postJob(newJob).subscribe((data: Job) => {
+      console.log(data);
+    });
   }
 
 }

@@ -12,9 +12,21 @@ export class JobsService{
 
      constructor(private client: HttpClient){}
 
-      getJobs(): Observable<Job[]> {
+     getJobs(): Observable<Job[]> {
     
-    return this.client.get<Job[]>("http://localhost:8080/jobs");
-  }
+        return this.client.get<Job[]>("http://localhost:8080/jobs");
+    }
+
+    postJob(job: Job): Observable<Job>{
+    console.log("This is the job.");
+    console.log(job);
+
+    return this.client.post<Job>("http://localhost:8080/jobs", job,{
+       headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+
+    }
 
 }
