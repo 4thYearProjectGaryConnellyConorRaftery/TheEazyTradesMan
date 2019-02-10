@@ -73,11 +73,12 @@ public class JobResource {
 	
 	@POST
     public Response create(final Job job) {
+		System.out.println("Inside post jobs");
 		System.out.println(job.toString());
 		jobDAO.create(job);
 		
         return Response.ok()
-        		.header("Access-Control-Allow-Origin", "*")
+        		.header("Access-Control-Allow-Origin", "http://localhost:4200")
 				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
 				.allow("OPTIONS").build();
     }
