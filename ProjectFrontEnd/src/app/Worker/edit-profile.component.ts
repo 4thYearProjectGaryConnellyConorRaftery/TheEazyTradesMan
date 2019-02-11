@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,5 +12,10 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
   }
+
+   update(postJobForm: NgForm): void{
+    console.log(postJobForm.value);
+  }
+
 
 }

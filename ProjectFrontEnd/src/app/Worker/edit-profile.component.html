@@ -12,6 +12,57 @@
   </ul>
 </nav>
 
-<p>
-  edit-profile works!
-</p>
+<form #postJobForm="ngForm" (ngSubmit)="update(postJobForm)">
+<div class = "panel panel-primary">
+  <div class="panel-heading">
+   <h3>Update Your Profile</h3>
+  </div>
+
+  <div class = "panel-body">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input id="firstName" name="firstName" [(ngModel)]="firstName" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="secondName">Second Name</label>
+      <input id="secondName" name="secondName" [(ngModel)]="secondName" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" name="address" [(ngModel)]="address" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="trade">Trade</label>
+      <input id="trade" name="trade" [(ngModel)]="trade" type="text" class="form-control">
+    </div>
+
+     <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" type="text" class="form-control">
+    </div>
+
+     <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" name="email" [(ngModel)]="email" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="website">Website</label>
+      <input id="website" name="website" [(ngModel)]="website" type="text" class="form-control">
+    </div>
+
+    </div>
+
+    <div class="panel-footer">
+   <button type="submit" class="btn btn-primary">Update</button>
+  </div>
+
+    </div>
+
+    </form>
+
+    {{postJobForm.value | json}}
+
