@@ -28,10 +28,7 @@ public class CustomerResource {
 
 	@GET
 	public Response getAll() {
-		return Response.ok(customerDAO.getAll())
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+		return Response.ok(customerDAO.getAll()).build();
 	}
 
 	@GET
@@ -39,10 +36,7 @@ public class CustomerResource {
 	public Response getCustomer(@PathParam("id") final String id) {
 		final Customer customer = customerDAO.findById(id);
 
-		return Response.ok(customer)
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build(); // CORS filter problem.
+		return Response.ok(customer).build(); // CORS filter problem.
 	}
 
 	@PUT
@@ -56,20 +50,14 @@ public class CustomerResource {
 		updateCustomer.setAge(customer.getAge());
 		customerDAO.update(updateCustomer);
 
-		return Response.ok()
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+		return Response.ok().build();
 	}
 
 	@POST
 	public Response create(final Customer customer) {
 		customerDAO.create(customer);
 
-		return Response.ok()
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+		return Response.ok().build();
 	}
 
 	@DELETE
@@ -79,10 +67,7 @@ public class CustomerResource {
 
 		customerDAO.delete(getCustomer);
 
-		return Response.ok()
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+		return Response.ok().build();
 	}
 
 }
