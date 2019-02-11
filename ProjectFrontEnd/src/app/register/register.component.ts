@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//import * as angular from 'angular';
 
 @Component({
   selector: 'app-register',
@@ -13,10 +14,19 @@ export class RegisterComponent {
   registerForm: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
-
+/*
 AccountTypeSelection(){
-  
+  var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+    $scope.master = {firstName:"John", lastName:"Doe"};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
 }
+*/
+
 
   constructor(
     public authService: AuthService,
@@ -58,6 +68,7 @@ AccountTypeSelection(){
    }
 */
    tryRegister(value){
+    console.log(value);
      this.authService.doRegister(value)
      .then(res => {
        console.log(res);
@@ -68,6 +79,18 @@ AccountTypeSelection(){
        this.errorMessage = err.message;
        this.successMessage = "";
      })
+     
+/*
+     angular.module('resultApp', []).controller('resultCtrl', function($scope) {
+ 
+      $scope.result = 'pass';
+      
+      $scope.submitResult = function(result) {
+        
+        alert(result)
+      };
+    });
+    */
    }
 
 
