@@ -26,10 +26,7 @@ public class WorkerResource {
 
 	@GET
 	public Response getAll() {
-		return Response.ok(workerDAO.getAll())
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+		return Response.ok(workerDAO.getAll()).build();
 	}
 	
 	@GET
@@ -37,10 +34,7 @@ public class WorkerResource {
     public Response getWorker(@PathParam("id") final String id) {
         final Worker worker = workerDAO.findById(id);
 
-        return Response.ok(worker)
-        		.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+        return Response.ok(worker).build();
     }
 	
 	@PUT
@@ -58,20 +52,14 @@ public class WorkerResource {
         updateWorker.setWebsite(worker.getWebsite());
         workerDAO.update(updateWorker);
         
-		return Response.ok()
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+		return Response.ok().build();
 	}
 
 	@POST
 	public Response create(final Worker worker) {
 		workerDAO.create(worker);
 
-		return Response.ok()
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-				.allow("OPTIONS").build();
+		return Response.ok().build();
 	}
 	
 	 @DELETE
@@ -81,10 +69,7 @@ public class WorkerResource {
 
 	        workerDAO.delete(getWorker);
 
-	        return Response.ok()
-	        		.header("Access-Control-Allow-Origin", "*")
-					.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-					.allow("OPTIONS").build();
+	        return Response.ok().build();
 	    }
 
 }
