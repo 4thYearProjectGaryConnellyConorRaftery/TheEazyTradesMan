@@ -22,7 +22,7 @@ export class JobsService{
     console.log(job);
 
     return this.client.post<Job>("http://localhost:8080/jobs", job,{
-       headers: new HttpHeaders({
+       headers: new HttpHeaders({ 
         'Content-Type': 'application/json'
       })
     });
