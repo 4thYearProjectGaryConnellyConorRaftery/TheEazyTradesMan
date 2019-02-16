@@ -18,5 +18,9 @@ export class WorkersService{
       })
     });
 
-    }
+}// End putWorker.
+
+ getWorker(id: string): Observable<Worker>{
+    return this.client.get<Worker>("http://localhost:8080/workers/" + id)
+  }
 }
