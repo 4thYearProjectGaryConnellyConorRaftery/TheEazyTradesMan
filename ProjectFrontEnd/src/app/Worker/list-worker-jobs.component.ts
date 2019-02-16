@@ -16,6 +16,11 @@ export class ListWorkerJobsComponent implements OnInit {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
   }
 
+  request(job: Job): void{
+    console.log("yurt");
+    console.log("REQUEST FROM -->" + job.id);
+  }
+
 }
 
 
