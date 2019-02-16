@@ -25,7 +25,7 @@ export class PostJobComponent implements OnInit {
   };
 
   ngOnInit() { // Some default data for testing.
-    this.job.customer = "0000110101010";
+    this.job.customer = "59035e71-fd02-4ee0-83a0-2db5dbdc2f07";
     this.job.complete = false;
     this.job.requests = "";
     this.job.date = "10/02/2019";

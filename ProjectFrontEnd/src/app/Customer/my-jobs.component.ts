@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../models/job.model';
+import { JobsService } from '../Services/jobs.service';
 
 @Component({
   selector: 'app-my-jobs',
@@ -8,7 +9,31 @@ import { Job } from '../models/job.model';
 })
 export class MyJobsComponent implements OnInit {
 
-  jobs: Job[] =[
+  jobs: Job[];
+  myJobs: Job[];
+  customer: string = "59035e71-fd02-4ee0-83a0-2db5dbdc2f07";
+
+  constructor(private jobService: JobsService) { }
+
+  ngOnInit() {
+    this.jobService.getJobs().subscribe(data => this.jobs = data);
+    //console.log("Jobs --->" + this.jobs);
+   // this.init();
+  }
+
+  init(): void{
+     var i: number = 0;
+ 
+    for(i = 0; i < this.jobs.length; i++){
+      if(this.jobs[i].customer == "59035e71-fd02-4ee0-83a0-2db5dbdc2f07"){
+        this.myJobs.push(this.jobs[i]);
+      }
+    }
+  }
+
+}
+
+/* =[
     {
     id: "46464646",
     trade: "Carpenter",
@@ -39,11 +64,4 @@ export class MyJobsComponent implements OnInit {
     location: "Galway, Ireland",
     date: "03-03-2019"
     }
-  ];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+  ];*/
