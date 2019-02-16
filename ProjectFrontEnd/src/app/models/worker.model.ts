@@ -9,5 +9,5 @@ export class Worker {
     phoneNumber: string;
     email?: string;
     website?: string;
-    photoPath?: string;
+   // photoPath?: string;
 }

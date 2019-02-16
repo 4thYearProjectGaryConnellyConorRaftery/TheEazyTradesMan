@@ -18,7 +18,7 @@ export class ViewProfileComponent implements OnInit {
     phoneNumber: "0879762143",
     email: "G00368437@gmit.ie",
     website: "www.github.com",
-    photoPath: "assets/images/easytrade.jpg"
+   // photoPath: "assets/images/easytrade.jpg"
   }
 
   constructor() { }

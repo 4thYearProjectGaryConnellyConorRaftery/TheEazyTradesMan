@@ -29,6 +29,7 @@ import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
 import { FormsModule } from '@angular/forms';
 import { EditJobComponentComponent } from './Customer/edit-job-component.component';
 import { JobsService } from './Services/jobs.service';
+import { WorkersService } from './Services/workers.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { JobsService } from './Services/jobs.service';
     FormsModule, 
     HttpClientModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService],
+  providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService, WorkersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
