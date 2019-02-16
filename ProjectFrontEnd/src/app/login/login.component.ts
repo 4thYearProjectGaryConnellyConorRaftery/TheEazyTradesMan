@@ -27,7 +27,7 @@ export class LoginComponent {
       password: ['',Validators.required]
     });
   }
-/*
+
   tryFacebookLogin(){
     this.authService.doFacebookLogin()
     .then(res => {
@@ -48,7 +48,7 @@ export class LoginComponent {
       this.router.navigate(['/user']);
     })
   }
-*/
+
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {

@@ -42,7 +42,7 @@ app.controller('formCtrl', function($scope) {
        password: ['',Validators.required]
      });
    }
-/*
+
    tryFacebookLogin(){
      this.authService.doFacebookLogin()
      .then(res =>{
@@ -66,7 +66,7 @@ app.controller('formCtrl', function($scope) {
      }, err => console.log(err)
      )
    }
-*/
+
    tryRegister(value){
     console.log(value);
      this.authService.doRegister(value)
