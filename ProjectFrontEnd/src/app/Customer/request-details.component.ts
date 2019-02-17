@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Params } from '@angular/router';
+import { JobsService } from '../Services/jobs.service';
 
 @Component({
   selector: 'app-request-details',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestDetailsComponent implements OnInit {
 
-  constructor() { }
+  jobRequests: string[];
+
+  constructor(private jobService: JobsService) { }
 
   ngOnInit() {
+    this.jobRequests = this.jobService.getJobRequests();
   }
 
 }

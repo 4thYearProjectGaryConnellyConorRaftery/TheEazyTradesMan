@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../models/job.model';
 import { JobsService } from '../Services/jobs.service';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-my-jobs',
@@ -13,7 +14,7 @@ export class MyJobsComponent implements OnInit {
   myJobs: Job[];
   customer: string = "59035e71-fd02-4ee0-83a0-2db5dbdc2f07";
 
-  constructor(private jobService: JobsService) { }
+  constructor(private jobService: JobsService,  private router: Router,) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
@@ -32,7 +33,10 @@ export class MyJobsComponent implements OnInit {
   }
 
   requests(job: Job): void{
-    console.log(job.requests);
+    console.log("Before service - " + job.requests);
+    this.jobService.setJobRequests(job.requests);
+    this.router.navigate(['/requestDetails']);
+
   }
 
 }
