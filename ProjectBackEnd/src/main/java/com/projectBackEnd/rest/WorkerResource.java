@@ -50,6 +50,7 @@ public class WorkerResource {
         updateWorker.setPhoneNumber(worker.getPhoneNumber());
         updateWorker.setEmail(worker.getEmail());
         updateWorker.setWebsite(worker.getWebsite());
+        updateWorker.setFirebaseUid(worker.getFirebaseUid());
         workerDAO.update(updateWorker);
         
 		return Response.ok().build();

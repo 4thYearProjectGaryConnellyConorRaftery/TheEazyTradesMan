@@ -27,15 +27,6 @@ public class Job {
 	private String date;
 	
 	
-	
-	
-	
-	
-
-	
-
-
-	
 
 	public String getLocation() {
 		return location;

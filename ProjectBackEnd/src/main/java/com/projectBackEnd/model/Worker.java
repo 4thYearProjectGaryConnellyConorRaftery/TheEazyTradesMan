@@ -24,6 +24,19 @@ public class Worker {
 	private String phoneNumber;
 	private String email;
 	private String website;
+	private String firebaseUid;
+
+	
+	
+	public String getFirebaseUid() {
+		return firebaseUid;
+	}
+
+	public void setFirebaseUid(String firebaseUid) {
+		this.firebaseUid = firebaseUid;
+	}
+	
+	
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
