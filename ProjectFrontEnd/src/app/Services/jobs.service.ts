@@ -12,11 +12,12 @@ export class JobsService{
 
      constructor(private client: HttpClient){}
 
+     //GET
      getJobs(): Observable<Job[]> {
     
         return this.client.get<Job[]>("http://localhost:8080/jobs");
-    }
-
+    }//End GET.
+    //POST
     postJob(job: Job): Observable<Job>{
     console.log("This is the job.");
     console.log(job);
@@ -27,6 +28,20 @@ export class JobsService{
       })
     });
 
-    }
+  }//End POST.
+
+  //PUT 
+   putJob(putJob: Job): Observable<Job>{
+     console.log("These are the requests --->" + putJob.requests);
+     console.log("This is the path ---> http://localhost:8080/jobs/" + putJob.id);
+      return this.client.put<Job>("http://localhost:8080/jobs/" + putJob.id, putJob,{
+       headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+
+}// End PUT.
+  
+
 
 }

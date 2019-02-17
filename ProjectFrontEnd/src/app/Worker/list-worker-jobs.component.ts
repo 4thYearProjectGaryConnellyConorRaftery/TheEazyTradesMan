@@ -18,42 +18,13 @@ export class ListWorkerJobsComponent implements OnInit {
 
   request(job: Job): void{
     console.log("Testing JobRequests branch.");
-    console.log("REQUEST FROM -->" + job.id);
+    console.log("REQUEST FOR -->" + job.id);
+    job.requests += ",-----ThisIsATestID-----";
+    this.jobService.putJob(job).subscribe((data: Job) =>{
+      console.log(data);
+    });
   }
 
 }
 
 
-/* =[
-    {
-   id: "46464646",
-    trade: "Carpenter",
-    description: "Need somone to build a table for the garden that is outside in my back garden with all the other tables in it",
-    customer: "464646464646",
-    requests: "46464646464646",
-    complete: false,
-    location: "Galway, Ireland",
-    date: "03-03-2019"
-  },
-  {
-   id: "46464646",
-    trade: "Carpenter",
-    description: "Need somone to build a table for the garden that is outside in my back garden with all the other tables in it",
-    customer: "464646464646",
-    requests: "46464646464646",
-    complete: false,
-    location: "Galway, Ireland",
-    date: "03-03-2019"
-  },
-  {
-    id: "46464646",
-    trade: "Carpenter",
-    description: "Need somone to build a table for the garden that is outside in my back garden with all the other tables in it",
-    customer: "464646464646",
-    requests: "46464646464646",
-    complete: false,
-    location: "Galway, Ireland",
-    date: "03-03-2019"
-    }
-  ];
-*/
