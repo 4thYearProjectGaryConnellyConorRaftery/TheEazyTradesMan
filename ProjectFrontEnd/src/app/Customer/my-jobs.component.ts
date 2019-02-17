@@ -31,6 +31,10 @@ export class MyJobsComponent implements OnInit {
     }
   }
 
+  requests(job: Job): void{
+    console.log(job.requests);
+  }
+
 }
 
 /* =[

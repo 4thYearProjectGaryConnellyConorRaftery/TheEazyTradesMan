@@ -29,12 +29,14 @@
       <h2>{{job.id}}</h2>
       <h3>Trade: </h3><h4>{{job.trade}}</h4>
       <h3>Description: </h3><h4>{{job.description}}</h4>
-      <h3>Requests: </h3><h4>{{job.requests}}</h4>
       <h3>Is completed? </h3><h4>{{job.complete}}</h4>
+      <!-- <h3>Requests: </h3><h4>{{job.requests}}</h4> -->
+      <button type="button" class="btn btn-success" (click)="requests(job)">View Requests</button>
   </div>
 
 
   <div class="panel-footer">
+    <!-- TODO -->
    <a href="editJob/0">Edit</a>
   </div>
   </div>
