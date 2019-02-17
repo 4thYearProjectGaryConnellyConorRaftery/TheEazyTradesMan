@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-view-profile',
@@ -22,12 +23,27 @@ export class ViewProfileComponent implements OnInit {
    // photoPath: "assets/images/easytrade.jpg"
   }
 */
-  constructor(private workerService: WorkersService) { }
+  constructor(private workerService: WorkersService,  private router: Router) { }
 
   ngOnInit() { // Hard code the worker ID for now.
     this.workerService.getWorker("38be87ad-f34f-4d7d-ba6a-61a15bd9eede").subscribe(data => this.worker = data);
 
      console.log(this.worker.firstName);
   }
+
+  // Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobsWorker"]);
+  }
+
+   navMyProfile(): void{
+    this.router.navigate(["/viewProfile"]);
+  }
+
+   navEditProfile(): void{
+    this.router.navigate(["/editProfile"]);
+  }
+
+  // End Navigation.
 
 }

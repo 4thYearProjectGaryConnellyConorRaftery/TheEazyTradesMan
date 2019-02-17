@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../models/job.model';
 import { JobsService } from '../Services/jobs.service';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-list-worker-jobs',
@@ -10,7 +11,7 @@ import { JobsService } from '../Services/jobs.service';
 export class ListWorkerJobsComponent implements OnInit {
 
   jobs: Job[];
-  constructor(private jobService: JobsService) { }
+  constructor(private jobService: JobsService,  private router: Router) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
@@ -24,6 +25,21 @@ export class ListWorkerJobsComponent implements OnInit {
       console.log(data);
     });
   }
+
+   // Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobsWorker"]);
+  }
+
+   navMyProfile(): void{
+    this.router.navigate(["/viewProfile"]);
+  }
+
+   navEditProfile(): void{
+    this.router.navigate(["/editProfile"]);
+  }
+
+  // End Navigation.
 
 }
 

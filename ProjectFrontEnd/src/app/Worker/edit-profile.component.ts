@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -10,7 +11,7 @@ import { WorkersService } from '../Services/workers.service';
 })
 export class EditProfileComponent implements OnInit {
 
-  constructor(private workerService: WorkersService) { }
+  constructor(private workerService: WorkersService,  private router: Router) { }
 
   worker: Worker ={
     id: "5fff7f41-5cd6-4b89-9470-06dbd93b5121",
@@ -37,6 +38,21 @@ export class EditProfileComponent implements OnInit {
       console.log(data);
     });
   }
+
+  // Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobsWorker"]);
+  }
+
+   navMyProfile(): void{
+    this.router.navigate(["/viewProfile"]);
+  }
+
+   navEditProfile(): void{
+    this.router.navigate(["/editProfile"]);
+  }
+
+  // End Navigation.
 
 
 }
