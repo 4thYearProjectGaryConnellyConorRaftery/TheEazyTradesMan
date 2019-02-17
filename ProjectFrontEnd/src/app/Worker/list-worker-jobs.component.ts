@@ -17,7 +17,7 @@ export class ListWorkerJobsComponent implements OnInit {
   }
 
   request(job: Job): void{
-    console.log("yurt");
+    console.log("Testing JobRequests branch.");
     console.log("REQUEST FROM -->" + job.id);
   }
 
