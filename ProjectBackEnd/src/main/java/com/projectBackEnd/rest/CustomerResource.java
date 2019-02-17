@@ -48,6 +48,7 @@ public class CustomerResource {
 		updateCustomer.setSecondName(customer.getSecondName());
 		updateCustomer.setAddress(customer.getAddress());
 		updateCustomer.setAge(customer.getAge());
+		updateCustomer.setFirebaseUid(customer.getFirebaseUid());
 		customerDAO.update(updateCustomer);
 
 		return Response.ok().build();

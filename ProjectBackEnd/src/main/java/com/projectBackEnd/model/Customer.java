@@ -21,6 +21,15 @@ public class Customer {
 	private String secondName;
 	private String address;
 	private int age;
+	private String firebaseUid;
+
+	public String getFirebaseUid() {
+		return firebaseUid;
+	}
+
+	public void setFirebaseUid(String firebaseUid) {
+		this.firebaseUid = firebaseUid;
+	}
 
 	public String getId() {
 		return id;
