@@ -13,20 +13,17 @@ export class JobsService{
      constructor(private client: HttpClient){}
      requests: string;
      result: string[];
-//---------------------------------------TEST
      setJobRequests(newRequests: string): void{
         console.log("Inside setJobRequests.");
         this.requests = newRequests;
-        //this.result = this.requests.split(",");
-        //console.log("Setting results string: "+this.result[2]);
      }
      
      getJobRequests(): string[]{
-       this.result = this.requests.split(","); // Trying to split the requests by commas.
+       this.result = this.requests.split(","); // Split the requests by commas.
        console.log("Setting results string: "+this.result[2]);// For Testing.
         return this.result;
      }
-//---------------------------------------TEST
+
      //GET
      getJobs(): Observable<Job[]> {
     

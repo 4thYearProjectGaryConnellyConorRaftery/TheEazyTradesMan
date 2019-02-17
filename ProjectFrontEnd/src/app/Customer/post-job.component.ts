@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Job } from '../models/job.model';
 import { JobsService } from '../Services/jobs.service';
+import { Router, Params } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { JobsService } from '../Services/jobs.service';
 })
 export class PostJobComponent implements OnInit {
 
-  constructor(private jobService: JobsService) { }
+  constructor(private jobService: JobsService,  private router: Router) { }
 
    job: Job = {
     id : null,
@@ -40,5 +41,20 @@ export class PostJobComponent implements OnInit {
       console.log(data);
     });
   }
+
+  // Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobs"]);
+  }
+
+   navMyJobs(): void{
+    this.router.navigate(["/myJobs"]);
+  }
+
+   navPostJob(): void{
+    this.router.navigate(["/postJob"]);
+  }
+
+  // End Navigation.
 
 }

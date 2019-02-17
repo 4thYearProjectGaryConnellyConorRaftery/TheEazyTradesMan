@@ -30,11 +30,7 @@ export class EditProfileComponent implements OnInit {
   }
 
 
-/*
-   update(postJobForm: NgForm): void{
-    console.log(postJobForm.value);
-  }
-  */
+
 
    update(updateWorker: Worker): void{
     this.workerService.putWorker(updateWorker).subscribe((data: Worker) =>{

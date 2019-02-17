@@ -11,10 +11,26 @@ export class RequestDetailsComponent implements OnInit {
 
   jobRequests: string[];
 
-  constructor(private jobService: JobsService) { }
+  constructor(private jobService: JobsService,   private router: Router) { }
 
   ngOnInit() {
     this.jobRequests = this.jobService.getJobRequests();
   }
+
+  // Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobs"]);
+  }
+
+   navMyJobs(): void{
+    this.router.navigate(["/myJobs"]);
+  }
+
+   navPostJob(): void{
+    this.router.navigate(["/postJob"]);
+  }
+
+  // End Navigation.
+
 
 }

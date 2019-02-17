@@ -14,30 +14,33 @@ export class MyJobsComponent implements OnInit {
   myJobs: Job[];
   customer: string = "59035e71-fd02-4ee0-83a0-2db5dbdc2f07";
 
-  constructor(private jobService: JobsService,  private router: Router,) { }
+  constructor(private jobService: JobsService,  private router: Router) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
-    //console.log("Jobs --->" + this.jobs);
-   // this.init();
   }
 
-  init(): void{
-     var i: number = 0;
- 
-    for(i = 0; i < this.jobs.length; i++){
-      if(this.jobs[i].customer == "59035e71-fd02-4ee0-83a0-2db5dbdc2f07"){
-        this.myJobs.push(this.jobs[i]);
-      }
-    }
-  }
-
+  
   requests(job: Job): void{
     console.log("Before service - " + job.requests);
     this.jobService.setJobRequests(job.requests);
     this.router.navigate(['/requestDetails']);
 
   }
+// Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobs"]);
+  }
+
+   navMyJobs(): void{
+    this.router.navigate(["/myJobs"]);
+  }
+
+   navPostJob(): void{
+    this.router.navigate(["/postJob"]);
+  }
+
+  // End Navigation.
 
 }
 
