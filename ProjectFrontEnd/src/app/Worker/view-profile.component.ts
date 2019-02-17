@@ -26,7 +26,7 @@ export class ViewProfileComponent implements OnInit {
   constructor(private workerService: WorkersService,  private router: Router) { }
 
   ngOnInit() { // Hard code the worker ID for now.
-    this.workerService.getWorker("38be87ad-f34f-4d7d-ba6a-61a15bd9eede").subscribe(data => this.worker = data);
+    this.workerService.getWorker("578f2e18-f876-410e-9645-b0a8ce444718").subscribe(data => this.worker = data);
 
      console.log(this.worker.firstName);
   }

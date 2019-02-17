@@ -12,7 +12,7 @@ export class MyJobsComponent implements OnInit {
 
   jobs: Job[];
   myJobs: Job[];
-  customer: string = "59035e71-fd02-4ee0-83a0-2db5dbdc2f07";
+  customer: string = "ed27dcc6-7ff6-4969-b11f-2f39a25f29e3"; // Hard coded for now.
 
   constructor(private jobService: JobsService,  private router: Router) { }
 

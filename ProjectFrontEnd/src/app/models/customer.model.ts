@@ -4,4 +4,5 @@ export class Customer{
     secondName: string;
     address: string;
     age: number;
+    firebaseUid?: string;
 }

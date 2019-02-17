@@ -19,7 +19,7 @@ export class JobsService{
      }
      
      getJobRequests(): string[]{
-       this.result = this.requests.split(","); // Split the requests by commas.
+       this.result = this.requests.split(" "); // Split the requests by spaces.
        console.log("Setting results string: "+this.result[2]);// For Testing.
         return this.result;
      }

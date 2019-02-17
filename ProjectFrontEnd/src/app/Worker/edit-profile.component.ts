@@ -23,6 +23,7 @@ export class EditProfileComponent implements OnInit {
     phoneNumber: null,
     email:null,
     website: null,
+    firebaseUid: null
     //photoPath: null
   }
 

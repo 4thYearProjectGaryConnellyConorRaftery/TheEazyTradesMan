@@ -9,5 +9,6 @@ export class Worker {
     phoneNumber: string;
     email?: string;
     website?: string;
+    firebaseUid?: string;
    // photoPath?: string;
 }
