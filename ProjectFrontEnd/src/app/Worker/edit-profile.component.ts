@@ -28,7 +28,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.worker.rating = "88";
+    this.worker.rating = "";
   }
 
 
