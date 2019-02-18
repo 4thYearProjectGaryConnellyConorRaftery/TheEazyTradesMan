@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { auth } from 'firebase';
+import * as firebase from 'firebase';
 //import * as angular from 'angular';
 
 @Component({
@@ -72,6 +74,7 @@ app.controller('formCtrl', function($scope) {
      this.authService.doRegister(value)
      .then(res => {
        console.log(res);
+        console.log("Register --> " + firebase.auth().currentUser.uid.toString());
        this.errorMessage = "";
        this.successMessage = "Your account has been created"; /// Do user identification here:
      }, err => {

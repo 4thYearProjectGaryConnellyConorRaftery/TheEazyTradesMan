@@ -54,7 +54,7 @@ export class LoginComponent {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      console.log(firebase.auth().currentUser.uid.toString());
+      console.log("Login --> " + firebase.auth().currentUser.uid.toString());
 
       
       //Depending on user, we can switch landing page.
