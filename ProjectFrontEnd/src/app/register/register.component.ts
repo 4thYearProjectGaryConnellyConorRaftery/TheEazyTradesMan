@@ -69,7 +69,7 @@ app.controller('formCtrl', function($scope) {
      )
    }
 
-   tryRegister(value){
+   tryRegisterCustomer(value){
     console.log(value);
      this.authService.doRegister(value)
      .then(res => {
@@ -77,26 +77,31 @@ app.controller('formCtrl', function($scope) {
         console.log("Register --> " + firebase.auth().currentUser.uid.toString());
        this.errorMessage = "";
        this.successMessage = "Your account has been created"; /// Do user identification here:
+
+       //Get UID and PUT to MongoDB here, set user as customer
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
        this.successMessage = "";
      })
-     
-/*
-     angular.module('resultApp', []).controller('resultCtrl', function($scope) {
- 
-      $scope.result = 'pass';
-      
-      $scope.submitResult = function(result) {
-        
-        alert(result)
-      };
-    });
-    */
+
    }
 
+   tryRegisterWorker(value){
+    console.log(value);
+     this.authService.doRegister(value)
+     .then(res => {
+       console.log(res);
+       this.errorMessage = "";
+       this.successMessage = "Your account has been created"; /// Do user identification here:
 
+       //Get UID and PUT to MongoDB here, set user as worker
+     }, err => {
+       console.log(err);
+       this.errorMessage = err.message;
+       this.successMessage = "";
+     })
+    }
    
 
 }

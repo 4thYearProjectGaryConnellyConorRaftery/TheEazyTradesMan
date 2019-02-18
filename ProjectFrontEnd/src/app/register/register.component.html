@@ -13,41 +13,11 @@
           <label class="error">{{errorMessage}}</label>
           <label class="success">{{successMessage}}</label>
         </div>
-        
 
 
-        <div ng-app="myApp" ng-controller="formCtrl">
-          <form novalidate>
-            Worker:<br>
-            <input type="radio" ng-model="account.worker" value="worker"><br>
-            Tradesperson:<br>
-            <input type="radio" ng-model="account.tradesperson" value="tradesperson">
-            <br>
-          </form>
-          <p></p>
-        </div>
 
-
-<!--
-        <div class="form-group">
-          <label>Customer</label>
-          <input type="radio" formControlName="accountType" ng-value="customer" class="form-control">
-        </div>
-
-        <form name="accTypeForm" ng-controller="AccountTypeController">
-          <label>
-            <input type="radio" ng-model="accountType" value="customer" name='type'>
-            Customer
-          </label><br/>
-          <label>
-            <input type="radio" ng-model="accountType" value="Tradesman" name='type'>
-            Tradesman
-          </label><br/>
-          <br/>
-          <p>Type: {{accountType}}</p>
-         </form>
--->
-        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+        <button type="submit" (click)="tryRegisterCustomer(registerForm.value)" class="btn btn-default">Register as Customer</button>
+        <button type="submit" (click)="tryRegisterWorker(registerForm.value)" class="btn btn-default">Register as Worker</button>
       </form>
     </div>
   </div>
