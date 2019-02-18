@@ -22,6 +22,12 @@ export class WorkersService{
 
 }//End PUT.
 
+    //GET Workers.
+     getWorkers(): Observable<Worker[]>{
+         return this.client.get<Worker[]>("http://localhost:8080/workers");
+     }//End GET Workers.
+
+
 //GET Worker.
  getWorker(id: string): Observable<Worker>{
     return this.client.get<Worker>("http://localhost:8080/workers/" + id)

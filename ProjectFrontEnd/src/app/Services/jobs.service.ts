@@ -25,7 +25,7 @@ export class JobsService{
         return this.result;
      }
 
-     //GET
+     //GET Jobs.
      getJobs(): Observable<Job[]> {
     
         return this.client.get<Job[]>("http://localhost:8080/jobs");
