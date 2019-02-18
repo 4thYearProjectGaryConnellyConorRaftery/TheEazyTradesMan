@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule  } from '@angular/forms';
 import { auth } from 'firebase';
 import * as firebase from 'firebase';
 //import * as angular from 'angular';
@@ -16,6 +16,8 @@ export class RegisterComponent {
   registerForm: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
+  firstName: string = "";
+  secondName: string = "";
 
 
   constructor(
@@ -58,6 +60,7 @@ export class RegisterComponent {
    }
 
    tryRegisterCustomer(value){
+     console.log("NAME ---> " + this.firstName);
     console.log(value);
      this.authService.doRegister(value)
      .then(res => {

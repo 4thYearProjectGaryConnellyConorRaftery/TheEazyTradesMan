@@ -53,6 +53,7 @@ export class LoginComponent {
   }
 
   tryLogin(value){
+    
     this.authService.doLogin(value)
     .then(res => {
       console.log("Login --> " + firebase.auth().currentUser.uid.toString());
