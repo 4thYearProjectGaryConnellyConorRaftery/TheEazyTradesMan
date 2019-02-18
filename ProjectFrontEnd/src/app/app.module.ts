@@ -28,8 +28,10 @@ import { ViewProfileComponent } from './Worker/view-profile.component';
 import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
 import { FormsModule } from '@angular/forms';
 import { EditJobComponentComponent } from './Customer/edit-job-component.component';
+// Services
 import { JobsService } from './Services/jobs.service';
 import { WorkersService } from './Services/workers.service';
+import { CustomersService } from './Services/customers.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,7 @@ import { WorkersService } from './Services/workers.service';
     FormsModule, 
     HttpClientModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService, WorkersService],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, JobsService, WorkersService, CustomersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

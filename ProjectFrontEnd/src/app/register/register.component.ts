@@ -4,6 +4,8 @@ import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormsModule  } from '@angular/forms';
 import { auth } from 'firebase';
 import * as firebase from 'firebase';
+import { Customer } from '../models/customer.model';
+import { CustomersService } from '../Services/customers.service';
 //import * as angular from 'angular';
 
 @Component({
@@ -23,10 +25,19 @@ export class RegisterComponent {
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,private customerService: CustomersService
   ) {
     this.createForm();
    }
+
+   customer: Customer = {
+    id: null,
+    firstName: null,
+    secondName: null,
+    address: null,
+    age: null,
+    firebaseUid: null
+   };
 
    createForm() {
      this.registerForm = this.fb.group({
@@ -61,11 +72,19 @@ export class RegisterComponent {
 
    tryRegisterCustomer(value){
      console.log("NAME ---> " + this.firstName);
+    
     console.log(value);
      this.authService.doRegister(value)
      .then(res => {
        console.log(res);
-        console.log("Register --> " + firebase.auth().currentUser.uid.toString());
+       console.log("Register --> " + firebase.auth().currentUser.uid.toString());
+       this.createCustomer();///////////////////////// Test.
+       this.customer.firebaseUid = firebase.auth().currentUser.uid.toString();
+       this.customerService.postCustomer(this.customer).subscribe((data: Customer) => {
+         console.log(data);
+         console.log("Creating new customer with firebase uid of ---> " + this.customer.firebaseUid)
+       })
+       /////////////////////////////////////////////// Test.
        this.errorMessage = "";
        this.successMessage = "Your account has been created"; /// Do user identification here:
 
@@ -92,6 +111,11 @@ export class RegisterComponent {
        this.errorMessage = err.message;
        this.successMessage = "";
      })
+    }
+
+    createCustomer(): void{
+      this.customer.firstName = this.firstName;
+      this.customer.secondName = this.secondName;
     }
    
 
