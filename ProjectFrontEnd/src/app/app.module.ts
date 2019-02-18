@@ -31,6 +31,9 @@ import { EditJobComponentComponent } from './Customer/edit-job-component.compone
 import { JobsService } from './Services/jobs.service';
 import { WorkersService } from './Services/workers.service';
 
+//Google Maps
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +58,10 @@ import { WorkersService } from './Services/workers.service';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     FormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({//GoogleMaps
+      apiKey: 'AIzaSyC7bMomggbd1_CFMfE7A1Njp4kaM7HmsLs'
+    })
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService, WorkersService],
   bootstrap: [AppComponent]

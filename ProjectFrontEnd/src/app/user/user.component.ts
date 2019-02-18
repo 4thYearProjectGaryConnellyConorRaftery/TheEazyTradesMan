@@ -13,6 +13,32 @@ import { FirebaseUserModel } from '../core/user.model';
 })
 export class UserComponent implements OnInit{
 
+  //Long & Lat - Change to job locations, use arrays
+  lat: number = 51.678418;
+  lng: number = 7.809007;
+  eircode: string = "H91R2PX";
+  getLongLat();
+
+
+getLongLat(){
+
+  var geocoder = new google.maps.Geocoder();
+  var lati;
+    var long;
+    var address = "H91R2PX";
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+         lati = results[0].geometry.location.lat();
+         long = results[0].geometry.location.lng();
+        } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+    alert('Latitude: ' + lati + ' Logitude: ' + long);
+}
+
+  
+
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
 

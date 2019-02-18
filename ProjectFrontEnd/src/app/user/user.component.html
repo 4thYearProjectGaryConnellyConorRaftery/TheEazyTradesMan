@@ -1,3 +1,6 @@
+<!--Google maps-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7bMomggbd1_CFMfE7A1Njp4kaM7HmsLs&callback=initMap"
+  type="text/javascript"></script>
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
@@ -25,13 +28,17 @@
     </li>
   </ul>
     
-
+<!--Google Maps-->
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
 
           <a (click)="save(profileForm.value)" class="btn btn-primary">Save</a>
         </div>
       </div>
     </div>
     <div class="col-md-4">
+        <button type="button" (click)="getLongLat()" class="btn btn-link">getLongLat</button>
       <button type="button" (click)="logout()" class="btn btn-link">Logout</button>
     </div>
   </div>
