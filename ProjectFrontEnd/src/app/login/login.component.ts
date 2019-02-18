@@ -58,16 +58,20 @@ export class LoginComponent {
       console.log("Login --> " + firebase.auth().currentUser.uid.toString());
 
       
-      //Depending on user, we can switch landing page.
+      /*Get UID from MongoDB, and switch landing page respectively
+      if(UID is worker){
+        this.router.navigate(['/listWorkerJobs']);
+      }else{
+        this.router.navigate(['/listWorkerCustomerJobs']);
+      }
+      */
+     //Remove line below when routing is done correctly
       this.router.navigate(['/user']);
       
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
     })
-    //console.log(this.authService.doLogin.toString());
-    //console.log(this.authService.afAuth.idTokenResult.toString());
-    //console.log(this.authService.afAuth.idToken.source);
     
   }
 }
