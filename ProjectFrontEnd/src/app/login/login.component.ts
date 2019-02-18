@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { auth } from 'firebase';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'page-login',
@@ -52,11 +54,19 @@ export class LoginComponent {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
+      console.log(firebase.auth().currentUser.uid.toString());
+
+      
       //Depending on user, we can switch landing page.
       this.router.navigate(['/user']);
+      
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
     })
+    //console.log(this.authService.doLogin.toString());
+    //console.log(this.authService.afAuth.idTokenResult.toString());
+    //console.log(this.authService.afAuth.idToken.source);
+    
   }
 }
