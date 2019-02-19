@@ -37,7 +37,7 @@ export class ListWorkerJobsComponent implements OnInit {
   request(job: Job): void{
     console.log("Testing JobRequests branch.");
     console.log("REQUEST FOR -->" + job.id);
-    job.requests += " 578f2e18-f876-410e-9645-b0a8ce444718";
+    job.requests += " " + localStorage.getItem('WorkerID'); // TEST
     this.jobService.putJob(job).subscribe((data: Job) =>{
       console.log(data);
     });

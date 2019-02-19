@@ -14,7 +14,7 @@ export class EditProfileComponent implements OnInit {
   constructor(private workerService: WorkersService,  private router: Router) { }
 
   worker: Worker ={
-    id: "5fff7f41-5cd6-4b89-9470-06dbd93b5121",
+    id: localStorage.getItem('WorkerID'),
     firstName: null,
     secondName: null,
     address: null,

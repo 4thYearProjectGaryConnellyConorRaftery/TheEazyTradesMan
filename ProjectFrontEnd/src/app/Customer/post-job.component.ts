@@ -26,7 +26,7 @@ export class PostJobComponent implements OnInit {
   };
 
   ngOnInit() { // Some default data for testing.
-    this.job.customer = "ed27dcc6-7ff6-4969-b11f-2f39a25f29e3"; // Hard coded for now.
+    this.job.customer = localStorage.getItem('CustomerID'); // Hard coded for now.
     this.job.complete = false;
     this.job.requests = "";
     this.job.date = "10/02/2019";

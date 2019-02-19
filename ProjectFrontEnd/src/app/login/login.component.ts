@@ -88,6 +88,8 @@ export class LoginComponent {
        if(this.customers[i].firebaseUid == id){
          this.isFound = true;
           console.log("CUSTOMER FOUND ---> " + id)
+          localStorage.setItem('CustomerID', this.customers[i].id)
+          console.log("Local Storage ---> " + localStorage.getItem('CustomerID'));
        }
     }
   });
@@ -101,6 +103,8 @@ export class LoginComponent {
       for(let i = 0; i < this.workers.length; i++){
         if(this.workers[i].firebaseUid == id){
           console.log("WORKER FOUND ---> " + id)
+          localStorage.setItem('WorkerID', this.workers[i].id)
+          console.log("Local Storage ---> " + localStorage.getItem('WorkerID'));
         }
       }
     })

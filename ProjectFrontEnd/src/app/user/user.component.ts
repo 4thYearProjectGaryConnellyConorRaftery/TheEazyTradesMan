@@ -13,6 +13,8 @@ import { FirebaseUserModel } from '../core/user.model';
 })
 export class UserComponent implements OnInit{
 
+  /*
+
   //Long & Lat - Change to job locations, use arrays
   lat: number = 51.678418;
   lng: number = 7.809007;
@@ -41,6 +43,8 @@ getLongLat(){
     //alert('Latitude: ' +  + ' Logitude: ' + long);
     //alert('location' + location);
 }
+
+*/
 
   
 
