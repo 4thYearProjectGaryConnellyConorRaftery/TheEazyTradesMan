@@ -22,6 +22,9 @@ export class RegisterComponent {
   successMessage: string = '';
   firstName: string = "";
   secondName: string = "";
+  customers: Customer[];
+  workers: Worker[];
+  isFound: boolean = false;
 
 
   constructor(
@@ -102,7 +105,9 @@ export class RegisterComponent {
        this.customerService.postCustomer(this.customer).subscribe((data: Customer) => {
          console.log(data);
          console.log("Creating new customer with firebase uid of ---> " + this.customer.firebaseUid)
+         this.getUser(firebase.auth().currentUser.uid.toString());
        })
+      
        /////////////////////////////////////////////// Test.
        this.errorMessage = "";
        this.successMessage = "Your account has been created"; /// Do user identification here:
@@ -128,7 +133,9 @@ export class RegisterComponent {
        this.workerService.postWorker(this.worker).subscribe((data: Worker) => {
          console.log(data);
          console.log("Creating a new worker with firebase uid of ---> " + this.worker.firebaseUid);
+         this.getUser(firebase.auth().currentUser.uid.toString());
        })
+       
        this.errorMessage = "";
        this.successMessage = "Your account has been created"; /// Do user identification here:
 
@@ -149,6 +156,41 @@ export class RegisterComponent {
       this.worker.firstName = this.firstName;
       this.worker.secondName = this.secondName;
     }
+
+
+     getUser(id: string): void{
+    this.customerService.getCustomers().subscribe(data =>  {
+      this.customers = data
+      
+      for(let i = 0; i < this.customers.length; i++){
+       if(this.customers[i].firebaseUid == id){
+         this.isFound = true;
+          console.log("REGISTERED CUSTOMER FOUND ---> " + id)
+       }
+    }
+  });
+
+  if(this.isFound == false){
+    console.log("Searching workers table.")
+
+    this.workerService.getWorkers().subscribe(data => {
+      this.workers = data
+
+      for(let i = 0; i < this.workers.length; i++){
+        if(this.workers[i].firebaseUid == id){
+          console.log("REGISTERED WORKER FOUND ---> " + id)
+        }
+      }
+    })
+  }
+   
+
+   console.log("Trying to login!")
+   /* for(let i = 0; i < this.customers.length; i++){
+      console.log(this.customers[i].id)
+    } */
+
+  }
    
 
 }
