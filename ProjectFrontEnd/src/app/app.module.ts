@@ -32,6 +32,7 @@ import { EditJobComponentComponent } from './Customer/edit-job-component.compone
 import { JobsService } from './Services/jobs.service';
 import { WorkersService } from './Services/workers.service';
 import { CustomersService } from './Services/customers.service';
+import { CustomerConfirmationService } from './Services/customerConfirmation.service';
 
 //Google Maps
 import { AgmCoreModule } from '@agm/core';
@@ -65,7 +66,7 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyC7bMomggbd1_CFMfE7A1Njp4kaM7HmsLs'
     })
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, JobsService, WorkersService, CustomersService],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, JobsService, WorkersService, CustomersService, CustomerConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
