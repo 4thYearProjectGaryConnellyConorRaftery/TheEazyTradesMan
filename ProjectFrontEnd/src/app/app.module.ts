@@ -33,10 +33,12 @@ import { JobsService } from './Services/jobs.service';
 import { WorkersService } from './Services/workers.service';
 import { CustomersService } from './Services/customers.service';
 import { CustomerConfirmationService } from './Services/customerConfirmation.service';
+import { WorkerConfirmationService } from './Services/workerConfirmation.service';
 
 //Google Maps
 import { AgmCoreModule } from '@agm/core';
 import { CustomerConfirmationComponent } from './Customer/customer-confirmation.component';
+import { WorkerConfirmationComponent } from './Worker/worker-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { CustomerConfirmationComponent } from './Customer/customer-confirmation.
     ViewProfileComponent,
     ListWorkerJobsComponent,
     EditJobComponentComponent,
-    CustomerConfirmationComponent
+    CustomerConfirmationComponent,
+    WorkerConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,7 @@ import { CustomerConfirmationComponent } from './Customer/customer-confirmation.
       apiKey: 'AIzaSyC7bMomggbd1_CFMfE7A1Njp4kaM7HmsLs'
     })
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, JobsService, WorkersService, CustomersService, CustomerConfirmationService],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, JobsService, WorkersService, CustomersService, CustomerConfirmationService, WorkerConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
