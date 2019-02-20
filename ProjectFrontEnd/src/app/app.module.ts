@@ -36,6 +36,7 @@ import { CustomerConfirmationService } from './Services/customerConfirmation.ser
 
 //Google Maps
 import { AgmCoreModule } from '@agm/core';
+import { CustomerConfirmationComponent } from './Customer/customer-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AgmCoreModule } from '@agm/core';
     EditProfileComponent,
     ViewProfileComponent,
     ListWorkerJobsComponent,
-    EditJobComponentComponent
+    EditJobComponentComponent,
+    CustomerConfirmationComponent
   ],
   imports: [
     BrowserModule,
