@@ -14,6 +14,8 @@ import { EditProfileComponent } from './Worker/edit-profile.component';
 import { ViewProfileComponent } from './Worker/view-profile.component';
 import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
 import { EditJobComponentComponent } from './Customer/edit-job-component.component';
+import { CustomerConfirmationComponent } from './Customer/customer-confirmation.component';
+import { WorkerConfirmationComponent } from './Worker/worker-confirmation.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -28,5 +30,7 @@ export const rootRouterConfig: Routes = [
   { path: 'listJobsWorker', component: ListWorkerJobsComponent },
   { path: 'viewProfile', component: ViewProfileComponent },
   { path: 'editJob/:id', component: EditJobComponentComponent },
+  { path: 'customerConfirmation', component: CustomerConfirmationComponent },
+  { path: 'workerConfirmation', component: WorkerConfirmationComponent },
   { path: 'editProfile', component: EditProfileComponent }
 ];
