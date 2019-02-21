@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
+
 export class JobsService{
 
      constructor(private client: HttpClient){}
@@ -25,7 +26,7 @@ export class JobsService{
         return this.result;
      }
 
-     //GET
+     //GET Jobs.
      getJobs(): Observable<Job[]> {
     
         return this.client.get<Job[]>("http://localhost:8080/jobs");

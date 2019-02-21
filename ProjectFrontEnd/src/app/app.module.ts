@@ -28,13 +28,20 @@ import { ViewProfileComponent } from './Worker/view-profile.component';
 import { ListWorkerJobsComponent } from './Worker/list-worker-jobs.component';
 import { FormsModule } from '@angular/forms';
 import { EditJobComponentComponent } from './Customer/edit-job-component.component';
+// Services
 import { JobsService } from './Services/jobs.service';
 import { WorkersService } from './Services/workers.service';
+import { CustomersService } from './Services/customers.service';
+import { CustomerConfirmationService } from './Services/customerConfirmation.service';
+import { WorkerConfirmationService } from './Services/workerConfirmation.service';
 
 //Google Maps
 import { GeocodeService } from './GeomapService/geocode.service';
 import { AgmCoreModule } from '@agm/core';
 import { GmapComponent } from './GeomapService/gmap.component';
+import { CustomerConfirmationComponent } from './Customer/customer-confirmation.component';
+import { WorkerConfirmationComponent } from './Worker/worker-confirmation.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +57,9 @@ import { GmapComponent } from './GeomapService/gmap.component';
     ViewProfileComponent,
     ListWorkerJobsComponent,
     EditJobComponentComponent,
-    GmapComponent
+    GmapComponent,
+    CustomerConfirmationComponent,
+    WorkerConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +74,11 @@ import { GmapComponent } from './GeomapService/gmap.component';
       apiKey: 'AIzaSyC7bMomggbd1_CFMfE7A1Njp4kaM7HmsLs'
     })
   ],
+<<<<<<< HEAD
   providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService, WorkersService, GeocodeService],
+=======
+  providers: [AuthService, UserService, UserResolver, AuthGuard, JobsService, WorkersService, CustomersService, CustomerConfirmationService, WorkerConfirmationService],
+>>>>>>> 36e7819d5efda1ff4314004522ecd09b52e16002
   bootstrap: [AppComponent]
 })
 export class AppModule { }

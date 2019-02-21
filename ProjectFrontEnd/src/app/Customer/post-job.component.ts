@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Job } from '../models/job.model';
 import { JobsService } from '../Services/jobs.service';
 import { Router, Params } from '@angular/router';
+import { CustomerConfirmationService } from '../Services/customerConfirmation.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Router, Params } from '@angular/router';
 })
 export class PostJobComponent implements OnInit {
 
-  constructor(private jobService: JobsService,  private router: Router) { }
+  constructor(private jobService: JobsService, private confirmationService: CustomerConfirmationService,  private router: Router) { }
 
    job: Job = {
     id : null,
@@ -26,7 +27,7 @@ export class PostJobComponent implements OnInit {
   };
 
   ngOnInit() { // Some default data for testing.
-    this.job.customer = "ed27dcc6-7ff6-4969-b11f-2f39a25f29e3"; // Hard coded for now.
+    this.job.customer = localStorage.getItem('CustomerID'); // Hard coded for now.
     this.job.complete = false;
     this.job.requests = "";
     this.job.date = "10/02/2019";
@@ -39,6 +40,8 @@ export class PostJobComponent implements OnInit {
 
    this.jobService.postJob(newJob).subscribe((data: Job) => {
       console.log(data);
+      this.confirmationService.setConfirmationMessage("Your Job had been posted!");
+      this.router.navigate(["/customerConfirmation"]);
     });
   }
 

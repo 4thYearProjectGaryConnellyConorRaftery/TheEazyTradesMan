@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../models/job.model';
 import { JobsService } from '../Services/jobs.service';
+import { WorkerConfirmationService } from '../Services/workerConfirmation.service';
 import { Router, Params } from '@angular/router';
 import { ViewChild } from '@angular/core';
 
@@ -18,7 +19,7 @@ export class ListWorkerJobsComponent implements OnInit {
  // map: google.maps.Map;
 
   jobs: Job[];
-  constructor(private jobService: JobsService,  private router: Router) { }
+  constructor(private jobService: JobsService, private confirmationService: WorkerConfirmationService,  private router: Router) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
@@ -37,9 +38,11 @@ export class ListWorkerJobsComponent implements OnInit {
   request(job: Job): void{
     console.log("Testing JobRequests branch.");
     console.log("REQUEST FOR -->" + job.id);
-    job.requests += " 578f2e18-f876-410e-9645-b0a8ce444718";
+    job.requests += " " + localStorage.getItem('WorkerID'); // TEST
     this.jobService.putJob(job).subscribe((data: Job) =>{
       console.log(data);
+      this.confirmationService.setConfirmationMessage("Job has been successfully requested!");
+      this.router.navigate(["/workerConfirmation"]);
     });
   }
 

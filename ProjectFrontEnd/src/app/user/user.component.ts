@@ -12,6 +12,11 @@ import { FirebaseUserModel } from '../core/user.model';
   styleUrls: ['user.scss']
 })
 export class UserComponent implements OnInit{
+
+
+
+  
+
   constructor(
     public userService: UserService,
     public authService: AuthService,

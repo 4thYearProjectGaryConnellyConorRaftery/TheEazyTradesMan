@@ -12,7 +12,7 @@ export class MyJobsComponent implements OnInit {
 
   jobs: Job[];
   myJobs: Job[];
-  customer: string = "ed27dcc6-7ff6-4969-b11f-2f39a25f29e3"; // Hard coded for now.
+  customer: string = localStorage.getItem('CustomerID'); // Hard coded for now.
 
   constructor(private jobService: JobsService,  private router: Router) { }
 

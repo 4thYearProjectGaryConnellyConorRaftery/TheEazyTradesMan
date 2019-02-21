@@ -4,6 +4,10 @@ import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormsModule  } from '@angular/forms';
 import { auth } from 'firebase';
 import * as firebase from 'firebase';
+import { Customer } from '../models/customer.model';
+import { CustomersService } from '../Services/customers.service';
+import { Worker } from '../models/worker.model';
+import { WorkersService } from '../Services/workers.service';
 //import * as angular from 'angular';
 
 @Component({
@@ -18,14 +22,43 @@ export class RegisterComponent {
   successMessage: string = '';
   firstName: string = "";
   secondName: string = "";
+  customers: Customer[];
+  workers: Worker[];
+  isFound: boolean = false;
 
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private customerService: CustomersService,
+    private workerService: WorkersService
   ) {
     this.createForm();
+   }
+
+   customer: Customer = {
+    id: null,
+    firstName: null,
+    secondName: null,
+    address: null,
+    age: null,
+    firebaseUid: null
+   };
+
+   worker: Worker = {
+      id: null,
+      firstName: null,
+      secondName: null,
+      address: "",
+      //age: number;
+      trade: "",
+      rating: "",
+      phoneNumber: "",
+      email: "",
+      website: "",
+      firebaseUid: null
+    // photoPath?: string;
    }
 
    createForm() {
@@ -61,11 +94,21 @@ export class RegisterComponent {
 
    tryRegisterCustomer(value){
      console.log("NAME ---> " + this.firstName);
+    
     console.log(value);
      this.authService.doRegister(value)
      .then(res => {
        console.log(res);
-        console.log("Register --> " + firebase.auth().currentUser.uid.toString());
+       console.log("Register --> " + firebase.auth().currentUser.uid.toString());
+       this.createCustomer();///////////////////////// Test.
+       this.customer.firebaseUid = firebase.auth().currentUser.uid.toString();
+       this.customerService.postCustomer(this.customer).subscribe((data: Customer) => {
+         console.log(data);
+         console.log("Creating new customer with firebase uid of ---> " + this.customer.firebaseUid)
+         this.getUser(firebase.auth().currentUser.uid.toString());
+       })
+      
+       /////////////////////////////////////////////// Test.
        this.errorMessage = "";
        this.successMessage = "Your account has been created"; /// Do user identification here:
 
@@ -79,10 +122,20 @@ export class RegisterComponent {
    }
 
    tryRegisterWorker(value){
+    console.log("NAME ---> " + this.firstName);
     console.log(value);
      this.authService.doRegister(value)
      .then(res => {
        console.log(res);
+       console.log("Register --> " + firebase.auth().currentUser.uid.toString());
+       this.createWorker();
+       this.worker.firebaseUid = firebase.auth().currentUser.uid.toString();
+       this.workerService.postWorker(this.worker).subscribe((data: Worker) => {
+         console.log(data);
+         console.log("Creating a new worker with firebase uid of ---> " + this.worker.firebaseUid);
+         this.getUser(firebase.auth().currentUser.uid.toString());
+       })
+       
        this.errorMessage = "";
        this.successMessage = "Your account has been created"; /// Do user identification here:
 
@@ -93,6 +146,55 @@ export class RegisterComponent {
        this.successMessage = "";
      })
     }
+
+    createCustomer(): void{
+      this.customer.firstName = this.firstName;
+      this.customer.secondName = this.secondName;
+    }
+
+     createWorker(): void{
+      this.worker.firstName = this.firstName;
+      this.worker.secondName = this.secondName;
+    }
+
+
+     getUser(id: string): void{
+    this.customerService.getCustomers().subscribe(data =>  {
+      this.customers = data
+      
+      for(let i = 0; i < this.customers.length; i++){
+       if(this.customers[i].firebaseUid == id){
+         this.isFound = true;
+          console.log("REGISTERED CUSTOMER FOUND ---> " + id)
+          localStorage.setItem('CustomerID', this.customers[i].id)
+          console.log("Local Storage ---> " + localStorage.getItem('CustomerID'));
+       }
+    }
+  });
+
+  if(this.isFound == false){
+    console.log("Searching workers table.")
+
+    this.workerService.getWorkers().subscribe(data => {
+      this.workers = data
+
+      for(let i = 0; i < this.workers.length; i++){
+        if(this.workers[i].firebaseUid == id){
+          console.log("REGISTERED WORKER FOUND ---> " + id)
+          localStorage.setItem('WorkerID', this.workers[i].id)
+          console.log("Local Storage ---> " + localStorage.getItem('WorkerID'));
+        }
+      }
+    })
+  }
+   
+
+   console.log("Trying to login!")
+   /* for(let i = 0; i < this.customers.length; i++){
+      console.log(this.customers[i].id)
+    } */
+
+  }
    
 
 }

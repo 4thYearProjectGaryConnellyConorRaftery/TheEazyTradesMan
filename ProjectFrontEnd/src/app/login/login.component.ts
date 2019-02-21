@@ -4,6 +4,10 @@ import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { auth } from 'firebase';
 import * as firebase from 'firebase';
+import { Customer } from '../models/customer.model';
+import { CustomersService } from '../Services/customers.service';
+import { Worker } from '../models/worker.model';
+import { WorkersService } from '../Services/workers.service';
 
 @Component({
   selector: 'page-login',
@@ -14,12 +18,17 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   errorMessage: string = '';
+  customers: Customer[];
+  workers: Worker[];
+  isFound: boolean = false;
   
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private customerService: CustomersService,
+    private workerService: WorkersService
   ) {
     this.createForm();
   }
@@ -58,15 +67,10 @@ export class LoginComponent {
     .then(res => {
       console.log("Login --> " + firebase.auth().currentUser.uid.toString());
 
+      this.getUser(firebase.auth().currentUser.uid.toString());
+
       
-      /*Get UID from MongoDB, and switch landing page respectively
-      if(UID is worker){
-        this.router.navigate(['/listWorkerJobs']);
-      }else{
-        this.router.navigate(['/listWorkerCustomerJobs']);
-      }
-      */
-     //Remove line below when routing is done correctly
+     
       this.router.navigate(['/user']);
       
     }, err => {
@@ -74,5 +78,43 @@ export class LoginComponent {
       this.errorMessage = err.message;
     })
     
+  }
+
+  getUser(id: string): void{
+    this.customerService.getCustomers().subscribe(data =>  {
+      this.customers = data
+      
+      for(let i = 0; i < this.customers.length; i++){
+       if(this.customers[i].firebaseUid == id){
+         this.isFound = true;
+          console.log("CUSTOMER FOUND ---> " + id)
+          localStorage.setItem('CustomerID', this.customers[i].id)
+          console.log("Local Storage ---> " + localStorage.getItem('CustomerID'));
+       }
+    }
+  });
+
+  if(this.isFound == false){
+    console.log("Searching workers table.")
+
+    this.workerService.getWorkers().subscribe(data => {
+      this.workers = data
+
+      for(let i = 0; i < this.workers.length; i++){
+        if(this.workers[i].firebaseUid == id){
+          console.log("WORKER FOUND ---> " + id)
+          localStorage.setItem('WorkerID', this.workers[i].id)
+          console.log("Local Storage ---> " + localStorage.getItem('WorkerID'));
+        }
+      }
+    })
+  }
+   
+
+   console.log("Trying to login!")
+   /* for(let i = 0; i < this.customers.length; i++){
+      console.log(this.customers[i].id)
+    } */
+
   }
 }
