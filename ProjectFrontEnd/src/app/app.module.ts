@@ -74,11 +74,8 @@ import { WorkerConfirmationComponent } from './Worker/worker-confirmation.compon
       apiKey: 'AIzaSyC7bMomggbd1_CFMfE7A1Njp4kaM7HmsLs'
     })
   ],
-<<<<<<< HEAD
-  providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService, WorkersService, GeocodeService],
-=======
-  providers: [AuthService, UserService, UserResolver, AuthGuard, JobsService, WorkersService, CustomersService, CustomerConfirmationService, WorkerConfirmationService],
->>>>>>> 36e7819d5efda1ff4314004522ecd09b52e16002
+ 
+  providers: [AuthService, UserService, UserResolver, AuthGuard, JobsService, WorkersService, GeocodeService, CustomersService, CustomerConfirmationService, WorkerConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
