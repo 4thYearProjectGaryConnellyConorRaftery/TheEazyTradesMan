@@ -3,6 +3,7 @@ import { Job } from '../models/job.model';
 import { Worker } from '../models/worker.model';
 import { JobsService } from '../Services/jobs.service';
 import { WorkersService } from '../Services/workers.service';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-my-requests',
@@ -18,7 +19,8 @@ export class MyRequestsComponent implements OnInit {
 
   constructor(
    private workerService: WorkersService,
-   private jobService: JobsService) { }
+   private jobService: JobsService,
+   private router: Router) { }
 
   ngOnInit() {
     this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
@@ -49,5 +51,25 @@ export class MyRequestsComponent implements OnInit {
 
     })
   }
+
+
+  // Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobsWorker"]);
+  }
+
+   navMyProfile(): void{
+    this.router.navigate(["/viewProfile"]);
+  }
+
+   navEditProfile(): void{
+    this.router.navigate(["/editProfile"]);
+  }
+
+  navMyRequests(): void{
+    this.router.navigate(["myrequests"]);
+  }
+
+  // End Navigation.
 
 }

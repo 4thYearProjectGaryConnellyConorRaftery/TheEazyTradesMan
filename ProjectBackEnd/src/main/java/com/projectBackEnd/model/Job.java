@@ -25,8 +25,21 @@ public class Job {
 	private String requests;
 	private String location;
 	private String date;
+	private boolean isAccepted;
 	
 	
+	
+	
+
+	public boolean isAccepted() {
+		return isAccepted;
+	}
+
+
+	public void setAccepted(boolean isAccepted) {
+		this.isAccepted = isAccepted;
+	}
+
 
 	public String getLocation() {
 		return location;

@@ -66,6 +66,10 @@ export class EditProfileComponent implements OnInit {
     this.router.navigate(["/editProfile"]);
   }
 
+  navMyRequests(): void{
+    this.router.navigate(["myrequests"]);
+  }
+
   // End Navigation.
 
 

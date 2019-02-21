@@ -7,5 +7,6 @@ export class Job {
     complete: boolean;
     location: string;
     date: string;
+    
 
 }
