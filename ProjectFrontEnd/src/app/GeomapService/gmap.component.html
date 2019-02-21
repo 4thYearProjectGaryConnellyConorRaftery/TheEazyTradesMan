@@ -1,0 +1,19 @@
+<h1>Job Location:</h1>
+<p><a href="https://angular-maps.com/" target="_blank">Official Website</a></p>
+<form (ngSubmit)="showLocation()">
+  <input type="text" [(ngModel)]="address" required [ngModelOptions]="{standalone: true}">
+  <button type="submit">Show Location</button>
+</form>
+
+<agm-map
+  [latitude]="location?.lat"
+  [longitude]="location?.lng"
+  [zoom]="8"
+  [disableDefaultUI]="false"
+  [zoomControl]="false">
+  <agm-marker 
+      [latitude]="location?.lat"
+      [longitude]="location?.lng">   
+  </agm-marker>
+</agm-map>
+<p *ngIf="loading">Loading...</p>

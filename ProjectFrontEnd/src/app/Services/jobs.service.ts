@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Job } from '../models/job.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-//import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +12,13 @@ export class JobsService{
      constructor(private client: HttpClient){}
      requests: string;
      result: string[];
+
      setJobRequests(newRequests: string): void{
         console.log("Inside setJobRequests.");
         this.requests = newRequests;
      }
      
+
      getJobRequests(): string[]{
        this.result = this.requests.split(" "); // Split the requests by spaces.
        console.log("Setting results string: "+this.result[2]);// For Testing.

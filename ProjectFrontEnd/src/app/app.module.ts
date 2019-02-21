@@ -32,8 +32,9 @@ import { JobsService } from './Services/jobs.service';
 import { WorkersService } from './Services/workers.service';
 
 //Google Maps
+import { GeocodeService } from './GeomapService/geocode.service';
 import { AgmCoreModule } from '@agm/core';
-
+import { GmapComponent } from './GeomapService/gmap.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { AgmCoreModule } from '@agm/core';
     EditProfileComponent,
     ViewProfileComponent,
     ListWorkerJobsComponent,
-    EditJobComponentComponent
+    EditJobComponentComponent,
+    GmapComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,7 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyC7bMomggbd1_CFMfE7A1Njp4kaM7HmsLs'
     })
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService, WorkersService],
+  providers: [AuthService, UserService, UserResolver, AuthGuard,JobsService, WorkersService, GeocodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
