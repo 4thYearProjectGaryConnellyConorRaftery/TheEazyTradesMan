@@ -1,7 +1,9 @@
 // /// <reference types="@types/googlemaps" />
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../models/job.model';
+import { Worker } from '../models/worker.model';
 import { JobsService } from '../Services/jobs.service';
+import { WorkersService } from '../Services/workers.service';
 import { WorkerConfirmationService } from '../Services/workerConfirmation.service';
 import { Router, Params } from '@angular/router';
 import { ViewChild } from '@angular/core';
@@ -18,8 +20,13 @@ export class ListWorkerJobsComponent implements OnInit {
  // @ViewChild('gmap') gmapElement: any;
  // map: google.maps.Map;
 
+  worker: Worker;
   jobs: Job[];
-  constructor(private jobService: JobsService, private confirmationService: WorkerConfirmationService,  private router: Router) { }
+  constructor(
+   private workerService: WorkersService,
+   private jobService: JobsService, 
+   private confirmationService: WorkerConfirmationService,  
+   private router: Router) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
@@ -44,6 +51,17 @@ export class ListWorkerJobsComponent implements OnInit {
       this.confirmationService.setConfirmationMessage("Job has been successfully requested!");
       this.router.navigate(["/workerConfirmation"]);
     });
+
+    this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
+      this.worker = data;
+      this.worker.jobsRequested += job.id + " ";
+      console.log("Current jobs requested ---> " + this.worker.jobsRequested)
+      this.workerService.putWorker(this.worker).subscribe(data => {
+        console.log("DONE ---> " + data); 
+        console.log("Jobs requested ---> " + this.worker.jobsRequested)
+      })
+    })
+    
   }
 
    // Navigation.
@@ -57,6 +75,10 @@ export class ListWorkerJobsComponent implements OnInit {
 
    navEditProfile(): void{
     this.router.navigate(["/editProfile"]);
+  }
+
+  navMyRequests(): void{
+    this.router.navigate(["myrequests"]);
   }
 
   // End Navigation.

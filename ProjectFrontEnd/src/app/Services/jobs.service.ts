@@ -31,6 +31,13 @@ export class JobsService{
     
         return this.client.get<Job[]>("http://localhost:8080/jobs");
     }//End GET.
+
+    //GET Job.
+    getJob(id: string): Observable<Job>{
+
+      return this.client.get<Job>("http://localhost:8080/jobs/" + id)
+
+    }//End GET Job.
     //POST
     postJob(job: Job): Observable<Job>{
     console.log("This is the job.");

@@ -25,9 +25,20 @@ public class Worker {
 	private String email;
 	private String website;
 	private String firebaseUid;
+	private String jobsRequested;
+	
+	
 
 	
 	
+	public String getJobsRequested() {
+		return jobsRequested;
+	}
+
+	public void setJobsRequested(String jobsRequested) {
+		this.jobsRequested = jobsRequested;
+	}
+
 	public String getFirebaseUid() {
 		return firebaseUid;
 	}

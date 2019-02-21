@@ -57,7 +57,8 @@ export class RegisterComponent {
       phoneNumber: "",
       email: "",
       website: "",
-      firebaseUid: null
+      firebaseUid: null,
+      jobsRequested: ""
     // photoPath?: string;
    }
 

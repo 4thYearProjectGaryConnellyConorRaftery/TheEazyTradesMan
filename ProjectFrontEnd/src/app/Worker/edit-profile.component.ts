@@ -14,6 +14,7 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private workerService: WorkersService, private confirmationService: WorkerConfirmationService, private router: Router) { }
 
+  getRequests: Worker;
   worker: Worker ={
     id: localStorage.getItem('WorkerID'),
     firstName: null,
@@ -24,12 +25,20 @@ export class EditProfileComponent implements OnInit {
     phoneNumber: null,
     email:null,
     website: null,
-    firebaseUid: null
+    firebaseUid: null,
+    jobsRequested: null
     //photoPath: null
   }
 
   ngOnInit() {
     this.worker.rating = "";
+    //this.worker.jobsRequested = this.workerService
+    this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
+        this.getRequests = data;
+        this.worker.jobsRequested = this.getRequests.jobsRequested;
+    });
+
+    
   }
 
 
@@ -38,6 +47,7 @@ export class EditProfileComponent implements OnInit {
    update(updateWorker: Worker): void{
     this.workerService.putWorker(updateWorker).subscribe((data: Worker) =>{
       console.log(data);
+      console.log(updateWorker.jobsRequested)
       this.confirmationService.setConfirmationMessage("Your profile has been updated!");
       this.router.navigate(["/workerConfirmation"]);
     });
