@@ -24,6 +24,7 @@ export class MyJobsComponent implements OnInit {
   requests(job: Job): void{
     console.log("Before service - " + job.requests);
     this.jobService.setJobRequests(job.requests);
+    this.jobService.setCurrentJob(job.id);
     this.router.navigate(['/requestDetails']);
 
   }

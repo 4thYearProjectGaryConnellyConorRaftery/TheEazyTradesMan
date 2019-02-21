@@ -23,7 +23,8 @@ export class PostJobComponent implements OnInit {
     complete: null,
     requests: null,
     location: null,
-    date: null
+    date: null,
+    accepted: null
   };
 
   ngOnInit() { // Some default data for testing.
@@ -31,6 +32,7 @@ export class PostJobComponent implements OnInit {
     this.job.complete = false;
     this.job.requests = "";
     this.job.date = "10/02/2019";
+    this.job.accepted = false;
   }
 
    postJob(newJob: Job): void{

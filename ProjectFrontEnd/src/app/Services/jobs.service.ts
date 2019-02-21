@@ -13,6 +13,22 @@ export class JobsService{
      constructor(private client: HttpClient){}
      requests: string;
      result: string[];
+     currentJob: string;
+
+     // ====================== Helper methods ======================
+     setCurrentJob(id: string): void{
+
+       this.currentJob = id;
+
+     }
+
+     getCurrentJob(): string{
+
+        return this.currentJob;
+        
+     }
+
+
 
      setJobRequests(newRequests: string): void{
         console.log("Inside setJobRequests.");
@@ -25,6 +41,8 @@ export class JobsService{
        console.log("Setting results string: "+this.result[2]);// For Testing.
         return this.result;
      }
+
+     // ====================== Helper methods ======================
 
      //GET Jobs.
      getJobs(): Observable<Job[]> {
