@@ -7,6 +7,7 @@ import { WorkersService } from '../Services/workers.service';
 import { WorkerConfirmationService } from '../Services/workerConfirmation.service';
 import { Router, Params } from '@angular/router';
 import { ViewChild } from '@angular/core';
+import { GeocodeService } from '../GeomapService/geocode.service';
 
 
 @Component({
@@ -26,19 +27,13 @@ export class ListWorkerJobsComponent implements OnInit {
    private workerService: WorkersService,
    private jobService: JobsService, 
    private confirmationService: WorkerConfirmationService,  
-   private router: Router) { }
+   private router: Router,
+   private geoMap: GeocodeService) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
   
-    //Google Maps ==================================https://medium.com/@balramchavan/integrating-google-maps-in-angular-5-ca5f68009f29
-    //var mapProp = {
-    //  center: new google.maps.LatLng(18.5793, 73.8143),
-    //  zoom: 15,
-     // mapTypeId: google.maps.MapTypeId.ROADMAP
-    //};
-   // this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-  //======================================================
+   
   
   }
 
@@ -63,6 +58,16 @@ export class ListWorkerJobsComponent implements OnInit {
     })
     
   }
+
+
+  getMap(job: Job){
+
+    this.geoMap.setAddress(job.location);
+    this.router.navigate(["/gmap"]);
+
+  }
+
+  //gmap
 
    // Navigation.
   navListJobs(): void{
