@@ -71,7 +71,7 @@ export class LoginComponent {
 
       
      
-      this.router.navigate(['/user']);
+     // this.router.navigate(['/user']);
       
     }, err => {
       console.log(err);
@@ -90,21 +90,27 @@ export class LoginComponent {
           console.log("CUSTOMER FOUND ---> " + id)
           localStorage.setItem('CustomerID', this.customers[i].id)
           console.log("Local Storage ---> " + localStorage.getItem('CustomerID'));
+          this.router.navigate(['/listJobs']);
        }
     }
   });
 
   if(this.isFound == false){
-    console.log("Searching workers table.")
+    
 
     this.workerService.getWorkers().subscribe(data => {
       this.workers = data
+      
 
       for(let i = 0; i < this.workers.length; i++){
+        console.log("HERE")
+        console.log(this.workers[i].firebaseUid + " " + id)
         if(this.workers[i].firebaseUid == id){
+          console.log("Searching workers table.")
           console.log("WORKER FOUND ---> " + id)
           localStorage.setItem('WorkerID', this.workers[i].id)
           console.log("Local Storage ---> " + localStorage.getItem('WorkerID'));
+          this.router.navigate(['/listJobsWorker']);
         }
       }
     })

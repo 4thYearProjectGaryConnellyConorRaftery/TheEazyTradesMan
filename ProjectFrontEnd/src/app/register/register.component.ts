@@ -43,7 +43,7 @@ export class RegisterComponent {
     secondName: null,
     address: null,
     age: null,
-    firebaseUid: null
+    firebaseUid: ""
    };
 
    worker: Worker = {
@@ -57,7 +57,7 @@ export class RegisterComponent {
       phoneNumber: "",
       email: "",
       website: "",
-      firebaseUid: null,
+      firebaseUid: "",
       jobsRequested: "",
       jobsAccepted: ""
     // photoPath?: string;
