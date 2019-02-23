@@ -33,11 +33,7 @@ export class MyRequestsComponent implements OnInit {
       this.accepts = this.worker.jobsAccepted.split(" ");
       console.log("This Worker ---> " + this.worker.id);
 
-     /* Need to loop through each string array to compare each element.
-      * If any of them match, add them to an array of stings.
-      *
-      */
-
+    
      
 
       for(var i =0; i < this.requests.length; i++){

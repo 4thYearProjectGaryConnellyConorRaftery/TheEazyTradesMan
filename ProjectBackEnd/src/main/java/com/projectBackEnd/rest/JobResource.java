@@ -61,6 +61,7 @@ public class JobResource {
         updateJob.setDate(job.getDate());
         updateJob.setLocation(job.getLocation());
         updateJob.setAccepted(job.isAccepted());
+        updateJob.setContact(job.getContact());
         jobDAO.update(updateJob);
        
 

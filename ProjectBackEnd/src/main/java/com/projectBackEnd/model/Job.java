@@ -26,10 +26,21 @@ public class Job {
 	private String location;
 	private String date;
 	private boolean isAccepted;
+	private String contact;
 	
 	
 	
 	
+
+	public String getContact() {
+		return contact;
+	}
+
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
 
 	public boolean isAccepted() {
 		return isAccepted;
