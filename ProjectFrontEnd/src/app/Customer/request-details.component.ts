@@ -5,6 +5,7 @@ import { Job } from '../models/job.model';
 import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
 import { CustomerConfirmationService } from '../Services/customerConfirmation.service';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-request-details',
@@ -22,7 +23,8 @@ export class RequestDetailsComponent implements OnInit {
      private jobService: JobsService,
      private router: Router,
      private workerService: WorkersService,
-     private confirmation: CustomerConfirmationService) { }
+     private confirmation: CustomerConfirmationService,
+     private authService: AuthService) { }
 
   ngOnInit() {
     this.jobRequests = this.jobService.getJobRequests();
@@ -67,6 +69,17 @@ export class RequestDetailsComponent implements OnInit {
 
    navPostJob(): void{
     this.router.navigate(["/postJob"]);
+  }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('CustomerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
   }
 
   // End Navigation.

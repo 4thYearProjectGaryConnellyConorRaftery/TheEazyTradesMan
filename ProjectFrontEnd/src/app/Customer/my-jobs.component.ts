@@ -3,6 +3,7 @@ import { Job } from '../models/job.model';
 import { JobsService } from '../Services/jobs.service';
 import { Router, Params } from '@angular/router';
 import { GeocodeService } from '../GeomapService/geocode.service';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-my-jobs',
@@ -15,7 +16,7 @@ export class MyJobsComponent implements OnInit {
   myJobs: Job[];
   customer: string = localStorage.getItem('CustomerID'); // Hard coded for now.
 
-  constructor(private jobService: JobsService,  private router: Router, private geoMap: GeocodeService) { }
+  constructor(private jobService: JobsService,  private router: Router, private geoMap: GeocodeService, private authService: AuthService) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
@@ -48,6 +49,18 @@ export class MyJobsComponent implements OnInit {
    navPostJob(): void{
     this.router.navigate(["/postJob"]);
   }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('CustomerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
+  }
+
 
   // End Navigation.
 

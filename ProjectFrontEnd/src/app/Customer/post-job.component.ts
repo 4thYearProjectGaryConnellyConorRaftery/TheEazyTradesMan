@@ -4,6 +4,7 @@ import { Job } from '../models/job.model';
 import { JobsService } from '../Services/jobs.service';
 import { Router, Params } from '@angular/router';
 import { CustomerConfirmationService } from '../Services/customerConfirmation.service';
+import { AuthService } from '../core/auth.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { CustomerConfirmationService } from '../Services/customerConfirmation.se
 })
 export class PostJobComponent implements OnInit {
 
-  constructor(private jobService: JobsService, private confirmationService: CustomerConfirmationService,  private router: Router) { }
+  constructor(private jobService: JobsService, private confirmationService: CustomerConfirmationService,  private router: Router, private authService: AuthService) { }
 
    job: Job = {
     id : null,
@@ -59,6 +60,17 @@ export class PostJobComponent implements OnInit {
 
    navPostJob(): void{
     this.router.navigate(["/postJob"]);
+  }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('CustomerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
   }
 
   // End Navigation.
