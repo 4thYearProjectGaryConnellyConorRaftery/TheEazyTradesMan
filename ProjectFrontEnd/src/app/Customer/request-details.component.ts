@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, Params } from '@angular/router';
 import { JobsService } from '../Services/jobs.service';
 import { Job } from '../models/job.model';
+import { Worker } from '../models/worker.model';
+import { WorkersService } from '../Services/workers.service';
 
 @Component({
   selector: 'app-request-details',
@@ -13,8 +15,12 @@ export class RequestDetailsComponent implements OnInit {
   jobRequests: string[];
   currentJobId: string;
   currentJob: Job;
+  worker: Worker;
 
-  constructor(private jobService: JobsService,   private router: Router) { }
+  constructor(
+     private jobService: JobsService,
+     private router: Router,
+     private workerService: WorkersService) { }
 
   ngOnInit() {
     this.jobRequests = this.jobService.getJobRequests();
@@ -22,7 +28,7 @@ export class RequestDetailsComponent implements OnInit {
     this.jobService.getJob(this.currentJobId).subscribe(data => this.currentJob = data)
   }
 
-  acceptRequest(): void{
+  acceptRequest(requestId: string): void{ // The request ID is the workers ID that requested this job.
     console.log("Current Job ---> " + this.currentJobId)
     console.log("Is accepted: ---> " + this.currentJob.accepted)
     this.currentJob.accepted = true;
@@ -34,7 +40,17 @@ export class RequestDetailsComponent implements OnInit {
     *  accepted for them. Then populate this field by doing "this.currentJob.id" and passing
     *  that as a parameter to an update worker method. 
     */
-  }
+
+    this.workerService.getWorker(requestId).subscribe(data => {
+      this.worker = data;
+      this.worker.jobsAccepted += " " + this.currentJobId;
+      this.workerService.putWorker(this.worker).subscribe((data: Worker) =>{
+        console.log(data);
+      })
+    });
+    
+
+  }//End acceptRequest
 
   // Navigation.
   navListJobs(): void{
