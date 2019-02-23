@@ -10,7 +10,8 @@ import { Router, Params } from '@angular/router';
 })
 export class ViewProfileComponent implements OnInit {
 
-  worker: Worker;/* = {
+  worker: Worker;
+  /* = {
      id: "0404040404040",
     firstName: "Gary",
     secondName: "Connelly",

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Job } from '../models/job.model';
 import { JobsService } from '../Services/jobs.service';
 import { Router, Params } from '@angular/router';
+import { GeocodeService } from '../GeomapService/geocode.service';
 
 @Component({
   selector: 'app-my-jobs',
@@ -14,10 +15,17 @@ export class MyJobsComponent implements OnInit {
   myJobs: Job[];
   customer: string = localStorage.getItem('CustomerID'); // Hard coded for now.
 
-  constructor(private jobService: JobsService,  private router: Router) { }
+  constructor(private jobService: JobsService,  private router: Router, private geoMap: GeocodeService) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
+  }
+
+   getMap(job: Job){
+
+    this.geoMap.setAddress(job.location);
+    this.router.navigate(["/gmap"]);
+
   }
 
   

@@ -4,6 +4,7 @@ import { JobsService } from '../Services/jobs.service';
 import { Job } from '../models/job.model';
 import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
+import { CustomerConfirmationService } from '../Services/customerConfirmation.service';
 
 @Component({
   selector: 'app-request-details',
@@ -20,7 +21,8 @@ export class RequestDetailsComponent implements OnInit {
   constructor(
      private jobService: JobsService,
      private router: Router,
-     private workerService: WorkersService) { }
+     private workerService: WorkersService,
+     private confirmation: CustomerConfirmationService) { }
 
   ngOnInit() {
     this.jobRequests = this.jobService.getJobRequests();
@@ -46,6 +48,8 @@ export class RequestDetailsComponent implements OnInit {
       this.worker.jobsAccepted += " " + this.currentJobId;
       this.workerService.putWorker(this.worker).subscribe((data: Worker) =>{
         console.log(data);
+        this.confirmation.setConfirmationMessage("Job accepted! A notification will now be sent to the corresponding worker.");
+        this.router.navigate(["/customerConfirmation"]);
       })
     });
     

@@ -29,10 +29,13 @@
       <h2>{{job.id}}</h2>
       <h3>Trade: </h3><h4>{{job.trade}}</h4>
       <h3>Description: </h3><h4>{{job.description}}</h4>
+      <h3>Location: </h3><h4>{{job.location}}</h4>
+      <h3>Contact: </h3><h4>{{job.contact}}</h4>
       <h3>Is completed? </h3><h4>{{job.complete}}</h4>
        <h3>Is accepted? </h3><h4>{{job.accepted}}</h4>
       <!-- <h3>Requests: </h3><h4>{{job.requests}}</h4> -->
       <button type="button" class="btn btn-success" (click)="requests(job)">View Requests</button>
+      <button type="button" class="btn btn-success" (click)="getMap(job)">View Map</button>
   </div>
 
 

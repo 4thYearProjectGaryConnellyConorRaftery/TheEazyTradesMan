@@ -83,7 +83,7 @@ export class ListWorkerJobsComponent implements OnInit {
   }
 
   navMyRequests(): void{
-    this.router.navigate(["myrequests"]);
+    this.router.navigate(["/myrequests"]);
   }
 
   // End Navigation.

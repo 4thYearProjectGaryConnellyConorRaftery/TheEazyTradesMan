@@ -24,7 +24,8 @@ export class PostJobComponent implements OnInit {
     requests: null,
     location: null,
     date: null,
-    accepted: null
+    accepted: null,
+    contact: null,
   };
 
   ngOnInit() { // Some default data for testing.

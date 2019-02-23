@@ -8,5 +8,5 @@ export class Job {
     location: string;
     date: string;
     accepted: boolean;
-
+    contact: string;
 }
