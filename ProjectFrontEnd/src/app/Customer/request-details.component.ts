@@ -29,6 +29,11 @@ export class RequestDetailsComponent implements OnInit {
     this.jobService.putJob(this.currentJob).subscribe((data: Job) => {
       console.log("Job has been accepted!")
     })
+   /*  Get the worker that made this request by passing {{request}} to this method as a 
+    *  parameter. Put a field on the Worker model that contains all the jobs that have been
+    *  accepted for them. Then populate this field by doing "this.currentJob.id" and passing
+    *  that as a parameter to an update worker method. 
+    */
   }
 
   // Navigation.

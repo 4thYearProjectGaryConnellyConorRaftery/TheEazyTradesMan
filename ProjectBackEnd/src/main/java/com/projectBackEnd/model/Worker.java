@@ -27,10 +27,22 @@ public class Worker {
 	private String firebaseUid;
 	private String jobsRequested;
 	
+	private String jobsAccepted;
+	
+	
+	
+	
+	
+	
+	public String getJobsAccepted() {
+		return jobsAccepted;
+	}
+
+	public void setJobsAccepted(String jobsAccepted) {
+		this.jobsAccepted = jobsAccepted;
+	}
 	
 
-	
-	
 	public String getJobsRequested() {
 		return jobsRequested;
 	}
