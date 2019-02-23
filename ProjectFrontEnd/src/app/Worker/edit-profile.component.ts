@@ -4,6 +4,7 @@ import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
 import { WorkerConfirmationService } from '../Services/workerConfirmation.service';
 import { Router, Params } from '@angular/router';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,7 +13,10 @@ import { Router, Params } from '@angular/router';
 })
 export class EditProfileComponent implements OnInit {
 
-  constructor(private workerService: WorkersService, private confirmationService: WorkerConfirmationService, private router: Router) { }
+  constructor(private workerService: WorkersService, 
+  private confirmationService: WorkerConfirmationService, 
+  private router: Router, 
+  private authService: AuthService) { }
 
   getRequests: Worker;
   worker: Worker ={
@@ -69,6 +73,17 @@ export class EditProfileComponent implements OnInit {
 
   navMyRequests(): void{
     this.router.navigate(["myrequests"]);
+  }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('WorkerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
   }
 
   // End Navigation.

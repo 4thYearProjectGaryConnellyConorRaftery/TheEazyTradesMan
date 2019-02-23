@@ -5,6 +5,7 @@ import { JobsService } from '../Services/jobs.service';
 import { WorkersService } from '../Services/workers.service';
 import { Router, Params } from '@angular/router';
 import { GeocodeService } from '../GeomapService/geocode.service';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-my-requests',
@@ -25,7 +26,8 @@ export class MyRequestsComponent implements OnInit {
    private workerService: WorkersService,
    private jobService: JobsService,
    private router: Router,
-   private geoMap: GeocodeService) { }
+   private geoMap: GeocodeService,
+   private authService: AuthService) { }
 
   ngOnInit() {
       this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
@@ -98,6 +100,17 @@ export class MyRequestsComponent implements OnInit {
 
   navMyRequests(): void{
     this.router.navigate(["myrequests"]);
+  }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('WorkerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
   }
 
   // End Navigation.

@@ -8,6 +8,7 @@ import { WorkerConfirmationService } from '../Services/workerConfirmation.servic
 import { Router, Params } from '@angular/router';
 import { ViewChild } from '@angular/core';
 import { GeocodeService } from '../GeomapService/geocode.service';
+import { AuthService } from '../core/auth.service';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class ListWorkerJobsComponent implements OnInit {
    private jobService: JobsService, 
    private confirmationService: WorkerConfirmationService,  
    private router: Router,
-   private geoMap: GeocodeService) { }
+   private geoMap: GeocodeService,
+   private authService: AuthService) { }
 
   ngOnInit() {
     this.jobService.getJobs().subscribe(data => this.jobs = data);
@@ -84,6 +86,17 @@ export class ListWorkerJobsComponent implements OnInit {
 
   navMyRequests(): void{
     this.router.navigate(["/myrequests"]);
+  }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('WorkerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
   }
 
   // End Navigation.

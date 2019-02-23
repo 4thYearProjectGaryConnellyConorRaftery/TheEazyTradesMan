@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
 import { Router, Params } from '@angular/router';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-view-profile',
@@ -24,7 +25,7 @@ export class ViewProfileComponent implements OnInit {
    // photoPath: "assets/images/easytrade.jpg"
   }
 */
-  constructor(private workerService: WorkersService,  private router: Router) { }
+  constructor(private workerService: WorkersService,  private router: Router, private authService: AuthService) { }
 
   ngOnInit() { // Hard code the worker ID for now.
     this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => this.worker = data);
@@ -47,6 +48,17 @@ export class ViewProfileComponent implements OnInit {
 
   navMyRequests(): void{
     this.router.navigate(["myrequests"]);
+  }
+
+  logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('WorkerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
   }
 
   // End Navigation.
