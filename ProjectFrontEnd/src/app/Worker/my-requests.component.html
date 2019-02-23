@@ -15,6 +15,8 @@
   </ul>
 </nav>
 
+
+<h1>Your requested Jobs:</h1>
 <div class="container">
  <div class="row">
 <div class="col-sm-6">
@@ -28,7 +30,35 @@
       <h3>Trade: </h3><h4>{{job.trade}}</h4>
       <h3>Description: </h3><h4>{{job.description}}</h4>
       <h3>Customer: </h3><h4>{{job.customer}}</h4>
+      <h3>Date: </h3><h4>{{job.date}}</h4>
+      <h3>Accepted?: </h3><h4>{{job.accepted}}</h4>
+      
+
+  </div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+<h1>Your accepted Jobs:(Your requests that have been accepted by the customer)</h1>
+<div class="container">
+ <div class="row">
+<div class="col-sm-6">
+<div class = "panel panel-primary" *ngFor="let job of acceptedJobs">
+  <div class="panel-heading">
+   <h3>{{job.location}}</h3>
+  </div>
+
+  <div class = "panel-body">
+      <h2>{{job.id}}</h2>
+      <h3>Trade: </h3><h4>{{job.trade}}</h4>
+      <h3>Description: </h3><h4>{{job.description}}</h4>
+      <h3>Customer: </h3><h4>{{job.customer}}</h4>
        <h3>Date: </h3><h4>{{job.date}}</h4>
+       <h3>Accepted?: </h3><h4>{{job.accepted}}</h4>
       
 
   </div>
