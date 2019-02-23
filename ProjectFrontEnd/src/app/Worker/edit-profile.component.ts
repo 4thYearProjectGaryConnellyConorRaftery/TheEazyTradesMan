@@ -26,7 +26,8 @@ export class EditProfileComponent implements OnInit {
     email:null,
     website: null,
     firebaseUid: null,
-    jobsRequested: null
+    jobsRequested: null,
+    jobsAccepted: null
     //photoPath: null
   }
 

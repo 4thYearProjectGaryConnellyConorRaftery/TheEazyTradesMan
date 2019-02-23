@@ -58,7 +58,8 @@ export class RegisterComponent {
       email: "",
       website: "",
       firebaseUid: null,
-      jobsRequested: ""
+      jobsRequested: "",
+      jobsAccepted: ""
     // photoPath?: string;
    }
 

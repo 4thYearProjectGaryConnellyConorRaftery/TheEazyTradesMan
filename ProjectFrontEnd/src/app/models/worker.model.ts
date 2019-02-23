@@ -12,5 +12,6 @@ export class Worker {
     firebaseUid?: string;
    // photoPath?: string;
    jobsRequested: string;
+   jobsAccepted: string;
 
 }
