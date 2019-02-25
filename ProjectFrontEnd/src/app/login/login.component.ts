@@ -69,6 +69,8 @@ export class LoginComponent {
 
       this.getUser(firebase.auth().currentUser.uid.toString());
 
+      console.log("Firebase ---> " + firebase.auth().currentUser.uid.toString())
+
       
      
      // this.router.navigate(['/user']);
@@ -85,6 +87,7 @@ export class LoginComponent {
       this.customers = data
       
       for(let i = 0; i < this.customers.length; i++){
+        console.log(this.customers.length)
        if(this.customers[i].firebaseUid == id){
          this.isFound = true;
           console.log("CUSTOMER FOUND ---> " + id)
@@ -96,7 +99,9 @@ export class LoginComponent {
   });
 
   if(this.isFound == false){
-    
+   // getWorker(id: string){
+
+   // }
 
     this.workerService.getWorkers().subscribe(data => {
       this.workers = data
@@ -104,7 +109,7 @@ export class LoginComponent {
 
       for(let i = 0; i < this.workers.length; i++){
         console.log("HERE")
-        console.log(this.workers[i].firebaseUid + " " + id)
+        console.log("Worker: " + this.workers[i].firebaseUid + "id: " + id)
         if(this.workers[i].firebaseUid == id){
           console.log("Searching workers table.")
           console.log("WORKER FOUND ---> " + id)

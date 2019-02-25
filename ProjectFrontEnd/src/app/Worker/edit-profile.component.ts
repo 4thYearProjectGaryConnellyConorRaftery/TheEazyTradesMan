@@ -21,27 +21,30 @@ export class EditProfileComponent implements OnInit {
   getRequests: Worker;
   worker: Worker ={
     id: localStorage.getItem('WorkerID'),
-    firstName: null,
-    secondName: null,
-    address: null,
-    trade: null,
-    rating: null,
-    phoneNumber: null,
-    email:null,
-    website: null,
-    firebaseUid: null,
-    jobsRequested: null,
-    jobsAccepted: null
+    firstName: "",
+    secondName: "",
+    address: "",
+    trade: "",
+    rating: "", // This will need to be calculated later rather than setting the value here.
+    phoneNumber: "",
+    email:"",
+    website: "",
+    firebaseUid: "",
+    jobsRequested: "",
+    jobsAccepted: ""
     //photoPath: null
   }
 
   ngOnInit() {
-    this.worker.rating = "";
+  //  this.worker.rating = "";
+    //this.worker.jobsAccepted = "";
     //this.worker.jobsRequested = this.workerService
-    this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
-        this.getRequests = data;
-        this.worker.jobsRequested = this.getRequests.jobsRequested;
-    });
+  //  this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
+  //  this.getRequests = data;
+  //  this.worker.jobsRequested = this.getRequests.jobsRequested;
+  //  this.worker.firebaseUid = this.getRequests.firebaseUid;
+  //  this.worker.jobsAccepted = this.getRequests.jobsAccepted;
+  //  });
 
     
   }
@@ -50,12 +53,27 @@ export class EditProfileComponent implements OnInit {
 
 
    update(updateWorker: Worker): void{
-    this.workerService.putWorker(updateWorker).subscribe((data: Worker) =>{
-      console.log(data);
-      console.log(updateWorker.jobsRequested)
-      this.confirmationService.setConfirmationMessage("Your profile has been updated!");
-      this.router.navigate(["/workerConfirmation"]);
+
+      this.worker.rating = "";
+    //this.worker.jobsAccepted = "";
+    //this.worker.jobsRequested = this.workerService
+    this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
+    this.getRequests = data;
+    this.worker.jobsRequested = this.getRequests.jobsRequested;
+    this.worker.firebaseUid = this.getRequests.firebaseUid;
+    this.worker.jobsAccepted = this.getRequests.jobsAccepted;
+
+
+     this.workerService.putWorker(updateWorker).subscribe((data: Worker) =>{
+     console.log(data);
+     console.log(updateWorker.jobsRequested)
+     this.confirmationService.setConfirmationMessage("Your profile has been updated!");
+     this.router.navigate(["/workerConfirmation"]);
     });
+
+  });
+  
+   
   }
 
   // Navigation.
