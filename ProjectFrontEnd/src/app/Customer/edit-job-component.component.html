@@ -1,3 +1,22 @@
+<nav class = "navbar navbar-default">
+  <ul class = "nav navbar-nav">
+     <li>
+       <button type="button" class="btn btn-link navbar-btn" (click)="navListJobs()">Jobs</button>
+    </li>
+      <li>
+       <button type="button" class="btn btn-link navbar-btn" (click)="navMyJobs()">My Jobs</button>
+    </li>
+     <li>
+       <button type="button" class="btn btn-link navbar-btn" (click)="navPostJob()">Post a Job</button>
+    </li>
+    <li>
+       <button type="button" class="btn btn-link navbar-btn" (click)="logout()">Logout</button>
+    </li>
+  </ul>
+</nav>
+
+
+
 <form #postJobForm="ngForm" (ngSubmit)="update(updateJob)">
   <!-- (ngSubmit)="postJob(postJobForm)" ;;;;;; Removed from above -->
 <div class = "panel panel-primary">

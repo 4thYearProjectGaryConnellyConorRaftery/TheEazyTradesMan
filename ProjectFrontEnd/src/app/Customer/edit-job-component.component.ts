@@ -36,18 +36,7 @@ export class EditJobComponentComponent implements OnInit {
     contact: ""
 
   }
-  /*
-   id: string;
-    trade: string;
-    description: string;
-    customer: string;
-    requests: string;
-    complete: boolean;
-    location: string;
-    date: string;
-    accepted: boolean;
-    contact: string;
-  */
+ 
 
   ngOnInit() {
   }
@@ -71,9 +60,39 @@ export class EditJobComponentComponent implements OnInit {
 
       this.jobService.putJob(this.currentJob).subscribe(data => {
         console.log(data)
-        console.log("DONE")
+        this.confirmationService.setConfirmationMessage("Your Job has been updated!")
+        this.router.navigate(["/customerConfirmation"]);
       })
     })
   }
+
+
+
+   // Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobs"]);
+  }
+
+   navMyJobs(): void{
+    this.router.navigate(["/myJobs"]);
+  }
+
+   navPostJob(): void{
+    this.router.navigate(["/postJob"]);
+  }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('CustomerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
+  }
+
+
+  // End Navigation.
 
 }
