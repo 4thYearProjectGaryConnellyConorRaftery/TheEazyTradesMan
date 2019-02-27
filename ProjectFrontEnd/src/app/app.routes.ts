@@ -31,7 +31,7 @@ export const rootRouterConfig: Routes = [
   { path: 'reviewJob', component: ReviewJobComponent },
   { path: 'listJobsWorker', component: ListWorkerJobsComponent },
   { path: 'viewProfile', component: ViewProfileComponent },
-  { path: 'editJob/:id', component: EditJobComponentComponent },
+  { path: 'editJob', component: EditJobComponentComponent },
   { path: 'editProfile', component: EditProfileComponent },
   { path: 'gmap', component: GmapComponent },
   { path: 'customerConfirmation', component: CustomerConfirmationComponent },

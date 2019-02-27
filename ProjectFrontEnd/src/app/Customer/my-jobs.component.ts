@@ -37,6 +37,16 @@ export class MyJobsComponent implements OnInit {
     this.router.navigate(['/requestDetails']);
 
   }
+
+  edit(job: Job): void{
+
+    this.jobService.setCurrentJob(job.id);
+    console.log("This Job to be edited ---> " + job.id)
+    this.router.navigate(['/editJob']);
+
+  }
+
+
 // Navigation.
   navListJobs(): void{
     this.router.navigate(["/listJobs"]);
