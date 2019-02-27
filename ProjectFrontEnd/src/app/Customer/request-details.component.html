@@ -18,14 +18,16 @@
 <div class="container">
  <div class="row">
 <div class="col-sm-6">
-<div class = "panel panel-primary" *ngFor="let request of jobRequests">
+<div class = "panel panel-primary" *ngFor="let worker of workers">
   <div class="panel-heading">
-   <h3>{{request}}</h3>
+   <h3>{{worker.firstName}}</h3>
+   <h3>{{worker.secondName}}</h3>
   </div>
 
   <div class = "panel-body">
-    <h3>Info about request</h3>
-    <button type="button" class="btn btn-success" (click)="acceptRequest(request)">Accept</button>
+    <h3>Trade: {{worker.trade}}</h3>
+    <h3>Rating: {{worker.rating}}</h3>
+    <button type="button" class="btn btn-success" (click)="acceptRequest(worker.id)">Accept</button>
   </div>
 
 </div>

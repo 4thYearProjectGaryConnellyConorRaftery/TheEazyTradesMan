@@ -18,7 +18,8 @@ export class RequestDetailsComponent implements OnInit {
   currentJobId: string;
   currentJob: Job;
   worker: Worker;
-  workers: Worker[];
+  workers: Worker[] = [];
+  tempWorker: Worker;
 
   constructor(
      private jobService: JobsService,
@@ -30,9 +31,13 @@ export class RequestDetailsComponent implements OnInit {
   ngOnInit() {
     this.jobRequests = this.jobService.getJobRequests();
     /////////////////////////////////////////////////////
-  //  for(var i = 0; i < this.jobRequests.length; i++){
-    //  this.wor
-   // }//////
+    for(var i = 0; i < this.jobRequests.length; i++){
+      this.workerService.getWorker(this.jobRequests[i]).subscribe(data => {
+        this.tempWorker = data;
+        console.log("Hopefully ---> " + this.tempWorker.id)
+        this.workers.push(this.tempWorker)
+      })
+    }//////
     /////////////////////////////////////////////////////
     this.currentJobId = this.jobService.getCurrentJob();
     this.jobService.getJob(this.currentJobId).subscribe(data => this.currentJob = data)
