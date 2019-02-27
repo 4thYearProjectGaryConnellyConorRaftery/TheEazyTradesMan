@@ -32,7 +32,7 @@ export class RequestDetailsComponent implements OnInit {
     /////////////////////////////////////////////////////
   //  for(var i = 0; i < this.jobRequests.length; i++){
     //  this.wor
-   // }
+   // }//////
     /////////////////////////////////////////////////////
     this.currentJobId = this.jobService.getCurrentJob();
     this.jobService.getJob(this.currentJobId).subscribe(data => this.currentJob = data)
