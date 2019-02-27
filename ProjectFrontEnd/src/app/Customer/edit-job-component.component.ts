@@ -20,7 +20,40 @@ export class EditJobComponentComponent implements OnInit {
     private authService: AuthService
   ) { }
 
+  currentJob: Job;
+
+  updateJob: Job ={
+    id: null,
+    trade: "",
+    description: "",
+    customer: "",
+    requests: "",
+    complete: false,
+    location: "",
+    date: "",
+    accepted: false,
+    contact: ""
+
+  }
+  /*
+   id: string;
+    trade: string;
+    description: string;
+    customer: string;
+    requests: string;
+    complete: boolean;
+    location: string;
+    date: string;
+    accepted: boolean;
+    contact: string;
+  */
+
   ngOnInit() {
+  }
+
+  update(job: Job): void{
+    console.log("Updating this Job ---> " + job.description);
+
   }
 
 }

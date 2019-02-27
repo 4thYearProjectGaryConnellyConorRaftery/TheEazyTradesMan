@@ -71,7 +71,7 @@ export class JobsService{
 
   //PUT 
    putJob(putJob: Job): Observable<Job>{
-     console.log("These are the requests --->" + putJob.requests);
+   //  console.log("These are the requests --->" + putJob.requests);
      console.log("This is the path ---> http://localhost:8080/jobs/" + putJob.id);
       return this.client.put<Job>("http://localhost:8080/jobs/" + putJob.id, putJob,{
        headers: new HttpHeaders({
