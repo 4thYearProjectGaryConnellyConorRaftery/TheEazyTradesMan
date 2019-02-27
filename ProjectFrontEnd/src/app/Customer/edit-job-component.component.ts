@@ -21,6 +21,7 @@ export class EditJobComponentComponent implements OnInit {
   ) { }
 
   currentJob: Job;
+  id: string;
 
   updateJob: Job ={
     id: null,
@@ -52,8 +53,27 @@ export class EditJobComponentComponent implements OnInit {
   }
 
   update(job: Job): void{
-    console.log("Updating this Job ---> " + job.description);
+   // console.log("Updating this Job ---> " + job.description);
+    this.id = this.jobService.getCurrentJob()
+   // console.log("Current Job ID: ---> " + this.id)
 
+    this.jobService.getJob(this.id).subscribe(data => {
+      this.currentJob = data;
+
+      /*
+      * Update the fields of the Job. 
+      */
+
+      this.currentJob.trade = job.trade;
+      this.currentJob.description = job.description;
+      this.currentJob.location = job.location;
+      this.currentJob.contact = job.contact;
+
+      this.jobService.putJob(this.currentJob).subscribe(data => {
+        console.log(data)
+        console.log("DONE")
+      })
+    })
   }
 
 }
