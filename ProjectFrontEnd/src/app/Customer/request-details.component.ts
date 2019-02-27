@@ -18,6 +18,7 @@ export class RequestDetailsComponent implements OnInit {
   currentJobId: string;
   currentJob: Job;
   worker: Worker;
+  workers: Worker[];
 
   constructor(
      private jobService: JobsService,
@@ -28,6 +29,11 @@ export class RequestDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.jobRequests = this.jobService.getJobRequests();
+    /////////////////////////////////////////////////////
+  //  for(var i = 0; i < this.jobRequests.length; i++){
+    //  this.wor
+   // }
+    /////////////////////////////////////////////////////
     this.currentJobId = this.jobService.getCurrentJob();
     this.jobService.getJob(this.currentJobId).subscribe(data => this.currentJob = data)
   }
