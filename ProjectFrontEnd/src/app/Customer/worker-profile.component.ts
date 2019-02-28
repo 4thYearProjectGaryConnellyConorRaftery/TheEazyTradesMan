@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Worker } from '../models/worker.model';
 import { Router, Params } from '@angular/router';
 import { WorkersService } from '../Services/workers.service';
+import { AuthService } from '../core/auth.service';
 import { CustomersService } from '../Services/customers.service';
 
 @Component({
@@ -27,5 +28,32 @@ export class WorkerProfileComponent implements OnInit {
       this.worker = data
     })
   }
+
+   // Navigation.
+  navListJobs(): void{
+    this.router.navigate(["/listJobs"]);
+  }
+
+   navMyJobs(): void{
+    this.router.navigate(["/myJobs"]);
+  }
+
+   navPostJob(): void{
+    this.router.navigate(["/postJob"]);
+  }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('CustomerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
+  }
+
+
+  // End Navigation.
 
 }
