@@ -42,6 +42,7 @@ import { GmapComponent } from './GeomapService/gmap.component';
 import { CustomerConfirmationComponent } from './Customer/customer-confirmation.component';
 import { WorkerConfirmationComponent } from './Worker/worker-confirmation.component';
 import { MyRequestsComponent } from './Worker/my-requests.component';
+import { WorkerProfileComponent } from './Customer/worker-profile.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { MyRequestsComponent } from './Worker/my-requests.component';
     GmapComponent,
     CustomerConfirmationComponent,
     WorkerConfirmationComponent,
-    MyRequestsComponent
+    MyRequestsComponent,
+    WorkerProfileComponent
   ],
   imports: [
     BrowserModule,

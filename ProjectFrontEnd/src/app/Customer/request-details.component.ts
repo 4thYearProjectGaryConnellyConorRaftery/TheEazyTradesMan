@@ -4,6 +4,7 @@ import { JobsService } from '../Services/jobs.service';
 import { Job } from '../models/job.model';
 import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
+import { CustomersService } from '../Services/customers.service';
 import { CustomerConfirmationService } from '../Services/customerConfirmation.service';
 import { AuthService } from '../core/auth.service';
 
@@ -26,7 +27,8 @@ export class RequestDetailsComponent implements OnInit {
      private router: Router,
      private workerService: WorkersService,
      private confirmation: CustomerConfirmationService,
-     private authService: AuthService) { }
+     private authService: AuthService,
+     private customersService: CustomersService) { }
 
   ngOnInit() {
     this.jobRequests = this.jobService.getJobRequests();
@@ -68,6 +70,15 @@ export class RequestDetailsComponent implements OnInit {
     
 
   }//End acceptRequest
+
+  // View Profile:
+  viewProfile(id: string): void{
+    this.customersService.setCurrentWorker(id)
+
+    this.router.navigate(["/workerProfile"]);
+    
+
+  }
 
   // Navigation.
   navListJobs(): void{

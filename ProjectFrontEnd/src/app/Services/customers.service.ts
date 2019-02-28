@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer.model';
+import { Worker } from '../models/worker.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -10,6 +11,24 @@ import { Observable } from 'rxjs';
 export class CustomersService{
 
      constructor(private client: HttpClient){}
+
+     currentWorker: string;
+
+      // ====================== Helper methods ======================
+     setCurrentWorker(id: string): void{
+
+       this.currentWorker = id;
+
+     }
+
+     getCurrentWorker(): string{
+
+        return this.currentWorker;
+        
+     }
+
+
+     // ====================== Helper methods ======================
 
      //GET Customers.
      getCustomers(): Observable<Customer[]>{
