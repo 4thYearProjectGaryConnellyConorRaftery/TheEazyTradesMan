@@ -8,6 +8,7 @@ import { Customer } from '../models/customer.model';
 import { CustomersService } from '../Services/customers.service';
 import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
+//import { DH_CHECK_P_NOT_SAFE_PRIME } from 'constants';
 //import * as angular from 'angular';
 
 @Component({
@@ -26,6 +27,11 @@ export class RegisterComponent {
   workers: Worker[];
   isFound: boolean = false;
   user: string;
+  fbname: string;
+  fbfirstname: string;
+  fbsecondname: string;
+  fbnamearray: string[] = [];
+  exists: boolean = false;
 
 
   constructor(
@@ -74,7 +80,49 @@ export class RegisterComponent {
    tryFacebookLogin(){
      this.authService.doFacebookLogin()
      .then(res =>{
-       this.router.navigate(['/user']);
+      // this.router.navigate(['/user']);
+       
+       // Check if the user already exists.
+       this.customerService.getCustomers().subscribe(data =>{
+         this.customers = data;
+         
+         for(var i =0; i < this.customers.length; i++){ // Loop thrpugh customers.
+            if(this.customers[i].firebaseUid == firebase.auth().currentUser.uid.toString()){
+              localStorage.setItem('CustomerID', this.customers[i].id)
+              this.router.navigate(["/listJobs"]);
+              this.exists = true;
+            }
+         }
+
+         if(this.exists == false){ // If the customer does not exist, create it.
+          console.log("Facebook --> " + firebase.auth().currentUser.displayName.toString());
+          this.fbname = firebase.auth().currentUser.displayName.toString();
+          this.fbnamearray = this.fbname.split(" ")
+          this.firstName = this.fbnamearray[0];
+          this.secondName = this.fbnamearray[1];
+          this.createCustomer();
+          this.customer.firebaseUid = firebase.auth().currentUser.uid.toString();
+          
+          console.log("First FB name ---> " + this.fbfirstname);
+
+          this.customerService.postCustomer(this.customer).subscribe((data: Customer) => {
+            console.log(data);
+            console.log("Creating new customer with firebase uid of ---> " + this.customer.firebaseUid)
+            this.getUser(firebase.auth().currentUser.uid.toString());
+            //this.user = "customer";
+            this.errorMessage = "";
+            this.successMessage = "Your account has been created"; 
+            this.router.navigate(["/listJobs"]);
+          })
+
+         }
+       })
+
+      
+      /*
+       * Now need to query the database to see if a user with this uid exists, if it does,
+       * then just login with their data. If not, create a new customer.
+       */
      }, err => console.log(err)
      )
    }
