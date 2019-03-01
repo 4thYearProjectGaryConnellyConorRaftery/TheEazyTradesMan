@@ -43,7 +43,9 @@ export class LoginComponent {
   tryFacebookLogin(){
     this.authService.doFacebookLogin()
     .then(res => {
-      this.router.navigate(['/user']);
+      //this.router.navigate(['/user']);
+      this.isFound = true;
+      this.getUser(firebase.auth().currentUser.uid.toString());
     })
   }
 
@@ -89,7 +91,7 @@ export class LoginComponent {
       for(let i = 0; i < this.customers.length; i++){
         console.log(this.customers.length)
        if(this.customers[i].firebaseUid == id){
-         this.isFound = true;
+          this.isFound = true;
           console.log("CUSTOMER FOUND ---> " + id)
           localStorage.setItem('CustomerID', this.customers[i].id)
           console.log("Local Storage ---> " + localStorage.getItem('CustomerID'));
