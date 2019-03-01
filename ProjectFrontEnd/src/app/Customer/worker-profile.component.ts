@@ -15,7 +15,8 @@ export class WorkerProfileComponent implements OnInit {
   constructor(
     private router:  Router,
     private workerService: WorkersService,
-    private customerService: CustomersService
+    private customerService: CustomersService,
+    private authService: AuthService
   ) { }
 
   workerid: string;

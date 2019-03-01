@@ -25,6 +25,7 @@ export class RegisterComponent {
   customers: Customer[];
   workers: Worker[];
   isFound: boolean = false;
+  user: string;
 
 
   constructor(
@@ -108,6 +109,10 @@ export class RegisterComponent {
          console.log(data);
          console.log("Creating new customer with firebase uid of ---> " + this.customer.firebaseUid)
          this.getUser(firebase.auth().currentUser.uid.toString());
+         //this.user = "customer";
+         this.errorMessage = "";
+         this.successMessage = "Your account has been created"; 
+         this.router.navigate(["/listJobs"]);
        })
       
        /////////////////////////////////////////////// Test.
@@ -136,6 +141,10 @@ export class RegisterComponent {
          console.log(data);
          console.log("Creating a new worker with firebase uid of ---> " + this.worker.firebaseUid);
          this.getUser(firebase.auth().currentUser.uid.toString());
+         //this.user = "worker";
+         this.errorMessage = "";
+         this.successMessage = "Your account has been created"; /// Do user identification here:
+         this.router.navigate(["/listJobsWorker"]);
        })
        
        this.errorMessage = "";
@@ -195,6 +204,10 @@ export class RegisterComponent {
    /* for(let i = 0; i < this.customers.length; i++){
       console.log(this.customers[i].id)
     } */
+
+  }
+
+  login(): void{
 
   }
    
