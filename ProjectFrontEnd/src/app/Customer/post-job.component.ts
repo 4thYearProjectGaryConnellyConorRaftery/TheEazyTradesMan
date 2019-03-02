@@ -16,6 +16,9 @@ export class PostJobComponent implements OnInit {
 
   constructor(private jobService: JobsService, private confirmationService: CustomerConfirmationService,  private router: Router, private authService: AuthService) { }
 
+  /*
+   * Create a blank job object for the user to fill out.
+   */
    job: Job = {
     id : null,
     trade: null,
@@ -29,21 +32,35 @@ export class PostJobComponent implements OnInit {
     contact: null,
   };
 
-  ngOnInit() { // Some default data for testing.
+  ngOnInit() { 
+    /*
+     * Get a handle on the current user id and set it as a field for the job.
+     */
     this.job.customer = localStorage.getItem('CustomerID'); // Hard coded for now.
+    /*
+     * Set the default fields for the job.
+     */
     this.job.complete = false;
     this.job.requests = "";
-    this.job.date = "10/02/2019";
+    this.job.date = "10/02/2019"; /// TODO.
     this.job.accepted = false;
   }
 
+   /*
+    * When the user clicks post job.
+    */
    postJob(newJob: Job): void{
-   // console.log(postJobForm.value);
    
    console.log(newJob);
 
+   /*
+    * Post the job through the server side to be processed and added to the database.
+    */
    this.jobService.postJob(newJob).subscribe((data: Job) => {
       console.log(data);
+      /*
+       * Set the confirmation message and navigate the user.
+       */
       this.confirmationService.setConfirmationMessage("Your Job had been posted!");
       this.router.navigate(["/customerConfirmation"]);
     });

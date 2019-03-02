@@ -12,16 +12,31 @@ import { AuthService } from '../core/auth.service';
 })
 export class MyJobsComponent implements OnInit {
 
+  /*
+   * Get a handle on all of the jobs.
+   */
   jobs: Job[];
+  /*
+   * Used to select the jobs that belong to this user.
+   */
   myJobs: Job[];
-  customer: string = localStorage.getItem('CustomerID'); // Hard coded for now.
+  /*
+   * Get a handle on the id of the current user.
+   */
+  customer: string = localStorage.getItem('CustomerID'); 
 
   constructor(private jobService: JobsService,  private router: Router, private geoMap: GeocodeService, private authService: AuthService) { }
 
   ngOnInit() {
+    /*
+     * Get a handle on all of the jobs.
+     */
     this.jobService.getJobs().subscribe(data => this.jobs = data);
   }
 
+   /*
+    * When the user whants to cview the map of this current job.
+    */
    getMap(job: Job){
 
     this.geoMap.setAddress(job.location);
@@ -29,19 +44,37 @@ export class MyJobsComponent implements OnInit {
 
   }
 
-  
+  /*
+   * When the user whants to view the requests for that current job.
+   */
   requests(job: Job): void{
     console.log("Before service - " + job.requests);
+    /*
+     * Set the job requests  to the requests for this hob on the service.
+     */
     this.jobService.setJobRequests(job.requests);
+    /*
+     * Set the current job to this job on the service.
+     */
     this.jobService.setCurrentJob(job.id);
+    /*
+     * Navigate the user.
+     */
     this.router.navigate(['/requestDetails']);
 
   }
-
+ /*
+  * When the user clicks on edit job.
+  */
   edit(job: Job): void{
-
+    /*
+     * Set the current job to this job on the service.
+     */
     this.jobService.setCurrentJob(job.id);
     console.log("This Job to be edited ---> " + job.id)
+    /*
+     * Navigate the user.
+     */
     this.router.navigate(['/editJob']);
 
   }
@@ -76,35 +109,3 @@ export class MyJobsComponent implements OnInit {
 
 }
 
-/* =[
-    {
-    id: "46464646",
-    trade: "Carpenter",
-    description: "Need somone to build a table for the garden that is outside in my back garden with all the other tables in it",
-    customer: "464646464646",
-    requests: "46464646464646",
-    complete: false,
-    location: "Galway, Ireland",
-    date: "03-03-2019"
-  },
-  {
-    id: "46464646",
-    trade: "Carpenter",
-    description: "Need somone to build a table for the garden that is outside in my back garden with all the other tables in it",
-    customer: "464646464646",
-    requests: "46464646464646",
-    complete: false,
-    location: "Galway, Ireland",
-    date: "03-03-2019"
-  },
-  {
-    id: "46464646",
-    trade: "Carpenter",
-    description: "Need somone to build a table for the garden that is outside in my back garden with all the other tables in it",
-    customer: "464646464646",
-    requests: "46464646464646",
-    complete: false,
-    location: "Galway, Ireland",
-    date: "03-03-2019"
-    }
-  ];*/

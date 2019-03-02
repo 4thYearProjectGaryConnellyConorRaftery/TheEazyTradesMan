@@ -22,7 +22,9 @@ export class EditJobComponentComponent implements OnInit {
 
   currentJob: Job;
   id: string;
-
+  /* 
+   * Create an empty job object to polulate from the form.
+   */
   updateJob: Job ={
     id: null,
     trade: "",
@@ -41,25 +43,39 @@ export class EditJobComponentComponent implements OnInit {
   ngOnInit() {
   }
 
-  update(job: Job): void{
-   // console.log("Updating this Job ---> " + job.description);
-    this.id = this.jobService.getCurrentJob()
-   // console.log("Current Job ID: ---> " + this.id)
 
+  /* 
+   * When the user fills the form and presses update.
+   */
+
+  update(job: Job): void{
+    /* 
+     * Get a handle on the id of the job they are editing.
+     */
+    this.id = this.jobService.getCurrentJob()
+    /* 
+     * Get a handle on the current Job using its id.
+     */
     this.jobService.getJob(this.id).subscribe(data => {
       this.currentJob = data;
 
       /*
-      * Update the fields of the Job. 
-      */
+       * Update the fields of the Job with the data they filed into the forms. 
+       */
 
       this.currentJob.trade = job.trade;
       this.currentJob.description = job.description;
       this.currentJob.location = job.location;
       this.currentJob.contact = job.contact;
 
+      /* 
+       * Send the updated job through the web api to be updated on the database.
+       */
       this.jobService.putJob(this.currentJob).subscribe(data => {
         console.log(data)
+        /*
+         * Set the confirmation message and navigate the user.
+         */
         this.confirmationService.setConfirmationMessage("Your Job has been updated!")
         this.router.navigate(["/customerConfirmation"]);
       })

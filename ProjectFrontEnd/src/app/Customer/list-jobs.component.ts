@@ -19,9 +19,15 @@ export class ListJobsComponent implements OnInit {
   private authService: AuthService) { }
 
   ngOnInit() {
+    /*
+    * Get a handle on all of the jobs.
+     */
     this.jobService.getJobs().subscribe(data => this.jobs = data);
   }
 
+  /* 
+   * When the user clicks on view map.
+   */
   getMap(job: Job){
 
     this.geoMap.setAddress(job.location);
@@ -45,7 +51,6 @@ export class ListJobsComponent implements OnInit {
    logout(){
     this.authService.doLogout()
     .then((res) => {
-      //this.location.back(); //login
        localStorage.setItem('CustomerID', "x")
       this.router.navigate(["/login"]);
     }, (error) => {

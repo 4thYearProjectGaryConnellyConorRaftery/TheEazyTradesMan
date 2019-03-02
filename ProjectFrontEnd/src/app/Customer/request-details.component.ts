@@ -31,27 +31,41 @@ export class RequestDetailsComponent implements OnInit {
      private customersService: CustomersService) { }
 
   ngOnInit() {
+    /*
+     * Get a handle on the current job requests.
+     */
     this.jobRequests = this.jobService.getJobRequests();
-    /////////////////////////////////////////////////////
+    /*
+     * Loop through the requests to get a handle on the worker that each
+     * request belongs to. Then add that worker to the workers array.
+     */
     for(var i = 0; i < this.jobRequests.length; i++){
       this.workerService.getWorker(this.jobRequests[i]).subscribe(data => {
         this.tempWorker = data;
         console.log("Hopefully ---> " + this.tempWorker.id)
         this.workers.push(this.tempWorker)
       })
-    }//////
-    /////////////////////////////////////////////////////
+    } // End for.
+    /*
+     * Get a handle on the current job that these requests belong to.
+     */
     this.currentJobId = this.jobService.getCurrentJob();
     this.jobService.getJob(this.currentJobId).subscribe(data => this.currentJob = data)
   }
-
+    /*
+     * When the user accepts a requests.
+     */
   acceptRequest(requestId: string): void{ // The request ID is the workers ID that requested this job.
     console.log("Current Job ---> " + this.currentJobId)
     console.log("Is accepted: ---> " + this.currentJob.accepted)
+    /*
+     * Set the accepted boolean on this job to true, and update the job on the server side.
+     */
     this.currentJob.accepted = true;
     this.jobService.putJob(this.currentJob).subscribe((data: Job) => {
       console.log("Job has been accepted!")
     })
+
    /*  Get the worker that made this request by passing {{request}} to this method as a 
     *  parameter. Put a field on the Worker model that contains all the jobs that have been
     *  accepted for them. Then populate this field by doing "this.currentJob.id" and passing
@@ -60,9 +74,12 @@ export class RequestDetailsComponent implements OnInit {
 
     this.workerService.getWorker(requestId).subscribe(data => {
       this.worker = data;
-      this.worker.jobsAccepted += " " + this.currentJobId;
+      this.worker.jobsAccepted += " " + this.currentJobId; // Concatonating this job to the other accepted job ids that worker has.
       this.workerService.putWorker(this.worker).subscribe((data: Worker) =>{
         console.log(data);
+        /* 
+         * Set the confirmation message and navigate the user.
+         */
         this.confirmation.setConfirmationMessage("Job accepted! A notification will now be sent to the corresponding worker.");
         this.router.navigate(["/customerConfirmation"]);
       })

@@ -18,11 +18,17 @@ export class WorkerProfileComponent implements OnInit {
     private customerService: CustomersService,
     private authService: AuthService
   ) { }
-
+ 
+  /*
+   * Get a handle on the current worker the user is trying to view.
+   */
   workerid: string;
   worker: Worker;
 
   ngOnInit() {
+    /*
+     * Get a handle on the current worker the user is trying to view.
+     */
     this.workerid = this.customerService.getCurrentWorker();
     
     this.workerService.getWorker(this.workerid).subscribe(data =>{
