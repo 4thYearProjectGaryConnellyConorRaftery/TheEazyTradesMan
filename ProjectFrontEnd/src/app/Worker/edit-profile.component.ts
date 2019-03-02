@@ -19,6 +19,9 @@ export class EditProfileComponent implements OnInit {
   private authService: AuthService) { }
 
   getRequests: Worker;
+  /*
+   * Create an empty worker object for the user to fill out.
+   */
   worker: Worker ={
     id: localStorage.getItem('WorkerID'),
     firstName: "",
@@ -36,34 +39,32 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-  //  this.worker.rating = "";
-    //this.worker.jobsAccepted = "";
-    //this.worker.jobsRequested = this.workerService
-  //  this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
-  //  this.getRequests = data;
-  //  this.worker.jobsRequested = this.getRequests.jobsRequested;
-  //  this.worker.firebaseUid = this.getRequests.firebaseUid;
-  //  this.worker.jobsAccepted = this.getRequests.jobsAccepted;
-  //  });
-
-    
+ 
   }
 
 
 
-
+   /*
+    * When the user clicks update.
+    */
    update(updateWorker: Worker): void{
 
-      this.worker.rating = "";
-    //this.worker.jobsAccepted = "";
-    //this.worker.jobsRequested = this.workerService
+    /*
+     * Create an empty worker object for the user to fill out.
+     */
+    this.worker.rating = "";  // Just hardcode the rating for now.
+    /*
+     * Get a handle on the worker we are updating.
+     */
     this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
     this.getRequests = data;
     this.worker.jobsRequested = this.getRequests.jobsRequested;
     this.worker.firebaseUid = this.getRequests.firebaseUid;
     this.worker.jobsAccepted = this.getRequests.jobsAccepted;
 
-
+     /*
+      * Send the updated worker through the serverside to be updated on the database.
+      */
      this.workerService.putWorker(updateWorker).subscribe((data: Worker) =>{
      console.log(data);
      console.log(updateWorker.jobsRequested)

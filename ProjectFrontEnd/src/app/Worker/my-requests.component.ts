@@ -30,16 +30,21 @@ export class MyRequestsComponent implements OnInit {
    private authService: AuthService) { }
 
   ngOnInit() {
+    /*
+     * Get a handle on the current worker.
+     */
       this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
       this.worker = data;
-
+      /*
+       * Split the workers requests and accepts into string arrays.
+       */
       this.requests = this.worker.jobsRequested.split(" ");
       this.accepts = this.worker.jobsAccepted.split(" ");
       console.log("This Worker ---> " + this.worker.id);
 
-    
-     
-
+      /*
+       * Populate the requests Job array by querying for each job from the database.
+       */
       for(var i =0; i < this.requests.length; i++){
        console.log("Length of requests --->" + this.requests.length)
        console.log(this.requests[i].length)
@@ -54,13 +59,12 @@ export class MyRequestsComponent implements OnInit {
             if(this.job.accepted == false){
               this.jobs.push(this.job) // So we only list requested jobs that have not yet been accepted.
             }
-            
-          
-            //this.jobs[i] = this.job;
           })
       }
     }// End for.
-    
+    /*
+     * Populate the accepts Job array by querying for each job from the database.
+     */
     for(var i = 0; i < this.accepts.length; i++){
       console.log("Length of accepted jobs array ---> " + this.accepts.length)
       console.log("---" + this.accepts[i] + "---")
@@ -76,7 +80,9 @@ export class MyRequestsComponent implements OnInit {
 
     })
   }
-
+   /* 
+    * If the user wants to see the map.
+    */
    getMap(job: Job){
 
     this.geoMap.setAddress(job.location);
@@ -105,7 +111,6 @@ export class MyRequestsComponent implements OnInit {
    logout(){
     this.authService.doLogout()
     .then((res) => {
-      //this.location.back(); //login
        localStorage.setItem('WorkerID', "x")
       this.router.navigate(["/login"]);
     }, (error) => {

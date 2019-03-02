@@ -18,9 +18,6 @@ import { AuthService } from '../core/auth.service';
 })
 export class ListWorkerJobsComponent implements OnInit {
 
-  //Google Maps
- // @ViewChild('gmap') gmapElement: any;
- // map: google.maps.Map;
 
   worker: Worker;
   jobs: Job[];
@@ -33,22 +30,32 @@ export class ListWorkerJobsComponent implements OnInit {
    private authService: AuthService) { }
 
   ngOnInit() {
-    this.jobService.getJobs().subscribe(data => this.jobs = data);
-  
-   
-  
+    /*
+     * Get a handle on all of the jobs.
+     */
+    this.jobService.getJobs().subscribe(data => this.jobs = data)
   }
-
+  /*
+   * When the worker clicks request on a job.
+   */
   request(job: Job): void{
-    console.log("Testing JobRequests branch.");
     console.log("REQUEST FOR -->" + job.id);
-    job.requests += " " + localStorage.getItem('WorkerID'); // TEST
+    /*
+     * Add this workers id to the requests string for this job.
+     */
+    job.requests += " " + localStorage.getItem('WorkerID'); 
+    /*
+     * Update this job on the server side and navigate the user.
+     */
     this.jobService.putJob(job).subscribe((data: Job) =>{
       console.log(data);
       this.confirmationService.setConfirmationMessage("Job has been successfully requested!");
       this.router.navigate(["/workerConfirmation"]);
     });
-
+    /*
+     * Now add this jobs id to the jobsRequested string on the current worker
+     * and update that worker on the server side.
+     */
     this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
       this.worker = data;
       this.worker.jobsRequested += job.id + " ";
@@ -61,7 +68,9 @@ export class ListWorkerJobsComponent implements OnInit {
     
   }
 
-
+ /*
+  * If the user wants to view the mao fir this job.
+  */
   getMap(job: Job){
 
     this.geoMap.setAddress(job.location);
@@ -69,7 +78,7 @@ export class ListWorkerJobsComponent implements OnInit {
 
   }
 
-  //gmap
+ 
 
    // Navigation.
   navListJobs(): void{
