@@ -15,6 +15,10 @@ export class CustomersService{
      currentWorker: string;
 
       // ====================== Helper methods ======================
+      /*
+       * Getter and setter accessor methods to get a handle on the id of the worker
+       * the customer is looking into.
+       */
      setCurrentWorker(id: string): void{
 
        this.currentWorker = id;
@@ -26,8 +30,6 @@ export class CustomersService{
         return this.currentWorker;
         
      }
-
-
      // ====================== Helper methods ======================
 
      //GET Customers.
