@@ -60,7 +60,7 @@ export class RegisterComponent {
       address: "",
       //age: number;
       trade: "",
-      rating: "",
+      rating: "0.0",
       phoneNumber: "",
       email: "",
       website: "",
