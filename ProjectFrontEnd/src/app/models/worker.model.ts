@@ -13,5 +13,6 @@ export class Worker {
    // photoPath?: string;
    jobsRequested: string;
    jobsAccepted: string;
+   displayedRating?: string; //  Comment to check RateJobs branch.
 
 }
