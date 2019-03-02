@@ -9,6 +9,8 @@ import { Router, Params } from '@angular/router';
 import { ViewChild } from '@angular/core';
 import { GeocodeService } from '../GeomapService/geocode.service';
 import { AuthService } from '../core/auth.service';
+import { CustomersService } from '../Services/customers.service';
+import { Customer } from '../models/customer.model';
 
 
 @Component({
@@ -19,21 +21,55 @@ import { AuthService } from '../core/auth.service';
 export class ListWorkerJobsComponent implements OnInit {
 
 
-  worker: Worker;
+  firstName: string = "";
+  secondName: string = "";
+  customer: Customer;
   jobs: Job[];
+  x: number = 0; 
+
+  updateJob: Job ={
+    id: "",
+    trade: "",
+    description: "",
+    customer: "",
+    requests: "",
+    complete: false,
+    location: "",
+    date: "",
+    accepted: false,
+    contact: ""
+
+  }
+
+  worker: Worker;
+  
   constructor(
    private workerService: WorkersService,
    private jobService: JobsService, 
    private confirmationService: WorkerConfirmationService,  
    private router: Router,
    private geoMap: GeocodeService,
-   private authService: AuthService) { }
+   private authService: AuthService,
+   private customerService: CustomersService) { }
 
   ngOnInit() {
     /*
      * Get a handle on all of the jobs.
      */
-    this.jobService.getJobs().subscribe(data => this.jobs = data)
+    this.jobService.getJobs().subscribe(data => {
+      this.jobs = data
+      for(var i = 0; i < this.jobs.length; i++){
+        //this.id = this.jobs[i].customer
+        this.customerService.getCustomer(this.jobs[i].customer).subscribe(data =>{
+          console.log(i)
+          this.customer = data;
+          
+          this.jobs[this.x].customerName = this.customer.firstName + " " + this.customer.secondName ;
+          this.x++
+       
+        })
+      }
+    })
   }
   /*
    * When the worker clicks request on a job.
@@ -43,11 +79,23 @@ export class ListWorkerJobsComponent implements OnInit {
     /*
      * Add this workers id to the requests string for this job.
      */
-    job.requests += " " + localStorage.getItem('WorkerID'); 
+    job.requests += " " + localStorage.getItem('WorkerID');
+
+    this.updateJob.id = job.id;
+    this.updateJob.trade = job.trade;
+    this.updateJob.customer = job.customer;
+    this.updateJob.requests = job.requests;
+    this.updateJob.complete = job.complete;
+    this.updateJob.location = job.location;
+    this.updateJob.date = job.date;
+    this.updateJob.accepted = job.accepted
+    this.updateJob.contact = job.contact;
+
+
     /*
      * Update this job on the server side and navigate the user.
      */
-    this.jobService.putJob(job).subscribe((data: Job) =>{
+    this.jobService.putJob(this.updateJob).subscribe((data: Job) =>{
       console.log(data);
       this.confirmationService.setConfirmationMessage("Job has been successfully requested!");
       this.router.navigate(["/workerConfirmation"]);

@@ -13,6 +13,7 @@ export class CustomersService{
      constructor(private client: HttpClient){}
 
      currentWorker: string;
+     name: string;
 
       // ====================== Helper methods ======================
       /*
@@ -30,12 +31,25 @@ export class CustomersService{
         return this.currentWorker;
         
      }
+
+     setCurrentCustomerName(name: string): void{
+        this.name = name;
+     }
+
+     getCurrentCustomerName(): string{
+        return this.name;
+     }
      // ====================== Helper methods ======================
 
      //GET Customers.
      getCustomers(): Observable<Customer[]>{
          return this.client.get<Customer[]>("http://localhost:8080/customers");
      }//End GET Customers.
+
+     //GET Customer.
+      getCustomer(id: string): Observable<Customer>{
+        return this.client.get<Customer>("http://localhost:8080/customers/" + id)
+      }//End GET Customer.
 
      //POST.
      postCustomer(customer: Customer): Observable<Customer>{

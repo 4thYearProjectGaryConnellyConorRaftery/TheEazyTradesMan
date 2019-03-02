@@ -88,4 +88,8 @@ export class ReviewJobComponent implements OnInit {
     })
   }
 
+  cancel(){
+    this.router.navigate(["/listJobs"])
+  }
+
 }

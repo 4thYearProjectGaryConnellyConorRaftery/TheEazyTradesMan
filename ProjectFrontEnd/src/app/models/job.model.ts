@@ -9,4 +9,5 @@ export class Job {
     date: string;
     accepted: boolean;
     contact: string;
+    customerName?: string;
 }

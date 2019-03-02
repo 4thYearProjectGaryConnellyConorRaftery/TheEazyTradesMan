@@ -5,6 +5,7 @@ import { Router, Params } from '@angular/router';
 import { GeocodeService } from '../GeomapService/geocode.service';
 import { AuthService } from '../core/auth.service';
 
+
 @Component({
   selector: 'app-my-jobs',
   templateUrl: './my-jobs.component.html',
@@ -12,6 +13,7 @@ import { AuthService } from '../core/auth.service';
 })
 export class MyJobsComponent implements OnInit {
 
+  
   /*
    * Get a handle on all of the jobs.
    */

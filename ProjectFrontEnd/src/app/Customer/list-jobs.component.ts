@@ -4,6 +4,8 @@ import { JobsService } from '../Services/jobs.service';
 import { Router, Params } from '@angular/router';
 import { GeocodeService } from '../GeomapService/geocode.service';
 import { AuthService } from '../core/auth.service';
+import { CustomersService } from '../Services/customers.service';
+import { Customer } from '../models/customer.model';
 
 @Component({
   selector: 'app-list-jobs',
@@ -12,17 +14,37 @@ import { AuthService } from '../core/auth.service';
 })
 export class ListJobsComponent implements OnInit {
 
+  firstName: string = "";
+  secondName: string = "";
+  customer: Customer;
   jobs: Job[];
+  x: number = 0; 
   constructor(private jobService: JobsService,  
   private router: Router, 
   private geoMap: GeocodeService,
-  private authService: AuthService) { }
+  private authService: AuthService,
+  private customerService: CustomersService) { }
 
   ngOnInit() {
     /*
     * Get a handle on all of the jobs.
      */
-    this.jobService.getJobs().subscribe(data => this.jobs = data);
+    this.jobService.getJobs().subscribe(data => {
+        this.jobs = data
+        for(var i = 0; i < this.jobs.length; i++){
+          //this.id = this.jobs[i].customer
+          this.customerService.getCustomer(this.jobs[i].customer).subscribe(data =>{
+            console.log(i)
+            this.customer = data;
+            
+            this.jobs[this.x].customerName = this.customer.firstName + " " + this.customer.secondName ;
+            this.x++
+         
+          })
+        }
+
+
+      });
   }
 
   /* 
