@@ -5,6 +5,8 @@ import { AuthService } from '../core/auth.service';
 import { CustomersService } from '../Services/customers.service';
 import { WorkersService } from '../Services/workers.service';
 import { CustomerConfirmationService } from '../Services/customerConfirmation.service';
+import { JobsService } from '../Services/jobs.service';
+import { Job } from '../models/job.model';
 
 @Component({
   selector: 'app-review-job',
@@ -18,8 +20,11 @@ export class ReviewJobComponent implements OnInit {
     private workerService: WorkersService,
     private customerService: CustomersService,
     private confirmation: CustomerConfirmationService,
-    private authService: AuthService
+    private authService: AuthService,
+    private jobService: JobsService
   ) { }
+  currentJobId: string;
+  currentJob: Job;
 
   rating: number = null;
   workerRatings: string[] = [];
@@ -62,6 +67,22 @@ export class ReviewJobComponent implements OnInit {
         console.log(data)
         this.confirmation.setConfirmationMessage("Your rating has succsessfully gone through")
         this.router.navigate(["/customerConfirmation"]);
+
+         /*
+          * Get a handle on the current job that these requests belong to.
+          */
+        this.currentJobId = this.jobService.getCurrentJob();
+        this.jobService.getJob(this.currentJobId).subscribe(data => {
+          this.currentJob = data
+          this.currentJob.complete = true;
+          console.log("Yurt")
+          this.jobService.putJob(this.currentJob).subscribe(data =>{
+            console.log(data)
+            //this.router.navigate(["/listJobs"])
+          })
+        })
+       
+
       })
 
     })

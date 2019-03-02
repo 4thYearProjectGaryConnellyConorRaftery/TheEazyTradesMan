@@ -15,11 +15,14 @@
   </ul>
 </nav>
 
-
+<div *ngFor="let job of jobs">
+<div *ngIf="job.complete == false ">
 <div class="container">
  <div class="row">
 <div class="col-sm-6">
-<div class = "panel panel-primary" *ngFor="let job of jobs">
+  
+<div class = "panel panel-primary">
+    
   <div class="panel-heading">
    <h3>{{job.location}}</h3>
   </div>
@@ -29,12 +32,15 @@
       <h3>Trade: </h3><h4>{{job.trade}}</h4>
       <h3>Description: </h3><h4>{{job.description}}</h4>
       <h3>Customer: </h3><h4>{{job.customer}}</h4>
-       <h3>Date: </h3><h4>{{job.date}}</h4>
-       <button type="button" class="btn btn-success" (click)="getMap(job)">View Map</button>
+      <h3>Date: </h3><h4>{{job.date}}</h4>
+      <h3>Completed: </h3><h4>{{job.complete}}</h4>
+      <button type="button" class="btn btn-success" (click)="getMap(job)">View Map</button>
       
 
   </div>
 
+</div>
+</div>
 </div>
 </div>
 
