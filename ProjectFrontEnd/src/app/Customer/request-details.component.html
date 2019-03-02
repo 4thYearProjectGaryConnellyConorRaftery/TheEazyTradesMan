@@ -26,10 +26,10 @@
 
   <div class = "panel-body">
     <h3>Trade: {{worker.trade}}</h3>
-    <h3>Rating: {{worker.rating}}</h3>
+    <h3>Rating: {{worker.displayedRating}}</h3>
     <button type="button" class="btn btn-success" (click)="acceptRequest(worker.id)">Accept</button>
     <button type="button" class="btn btn-primary" (click)="viewProfile(worker.id)">View Profile</button>
-    <button type="button" class="btn btn-primary" (click)="jobComplete()">Job Complete</button>
+    <button type="button" class="btn btn-primary" (click)="jobComplete(worker.id)">Job Complete</button>
   </div>
 
 </div>

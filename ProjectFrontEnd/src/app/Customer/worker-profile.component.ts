@@ -18,6 +18,10 @@ export class WorkerProfileComponent implements OnInit {
     private customerService: CustomersService,
     private authService: AuthService
   ) { }
+
+  ratingArray: string[] = [];
+  amount: number = null;
+  sum: number = null;
  
   /*
    * Get a handle on the current worker the user is trying to view.
@@ -33,6 +37,11 @@ export class WorkerProfileComponent implements OnInit {
     
     this.workerService.getWorker(this.workerid).subscribe(data =>{
       this.worker = data
+      this.ratingArray = this.worker.rating.split(",")
+      this.amount = parseInt(this.ratingArray[0])
+      this.sum = parseInt(this.ratingArray[1]) 
+      this.worker.displayedRating = (this.sum/this.amount).toFixed().toString()
+      
     })
   }
 

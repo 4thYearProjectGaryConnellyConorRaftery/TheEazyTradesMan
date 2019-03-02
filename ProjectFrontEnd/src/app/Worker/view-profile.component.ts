@@ -12,14 +12,26 @@ import { AuthService } from '../core/auth.service';
 export class ViewProfileComponent implements OnInit {
 
   worker: Worker;
+  ratingArray: string[] = [];
+  amount: number = null;
+  sum: number = null;
   
   constructor(private workerService: WorkersService,  private router: Router, private authService: AuthService) { }
+
+  
 
   ngOnInit() { 
     /* 
      * Get a handle on the current worker to be displayed on the screen.
      */
-    this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => this.worker = data);
+    this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data =>{
+      this.worker = data
+
+      this.ratingArray = this.worker.rating.split(",")
+      this.amount = parseInt(this.ratingArray[0])
+      this.sum = parseInt(this.ratingArray[1]) 
+      this.worker.displayedRating = (this.sum/this.amount).toFixed().toString()
+    })
 
      console.log(this.worker.firstName);
   }

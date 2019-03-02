@@ -23,6 +23,11 @@ export class RequestDetailsComponent implements OnInit {
   workers: Worker[] = [];
   tempWorker: Worker;
 
+  // Rating stuff.
+  ratingArray: string[] = [];
+  amount: number = null;
+  sum: number = null;
+
   constructor(
      private jobService: JobsService,
      private router: Router,
@@ -44,6 +49,10 @@ export class RequestDetailsComponent implements OnInit {
       this.workerService.getWorker(this.jobRequests[i]).subscribe(data => {
         this.tempWorker = data;
         console.log("Hopefully ---> " + this.tempWorker.id)
+        this.ratingArray = this.tempWorker.rating.split(",")
+        this.amount = parseInt(this.ratingArray[0])
+        this.sum = parseInt(this.ratingArray[1]) 
+        this.tempWorker.displayedRating = (this.sum/this.amount).toFixed().toString()
         this.workers.push(this.tempWorker)
       })
     } // End for.
@@ -90,7 +99,8 @@ export class RequestDetailsComponent implements OnInit {
   }//End acceptRequest
 
   /////////////////////////////////////
-  jobComplete(){
+  jobComplete(id: string){
+    this.customersService.setCurrentWorker(id)
     this.router.navigate(["/reviewJob"]);
   }
   ////////////////////////////////////

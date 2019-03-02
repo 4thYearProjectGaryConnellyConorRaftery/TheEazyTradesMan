@@ -58,9 +58,16 @@ export class EditProfileComponent implements OnInit {
      */
     this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
     this.getRequests = data;
+    updateWorker.jobsRequested = this.getRequests.jobsRequested
+    updateWorker.firebaseUid = this.getRequests.firebaseUid;
+    updateWorker.jobsAccepted = this.getRequests.jobsAccepted;
+    updateWorker.rating = this.getRequests.rating;
+    /*
     this.worker.jobsRequested = this.getRequests.jobsRequested;
     this.worker.firebaseUid = this.getRequests.firebaseUid;
     this.worker.jobsAccepted = this.getRequests.jobsAccepted;
+    this.worker.rating = this.getRequests.rating;
+    */
 
      /*
       * Send the updated worker through the serverside to be updated on the database.
