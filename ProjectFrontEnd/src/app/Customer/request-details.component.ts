@@ -52,7 +52,7 @@ export class RequestDetailsComponent implements OnInit {
         this.ratingArray = this.tempWorker.rating.split(",")
         this.amount = parseInt(this.ratingArray[0])
         this.sum = parseInt(this.ratingArray[1]) 
-        this.tempWorker.displayedRating = (this.sum/this.amount).toFixed().toString()
+        this.tempWorker.displayedRating = (this.sum/this.amount).toFixed().toString()//
         this.workers.push(this.tempWorker)
       })
     } // End for.
