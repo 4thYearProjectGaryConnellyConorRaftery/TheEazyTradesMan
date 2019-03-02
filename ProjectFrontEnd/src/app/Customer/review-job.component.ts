@@ -9,7 +9,12 @@ export class ReviewJobComponent implements OnInit {
 
   constructor() { }
 
+  rating: number = null;
   ngOnInit() {
+  }
+
+  showRating(){
+    console.log(this.rating)
   }
 
 }

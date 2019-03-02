@@ -8,6 +8,7 @@ import { CustomersService } from '../Services/customers.service';
 import { CustomerConfirmationService } from '../Services/customerConfirmation.service';
 import { AuthService } from '../core/auth.service';
 
+
 @Component({
   selector: 'app-request-details',
   templateUrl: './request-details.component.html',
@@ -87,6 +88,12 @@ export class RequestDetailsComponent implements OnInit {
     
 
   }//End acceptRequest
+
+  /////////////////////////////////////
+  jobComplete(){
+    this.router.navigate(["/reviewJob"]);
+  }
+  ////////////////////////////////////
 
   // View Profile:
   viewProfile(id: string): void{
