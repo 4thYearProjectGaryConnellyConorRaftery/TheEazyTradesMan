@@ -22,6 +22,7 @@ export class RequestDetailsComponent implements OnInit {
   worker: Worker;
   workers: Worker[] = [];
   tempWorker: Worker;
+  requestSet = new Set();
 
   // Rating stuff.
   ratingArray: string[] = [];
@@ -41,12 +42,16 @@ export class RequestDetailsComponent implements OnInit {
      * Get a handle on the current job requests.
      */
     this.jobRequests = this.jobService.getJobRequests();
+
+    for(let request of this.jobRequests){
+      this.requestSet.add(request)
+    }
     /*
      * Loop through the requests to get a handle on the worker that each
      * request belongs to. Then add that worker to the workers array.
      */
-    for(var i = 0; i < this.jobRequests.length; i++){
-      this.workerService.getWorker(this.jobRequests[i]).subscribe(data => {
+    for(let request of this.requestSet){
+      this.workerService.getWorker(request).subscribe(data => {
         this.tempWorker = data;
         console.log("Hopefully ---> " + this.tempWorker.id)
         this.ratingArray = this.tempWorker.rating.split(",")

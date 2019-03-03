@@ -21,6 +21,8 @@ export class MyRequestsComponent implements OnInit {
   acceptedJob: Job;
   requests: string[];
   accepts: string[];
+  acceptSet = new Set();
+  requestSet = new Set();
 
   constructor(
    private workerService: WorkersService,
@@ -40,42 +42,98 @@ export class MyRequestsComponent implements OnInit {
        */
       this.requests = this.worker.jobsRequested.split(" ");
       this.accepts = this.worker.jobsAccepted.split(" ");
+
+      for(let request of this.requests){
+        this.requestSet.add(request)
+      }
+
+      for(let accept of this.accepts){
+        this.acceptSet.add(accept)
+      }
       console.log("This Worker ---> " + this.worker.id);
 
       /*
        * Populate the requests Job array by querying for each job from the database.
        */
-      for(var i =0; i < this.requests.length; i++){
-       console.log("Length of requests --->" + this.requests.length)
-       console.log(this.requests[i].length)
-       console.log("This is the request at " + i + " " + this.requests[i])
-      if(this.requests[i].length > 1){ // 1 was just picked randomley because a check for null wasn't working.
-          this.jobService.getJob(this.requests[i]).subscribe(data => {
+      for(let request of this.requestSet){
+      // console.log("Length of requests --->" + this.requests.length)
+     //  console.log(this.requests[i].length)
+      // console.log("This is the request at " + i + " " + this.requests[i])
+      if(request.length > 1){ // 1 was just picked randomley because a check for null wasn't working.
+          this.jobService.getJob(request).subscribe(data => {
             
             this.job = data;
             console.log("Number of jobs that were accepted for this worker ---> " + this.accepts.length)
             console.log("Request ID ---> " + this.job.id)
             console.log(this.job)
-            if(this.job.accepted == false){
+            if(this.job.accepted == false){  // 
+              
+              console.log(" Job exists ---> " + (this.jobs.includes(this.job)))
               this.jobs.push(this.job) // So we only list requested jobs that have not yet been accepted.
             }
           })
       }
     }// End for.
-    /*
+
+    for(let accept of this.acceptSet){
+     // console.log(" Hey ---> " + accept)
+     if(accept != "null" || accept != ""){
+      this.jobService.getJob(accept).subscribe(data =>{
+        this.acceptedJob = data;
+      //  console.log("Accepted Job ID ---> " + this.acceptedJob.id)
+         
+          this.acceptedJobs.push(this.acceptedJob)
+          //console.log("INDEX --> " + this.acceptedJobs.indexOf(this.acceptedJob))
+        
+        
+      });
+
+     }
+
+    }
+
+
+
+
+
+
+
+/*
+
+  /*
      * Populate the accepts Job array by querying for each job from the database.
      */
-    for(var i = 0; i < this.accepts.length; i++){
-      console.log("Length of accepted jobs array ---> " + this.accepts.length)
-      console.log("---" + this.accepts[i] + "---")
-      if(this.accepts[i] != "null"){
-        this.jobService.getJob(this.accepts[i]).subscribe(data =>{
-          this.acceptedJob = data;
-          console.log("Accepted Job ID ---> " + this.acceptedJob.id)
-          this.acceptedJobs.push(this.acceptedJob)
-        });
-      }
-    }
+  //  for(var i = 0; i < this.accepts.length; i++){
+      //  console.log("Length of accepted jobs array ---> " + this.accepts.length)
+   //     console.log("---" + this.accepts[i] + "---")
+       // console.log("INDEX --> " + this.accepts.includes(this.accepts[i]).valueOf())
+   //     if(this.accepts[i] != "null"){
+    //      this.jobService.getJob(this.accepts[i]).subscribe(data =>{
+      //      this.acceptedJob = data;
+          //  console.log("Accepted Job ID ---> " + this.acceptedJob.id)
+             
+       //       this.acceptedJobs.push(this.acceptedJob)
+              //console.log("INDEX --> " + this.acceptedJobs.indexOf(this.acceptedJob))
+            
+            
+      //    });
+     //   }
+   //   }
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
 
 
     })
