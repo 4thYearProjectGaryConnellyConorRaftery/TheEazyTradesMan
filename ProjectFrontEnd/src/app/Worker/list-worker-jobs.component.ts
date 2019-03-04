@@ -83,6 +83,7 @@ export class ListWorkerJobsComponent implements OnInit {
 
     this.updateJob.id = job.id;
     this.updateJob.trade = job.trade;
+    this.updateJob.description = job.description;
     this.updateJob.customer = job.customer;
     this.updateJob.requests = job.requests;
     this.updateJob.complete = job.complete;

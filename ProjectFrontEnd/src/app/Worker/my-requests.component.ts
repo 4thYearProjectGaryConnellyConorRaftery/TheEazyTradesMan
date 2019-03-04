@@ -6,6 +6,8 @@ import { WorkersService } from '../Services/workers.service';
 import { Router, Params } from '@angular/router';
 import { GeocodeService } from '../GeomapService/geocode.service';
 import { AuthService } from '../core/auth.service';
+import { CustomersService } from '../Services/customers.service';
+import { Customer } from '../models/customer.model';
 
 @Component({
   selector: 'app-my-requests',
@@ -23,13 +25,17 @@ export class MyRequestsComponent implements OnInit {
   accepts: string[];
   acceptSet = new Set();
   requestSet = new Set();
+  customer: Customer;
+  myJobs: Job[] = [];
+  x: number = 0; 
 
   constructor(
    private workerService: WorkersService,
    private jobService: JobsService,
    private router: Router,
    private geoMap: GeocodeService,
-   private authService: AuthService) { }
+   private authService: AuthService,
+   private customerService: CustomersService) { }
 
   ngOnInit() {
     /*
@@ -50,12 +56,13 @@ export class MyRequestsComponent implements OnInit {
       for(let accept of this.accepts){
         this.acceptSet.add(accept)
       }
-      console.log("This Worker ---> " + this.worker.id);
+     // console.log("This Worker ---> " + this.worker.id);
 
       /*
        * Populate the requests Job array by querying for each job from the database.
        */
       for(let request of this.requestSet){
+        
       // console.log("Length of requests --->" + this.requests.length)
      //  console.log(this.requests[i].length)
       // console.log("This is the request at " + i + " " + this.requests[i])
@@ -63,26 +70,39 @@ export class MyRequestsComponent implements OnInit {
           this.jobService.getJob(request).subscribe(data => {
             
             this.job = data;
-            console.log("Number of jobs that were accepted for this worker ---> " + this.accepts.length)
-            console.log("Request ID ---> " + this.job.id)
-            console.log(this.job)
+           // this.myJobs.push(this.job)
+        //    console.log("Number of jobs that were accepted for this worker ---> " + this.accepts.length)
+         //   console.log("Request ID ---> " + this.job.id)
+         //   console.log(this.job)
             if(this.job.accepted == false){  // 
-              
-              console.log(" Job exists ---> " + (this.jobs.includes(this.job)))
-              this.jobs.push(this.job) // So we only list requested jobs that have not yet been accepted.
+         //     console.log("yurt ---> " + this.job.id)
+         //    this.customerService.getCustomer(this.job.customer).subscribe(data => {
+              console.log("JOB ---> " + this.job.id)
+           //    this.customer = data;
+             //  this.myJobs[this.x].customerName = this.customer.firstName + " " + this.customer.secondName ;
+               this.jobs.push(this.job) 
+          
+            
             }
           })
       }
     }// End for.
 
     for(let accept of this.acceptSet){
+      console.log("ACCEPT ---> " + accept)
      // console.log(" Hey ---> " + accept)
      if(accept != "null" || accept != ""){
       this.jobService.getJob(accept).subscribe(data =>{
         this.acceptedJob = data;
-      //  console.log("Accepted Job ID ---> " + this.acceptedJob.id)
+        if(this.acceptedJob.complete == false){
+          
+            this.acceptedJobs.push(this.acceptedJob) 
+
+        
+          
+        }
          
-          this.acceptedJobs.push(this.acceptedJob)
+         // this.acceptedJobs.push(this.acceptedJob)
           //console.log("INDEX --> " + this.acceptedJobs.indexOf(this.acceptedJob))
         
         
@@ -172,7 +192,7 @@ export class MyRequestsComponent implements OnInit {
        localStorage.setItem('WorkerID', "x")
       this.router.navigate(["/login"]);
     }, (error) => {
-      console.log("Logout error", error);
+     // console.log("Logout error", error);
     });
   }
 
