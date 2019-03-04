@@ -18,6 +18,7 @@ export class MyJobsComponent implements OnInit {
    * Get a handle on all of the jobs.
    */
   jobs: Job[];
+ 
   /*
    * Used to select the jobs that belong to this user.
    */
@@ -33,7 +34,10 @@ export class MyJobsComponent implements OnInit {
     /*
      * Get a handle on all of the jobs.
      */
-    this.jobService.getJobs().subscribe(data => this.jobs = data);
+    this.jobService.getJobs().subscribe(data => {
+      this.jobs = data
+      this.jobs.reverse();
+    });
   }
 
    /*

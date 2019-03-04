@@ -25,6 +25,7 @@ export class ListWorkerJobsComponent implements OnInit {
   secondName: string = "";
   customer: Customer;
   jobs: Job[];
+  listJobs: Job[] = [];
   x: number = 0; 
 
   updateJob: Job ={
@@ -58,6 +59,7 @@ export class ListWorkerJobsComponent implements OnInit {
      */
     this.jobService.getJobs().subscribe(data => {
       this.jobs = data
+      this.jobs.reverse()
       /*
       for(var i = 0; i < this.jobs.length; i++){
         //this.id = this.jobs[i].customer

@@ -18,6 +18,7 @@ export class ListJobsComponent implements OnInit {
   secondName: string = "";
   customer: Customer;
   jobs: Job[];
+  listJobs: Job[] = [];
   x: number = 0; 
   constructor(private jobService: JobsService,  
   private router: Router, 
@@ -31,6 +32,7 @@ export class ListJobsComponent implements OnInit {
      */
     this.jobService.getJobs().subscribe(data => {
         this.jobs = data
+        this.listJobs = this.jobs.reverse();
         /*
         for(var i = 0; i < this.jobs.length; i++){
           //this.id = this.jobs[i].customer
