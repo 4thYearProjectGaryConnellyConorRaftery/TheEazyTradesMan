@@ -70,16 +70,11 @@ export class MyRequestsComponent implements OnInit {
           this.jobService.getJob(request).subscribe(data => {
             
             this.job = data;
-           // this.myJobs.push(this.job)
-        //    console.log("Number of jobs that were accepted for this worker ---> " + this.accepts.length)
-         //   console.log("Request ID ---> " + this.job.id)
-         //   console.log(this.job)
+         
             if(this.job.accepted == false){  // 
-         //     console.log("yurt ---> " + this.job.id)
-         //    this.customerService.getCustomer(this.job.customer).subscribe(data => {
+        
               console.log("JOB ---> " + this.job.id)
-           //    this.customer = data;
-             //  this.myJobs[this.x].customerName = this.customer.firstName + " " + this.customer.secondName ;
+         
                this.jobs.push(this.job) 
           
             

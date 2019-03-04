@@ -31,6 +31,7 @@ export class ListJobsComponent implements OnInit {
      */
     this.jobService.getJobs().subscribe(data => {
         this.jobs = data
+        /*
         for(var i = 0; i < this.jobs.length; i++){
           //this.id = this.jobs[i].customer
           this.customerService.getCustomer(this.jobs[i].customer).subscribe(data =>{
@@ -41,7 +42,7 @@ export class ListJobsComponent implements OnInit {
             this.x++
          
           })
-        }
+        } */
 
 
       });
