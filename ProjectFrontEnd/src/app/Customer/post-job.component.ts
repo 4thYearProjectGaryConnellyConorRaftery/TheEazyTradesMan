@@ -31,6 +31,8 @@ export class PostJobComponent implements OnInit {
     accepted: null,
     contact: null,
   };
+  
+ 
 
   ngOnInit() { 
     /*
@@ -42,7 +44,13 @@ export class PostJobComponent implements OnInit {
      */
     this.job.complete = false;
     this.job.requests = "";
-    this.job.date = "10/02/2019"; /// TODO.
+    
+    var today = new Date();
+    var dd = today.getDate().toString();
+    var mm = (today.getMonth() + 1).toString(); //January is 0!
+    var yyyy = today.getFullYear().toString();
+    //console.log(dd + "---" + mm + "---" + yyyy)
+    this.job.date = (dd + "/" + mm + "/" + yyyy) /// TODO.
     this.job.accepted = false;
   }
 
