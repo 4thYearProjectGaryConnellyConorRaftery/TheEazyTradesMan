@@ -4,6 +4,7 @@ import { JobsService } from '../Services/jobs.service';
 import { Router, Params } from '@angular/router';
 import { GeocodeService } from '../GeomapService/geocode.service';
 import { AuthService } from '../core/auth.service';
+import { CustomerConfirmationService } from '../Services/customerConfirmation.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class MyJobsComponent implements OnInit {
    */
   customer: string = localStorage.getItem('CustomerID'); 
 
-  constructor(private jobService: JobsService,  private router: Router, private geoMap: GeocodeService, private authService: AuthService) { }
+  constructor(private confirmationService: CustomerConfirmationService, private jobService: JobsService,  private router: Router, private geoMap: GeocodeService, private authService: AuthService) { }
 
   ngOnInit() {
     /*
@@ -82,6 +83,15 @@ export class MyJobsComponent implements OnInit {
      * Navigate the user.
      */
     this.router.navigate(['/editJob']);
+
+  }
+
+  remove(job: Job): void{
+    this.jobService.deleteJob(job).subscribe(data =>{
+      console.log(data)
+      this.confirmationService.setConfirmationMessage("This Job has been permanently removed from the system.")
+      this.router.navigate(["/customerConfirmation"])
+    })
 
   }
 

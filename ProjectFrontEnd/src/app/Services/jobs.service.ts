@@ -80,6 +80,18 @@ export class JobsService{
     });
 
 }// End PUT.
+
+//DELETE
+deleteJob(deleteJob: Job): Observable<Job>{
+
+  return this.client.delete<Job>("http://localhost:8080/jobs/" + deleteJob.id,{
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+
+  })
+
+}
   
 
 
