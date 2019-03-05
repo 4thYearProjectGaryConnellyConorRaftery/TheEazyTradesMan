@@ -25,8 +25,32 @@ public class Job {
 	private String requests;
 	private String location;
 	private String date;
+	private boolean isAccepted;
+	private String contact;
 	
 	
+	
+	
+
+	public String getContact() {
+		return contact;
+	}
+
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+
+	public boolean isAccepted() {
+		return isAccepted;
+	}
+
+
+	public void setAccepted(boolean isAccepted) {
+		this.isAccepted = isAccepted;
+	}
+
 
 	public String getLocation() {
 		return location;

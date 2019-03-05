@@ -20,14 +20,37 @@ public class Worker {
 	private String address;
 	private int age;
 	private String trade;
-	private double rating;
+	private String rating;
 	private String phoneNumber;
 	private String email;
 	private String website;
 	private String firebaseUid;
+	private String jobsRequested;
+	
+	private String jobsAccepted;
+	
+	
+	
+	
+	
+	
+	public String getJobsAccepted() {
+		return jobsAccepted;
+	}
 
+	public void setJobsAccepted(String jobsAccepted) {
+		this.jobsAccepted = jobsAccepted;
+	}
 	
-	
+
+	public String getJobsRequested() {
+		return jobsRequested;
+	}
+
+	public void setJobsRequested(String jobsRequested) {
+		this.jobsRequested = jobsRequested;
+	}
+
 	public String getFirebaseUid() {
 		return firebaseUid;
 	}
@@ -91,10 +114,10 @@ public class Worker {
 	public void setTrade(String trade) {
 		this.trade = trade;
 	}
-	public double getRating() {
+	public String getRating() {
 		return rating;
 	}
-	public void setRating(double rating) {
+	public void setRating(String rating) {
 		this.rating = rating;
 	}
 	@Override

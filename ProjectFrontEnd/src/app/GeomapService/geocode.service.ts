@@ -14,8 +14,18 @@ declare var google: any;
 @Injectable()
 export class GeocodeService {
   private geocoder: any;
+  address: string;
 
   constructor(private mapLoader: MapsAPILoader) {}
+
+setAddress(address: string): void{
+  this.address = address;
+}
+
+getAddress(): string{
+
+  return this.address;
+}
 
   private initGeocoder() {
     console.log('Init geocoder!');
@@ -39,7 +49,7 @@ export class GeocodeService {
       // filter(loaded => loaded),
       switchMap(() => {
         return new Observable(observer => {
-          this.geocoder.geocode({'address': location}, (results, status) => {
+          this.geocoder.geocode({'address': this.address}, (results, status) => {
             if (status == google.maps.GeocoderStatus.OK) {
               console.log('Geocoding complete!');
               observer.next({

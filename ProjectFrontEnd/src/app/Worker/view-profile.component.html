@@ -9,6 +9,12 @@
      <li>
        <button type="button" class="btn btn-link navbar-btn" (click)="navEditProfile()">Edit Profile</button>
     </li>
+    <li>
+       <button type="button" class="btn btn-link navbar-btn" (click)="navMyRequests()">My Jobs</button>
+    </li>
+    <li>
+       <button type="button" class="btn btn-link navbar-btn" (click)="logout()">Logout</button>
+    </li>
   </ul>
 </nav>
 
@@ -55,7 +61,7 @@
                 </div>
 
                  <div class="col-xs-6">
-                <h4>{{worker.rating}}</h4>
+                <h4>{{worker.displayedRating}}</h4>
                 </div>
             </div>
 

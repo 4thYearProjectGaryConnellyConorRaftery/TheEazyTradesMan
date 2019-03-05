@@ -9,35 +9,46 @@
      <li>
        <button type="button" class="btn btn-link navbar-btn" (click)="navPostJob()">Post a Job</button>
     </li>
+     <li>
+       <button type="button" class="btn btn-link navbar-btn" (click)="logout()">Logout</button>
+    </li>
   </ul>
 </nav>
 
-
+<div  *ngFor="let job of jobs">
+<div *ngIf="job.customer === customer ">
 <div class="container">
  <div class="row">
 <div class="col-sm-8">
-  <div  *ngFor="let job of jobs">
-   <div *ngIf="job.customer === customer ">
+ 
 <div class = "panel panel-primary">
  
 
   <div class="panel-heading">
-   <h3>09-01-2018</h3>
+   <h3>Posted on: {{job.date}}</h3>
   </div>
 
   <div class = "panel-body">
-      <h2>{{job.id}}</h2>
+     <!-- <h2>{{job.id}}</h2> -->
       <h3>Trade: </h3><h4>{{job.trade}}</h4>
       <h3>Description: </h3><h4>{{job.description}}</h4>
+      <h3>Location: </h3><h4>{{job.location}}</h4>
+      <h3>Contact: </h3><h4>{{job.contact}}</h4>
       <h3>Is completed? </h3><h4>{{job.complete}}</h4>
+       <h3>Is accepted? </h3><h4>{{job.accepted}}</h4>
       <!-- <h3>Requests: </h3><h4>{{job.requests}}</h4> -->
       <button type="button" class="btn btn-success" (click)="requests(job)">View Requests</button>
+      <button type="button" class="btn btn-success" (click)="getMap(job)">View Map</button>
   </div>
 
 
   <div class="panel-footer">
     <!-- TODO -->
-   <a href="editJob/0">Edit</a>
+  <!-- <a href="editJob/0">Edit</a> -->
+   
+   <button class="btn btn-primary" (click) = "edit(job)">Edit</button>
+   <button class="btn btn-danger" (click) = "remove(job)">Remove Job</button>
+  
   </div>
   </div>
 </div>

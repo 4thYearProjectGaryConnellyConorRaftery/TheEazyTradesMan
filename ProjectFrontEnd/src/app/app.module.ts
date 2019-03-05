@@ -41,6 +41,9 @@ import { AgmCoreModule } from '@agm/core';
 import { GmapComponent } from './GeomapService/gmap.component';
 import { CustomerConfirmationComponent } from './Customer/customer-confirmation.component';
 import { WorkerConfirmationComponent } from './Worker/worker-confirmation.component';
+import { MyRequestsComponent } from './Worker/my-requests.component';
+import { WorkerProfileComponent } from './Customer/worker-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +62,9 @@ import { WorkerConfirmationComponent } from './Worker/worker-confirmation.compon
     EditJobComponentComponent,
     GmapComponent,
     CustomerConfirmationComponent,
-    WorkerConfirmationComponent
+    WorkerConfirmationComponent,
+    MyRequestsComponent,
+    WorkerProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -9,19 +9,27 @@
      <li>
        <button type="button" class="btn btn-link navbar-btn" (click)="navPostJob()">Post a Job</button>
     </li>
+    <li>
+       <button type="button" class="btn btn-link navbar-btn" (click)="logout()">Logout</button>
+    </li>
   </ul>
 </nav>
 
 <div class="container">
  <div class="row">
 <div class="col-sm-6">
-<div class = "panel panel-primary" *ngFor="let request of jobRequests">
+<div class = "panel panel-primary" *ngFor="let worker of workers">
   <div class="panel-heading">
-   <h3>{{request}}</h3>
+   <h3>{{worker.firstName}}</h3>
+   <h3>{{worker.secondName}}</h3>
   </div>
 
   <div class = "panel-body">
-    <h3>Info about request</h3>
+    <h3>Trade: {{worker.trade}}</h3>
+    <h3>Rating: {{worker.displayedRating}}</h3>
+    <button type="button" class="btn btn-success" (click)="acceptRequest(worker.id)">Accept</button>
+    <button type="button" class="btn btn-primary" (click)="viewProfile(worker.id)">View Profile</button>
+    <button type="button" class="btn btn-primary" (click)="jobComplete(worker.id)">Job Complete</button>
   </div>
 
 </div>

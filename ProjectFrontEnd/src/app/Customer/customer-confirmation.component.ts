@@ -15,6 +15,9 @@ export class CustomerConfirmationComponent implements OnInit {
 
 
   ngOnInit() {
+    /*
+    * Get a handle on the current confirmation
+    */
     this.message = this.service.getConfirmationMessage();
   }
 

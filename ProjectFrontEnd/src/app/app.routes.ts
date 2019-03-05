@@ -17,6 +17,8 @@ import { EditJobComponentComponent } from './Customer/edit-job-component.compone
 import { GmapComponent } from './GeomapService/gmap.component';
 import { CustomerConfirmationComponent } from './Customer/customer-confirmation.component';
 import { WorkerConfirmationComponent } from './Worker/worker-confirmation.component';
+import { MyRequestsComponent } from './Worker/my-requests.component';
+import { WorkerProfileComponent } from './Customer/worker-profile.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,10 +32,12 @@ export const rootRouterConfig: Routes = [
   { path: 'reviewJob', component: ReviewJobComponent },
   { path: 'listJobsWorker', component: ListWorkerJobsComponent },
   { path: 'viewProfile', component: ViewProfileComponent },
-  { path: 'editJob/:id', component: EditJobComponentComponent },
+  { path: 'editJob', component: EditJobComponentComponent },
   { path: 'editProfile', component: EditProfileComponent },
   { path: 'gmap', component: GmapComponent },
   { path: 'customerConfirmation', component: CustomerConfirmationComponent },
   { path: 'workerConfirmation', component: WorkerConfirmationComponent },
+  { path: 'myrequests', component: MyRequestsComponent },
+  { path: 'workerProfile', component: WorkerProfileComponent },
   { path: 'editProfile', component: EditProfileComponent }
 ];

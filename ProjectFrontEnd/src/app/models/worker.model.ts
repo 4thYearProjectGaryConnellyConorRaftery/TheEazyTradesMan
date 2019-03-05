@@ -11,4 +11,8 @@ export class Worker {
     website?: string;
     firebaseUid?: string;
    // photoPath?: string;
+   jobsRequested: string;
+   jobsAccepted: string;
+   displayedRating?: string; //  Comment to check RateJobs branch.
+
 }

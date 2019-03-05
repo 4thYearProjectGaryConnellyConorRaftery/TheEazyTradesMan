@@ -14,6 +14,9 @@ export class WorkerConfirmationComponent implements OnInit {
   constructor(private service: WorkerConfirmationService, private router: Router) { }
 
   ngOnInit() {
+    /* 
+     * Get a handle on the current confirmation message.
+     */
     this.message = this.service.getConfirmationMessage();
   }
 

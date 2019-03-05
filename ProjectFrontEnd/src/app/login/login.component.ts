@@ -43,7 +43,11 @@ export class LoginComponent {
   tryFacebookLogin(){
     this.authService.doFacebookLogin()
     .then(res => {
-      this.router.navigate(['/user']);
+      /*
+       * Send the user to the getUser() method to get their data from the database.
+       */
+      this.isFound = true;
+      this.getUser(firebase.auth().currentUser.uid.toString());
     })
   }
 
@@ -67,12 +71,13 @@ export class LoginComponent {
     .then(res => {
       console.log("Login --> " + firebase.auth().currentUser.uid.toString());
 
+      /*
+       * Send the user to the getUser() method to get their data from the database.
+       */
       this.getUser(firebase.auth().currentUser.uid.toString());
 
-      
-     
-      this.router.navigate(['/user']);
-      
+      console.log("Firebase ---> " + firebase.auth().currentUser.uid.toString())
+
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
@@ -81,40 +86,52 @@ export class LoginComponent {
   }
 
   getUser(id: string): void{
+    /*
+     * Get the customers from the database.
+     */
     this.customerService.getCustomers().subscribe(data =>  {
       this.customers = data
       
+      /*
+       * For each customer, check if the firebase uid matches the firebase uid of the user trying to log in.
+       */
       for(let i = 0; i < this.customers.length; i++){
+        console.log(this.customers.length)
        if(this.customers[i].firebaseUid == id){
-         this.isFound = true;
+         /*
+          * If it matches, set the user id in local storage to that user and navigate the user.
+          */
+          this.isFound = true;
           console.log("CUSTOMER FOUND ---> " + id)
           localStorage.setItem('CustomerID', this.customers[i].id)
           console.log("Local Storage ---> " + localStorage.getItem('CustomerID'));
+          this.router.navigate(['/listJobs']);
        }
     }
   });
 
+  /*
+   * If the user is not found, check the workers database using the same process.
+   */
   if(this.isFound == false){
-    console.log("Searching workers table.")
-
+   
     this.workerService.getWorkers().subscribe(data => {
       this.workers = data
+      
 
       for(let i = 0; i < this.workers.length; i++){
+        console.log("HERE")
+        console.log("Worker: " + this.workers[i].firebaseUid + "id: " + id)
         if(this.workers[i].firebaseUid == id){
+          console.log("Searching workers table.")
           console.log("WORKER FOUND ---> " + id)
           localStorage.setItem('WorkerID', this.workers[i].id)
           console.log("Local Storage ---> " + localStorage.getItem('WorkerID'));
+          this.router.navigate(['/listJobsWorker']);
         }
       }
     })
   }
-   
-
-   console.log("Trying to login!")
-   /* for(let i = 0; i < this.customers.length; i++){
-      console.log(this.customers[i].id)
-    } */
-
+  
   }
 }
