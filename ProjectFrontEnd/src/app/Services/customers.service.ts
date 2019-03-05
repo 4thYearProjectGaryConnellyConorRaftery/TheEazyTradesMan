@@ -14,6 +14,8 @@ export class CustomersService{
 
      currentWorker: string;
      name: string;
+     base: string = "http://localhost:8080/customers/";
+     //base: string;
 
       // ====================== Helper methods ======================
       /*
@@ -43,17 +45,17 @@ export class CustomersService{
 
      //GET Customers.
      getCustomers(): Observable<Customer[]>{
-         return this.client.get<Customer[]>("http://localhost:8080/customers");
+         return this.client.get<Customer[]>(this.base);
      }//End GET Customers.
 
      //GET Customer.
       getCustomer(id: string): Observable<Customer>{
-        return this.client.get<Customer>("http://localhost:8080/customers/" + id)
+        return this.client.get<Customer>(this.base + id)
       }//End GET Customer.
 
      //POST.
      postCustomer(customer: Customer): Observable<Customer>{
-         return this.client.post<Customer>("http://localhost:8080/customers", customer,{
+         return this.client.post<Customer>(this.base, customer,{
        headers: new HttpHeaders({ 
         'Content-Type': 'application/json'
       })

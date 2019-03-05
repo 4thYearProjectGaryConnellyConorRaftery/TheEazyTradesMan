@@ -10,11 +10,14 @@ import { Worker } from '../models/worker.model';
 export class WorkersService{
     constructor(private client: HttpClient){}
 
+    base: string = "http://localhost:8080/workers/";
+    //base: string;
+
 
     //PUT.
     putWorker(worker: Worker): Observable<Worker>{
-     console.log("This is the path ---> http://localhost:8080/workers/" + worker.id);
-      return this.client.put<Worker>("http://localhost:8080/workers/" + worker.id, worker,{
+     console.log("This is the path ---> " + this.base + worker.id);
+      return this.client.put<Worker>(this.base + worker.id, worker,{
        headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -24,18 +27,18 @@ export class WorkersService{
 
     //GET Workers.
      getWorkers(): Observable<Worker[]>{
-         return this.client.get<Worker[]>("http://localhost:8080/workers");
+         return this.client.get<Worker[]>(this.base);
      }//End GET Workers.
 
 
 //GET Worker.
  getWorker(id: string): Observable<Worker>{
-    return this.client.get<Worker>("http://localhost:8080/workers/" + id)
+    return this.client.get<Worker>(this.base + id)
   }//End GET Worker.
 
   //POST
    postWorker(worker: Worker): Observable<Worker>{
-         return this.client.post<Worker>("http://localhost:8080/workers", worker,{
+         return this.client.post<Worker>(this.base, worker,{
        headers: new HttpHeaders({ 
         'Content-Type': 'application/json'
       })

@@ -14,6 +14,8 @@ export class JobsService{
      requests: string;
      result: string[];
      currentJob: string;
+     base: string = "http://localhost:8080/jobs/";
+     //base: string;
 
      // ====================== Helper methods ======================
      setCurrentJob(id: string): void{
@@ -47,13 +49,13 @@ export class JobsService{
      //GET Jobs.
      getJobs(): Observable<Job[]> {
     
-        return this.client.get<Job[]>("http://localhost:8080/jobs");
+        return this.client.get<Job[]>(this.base);
     }//End GET.
 
     //GET Job.
     getJob(id: string): Observable<Job>{
 
-      return this.client.get<Job>("http://localhost:8080/jobs/" + id)
+      return this.client.get<Job>(this.base + id)
 
     }//End GET Job.
     //POST
@@ -61,7 +63,7 @@ export class JobsService{
     console.log("This is the job.");
     console.log(job);
 
-    return this.client.post<Job>("http://localhost:8080/jobs", job,{
+    return this.client.post<Job>(this.base, job,{
        headers: new HttpHeaders({ 
         'Content-Type': 'application/json'
       })
@@ -72,8 +74,8 @@ export class JobsService{
   //PUT 
    putJob(putJob: Job): Observable<Job>{
    //  console.log("These are the requests --->" + putJob.requests);
-     console.log("This is the path ---> http://localhost:8080/jobs/" + putJob.id);
-      return this.client.put<Job>("http://localhost:8080/jobs/" + putJob.id, putJob,{
+     console.log("This is the path ---> " + this.base + putJob.id);
+      return this.client.put<Job>(this.base + putJob.id, putJob,{
        headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -84,7 +86,7 @@ export class JobsService{
 //DELETE
 deleteJob(deleteJob: Job): Observable<Job>{
 
-  return this.client.delete<Job>("http://localhost:8080/jobs/" + deleteJob.id,{
+  return this.client.delete<Job>(this.base + deleteJob.id,{
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
