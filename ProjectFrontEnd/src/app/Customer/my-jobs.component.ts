@@ -19,6 +19,7 @@ export class MyJobsComponent implements OnInit {
    * Get a handle on all of the jobs.
    */
   jobs: Job[];
+  message: string = "";
  
   /*
    * Used to select the jobs that belong to this user.
@@ -32,6 +33,10 @@ export class MyJobsComponent implements OnInit {
   constructor(private confirmationService: CustomerConfirmationService, private jobService: JobsService,  private router: Router, private geoMap: GeocodeService, private authService: AuthService) { }
 
   ngOnInit() {
+
+    if(localStorage.getItem('CustomerID') == "x"){
+      this.message = "Unauthorized user." // For testing.
+    }
     /*
      * Get a handle on all of the jobs.
      */
