@@ -28,6 +28,8 @@ export class MyRequestsComponent implements OnInit {
   customer: Customer;
   myJobs: Job[] = [];
   x: number = 0; 
+  message: string = "";
+  isWorker; boolean = false;
 
   constructor(
    private workerService: WorkersService,
@@ -38,6 +40,14 @@ export class MyRequestsComponent implements OnInit {
    private customerService: CustomersService) { }
 
   ngOnInit() {
+
+    if(localStorage.getItem('WorkerID') == "x"){
+      this.message = "Only logged in workers can view this page." // For testing.
+      console.log("here" + this.message)
+    }
+    else{
+    this.isWorker = true;
+    
     /*
      * Get a handle on the current worker.
      */
@@ -152,6 +162,8 @@ export class MyRequestsComponent implements OnInit {
 
 
     })
+
+  }
   }
    /* 
     * If the user wants to see the map.

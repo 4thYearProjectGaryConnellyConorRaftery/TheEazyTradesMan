@@ -19,6 +19,8 @@ export class EditProfileComponent implements OnInit {
   private authService: AuthService) { }
 
   getRequests: Worker;
+  message: string = "";
+  isWorker: boolean = false;
   /*
    * Create an empty worker object for the user to fill out.
    */
@@ -40,10 +42,21 @@ export class EditProfileComponent implements OnInit {
   */
 
   ngOnInit() {
+
+    if(localStorage.getItem('WorkerID') == "x"){
+      this.message = "Only logged in workers can view this page." // For testing.
+      console.log("here" + this.message)
+    }
+    else{
+    this.isWorker = true;
+
     this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
       this.worker = data;
       console.log("Got worker ---> " + this.worker.firstName)
     })
+    
+    }
+   
  
   }
 

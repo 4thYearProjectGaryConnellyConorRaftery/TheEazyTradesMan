@@ -20,7 +20,9 @@
   </ul>
 </nav>
 
+<h4>{{message}}</h4>
 
+<div *ngIf="isWorker">
 <div  *ngFor="let job of jobs">
 <div *ngIf="job.complete == false ">
 <div class="container">
@@ -41,6 +43,7 @@
       <button type="button" class="btn btn-success" (click)="getMap(job)">View Map</button>
   </div>
 
+</div>
 </div>
 </div>
 </div>

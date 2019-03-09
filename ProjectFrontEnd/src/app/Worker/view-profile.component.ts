@@ -15,12 +15,22 @@ export class ViewProfileComponent implements OnInit {
   ratingArray: string[] = [];
   amount: number = null;
   sum: number = null;
+  message: string = "";
+  isWorker: boolean = false;
   
   constructor(private workerService: WorkersService,  private router: Router, private authService: AuthService) { }
 
   
 
   ngOnInit() { 
+
+    if(localStorage.getItem('WorkerID') == "x"){
+      this.message = "Only logged in workers can view this page." // For testing.
+      console.log("here" + this.message)
+    }
+    else{
+    this.isWorker = true;
+    
     /* 
      * Get a handle on the current worker to be displayed on the screen.
      */
@@ -34,6 +44,7 @@ export class ViewProfileComponent implements OnInit {
     })
 
      console.log(this.worker.firstName);
+  }
   }
 
   // Navigation.

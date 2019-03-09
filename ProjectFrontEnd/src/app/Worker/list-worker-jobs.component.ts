@@ -27,6 +27,8 @@ export class ListWorkerJobsComponent implements OnInit {
   jobs: Job[];
   listJobs: Job[] = [];
   x: number = 0; 
+  message: string = "";
+  isWorker: boolean = false;
 
   updateJob: Job ={
     id: "",
@@ -54,6 +56,14 @@ export class ListWorkerJobsComponent implements OnInit {
    private customerService: CustomersService) { }
 
   ngOnInit() {
+
+    if(localStorage.getItem('WorkerID') == "x"){
+      this.message = "Only logged in workers can view this page.(try refreshing)" // For testing.
+      console.log("here" + this.message)
+    }
+    else{
+    this.isWorker = true;
+    
     /*
      * Get a handle on all of the jobs.
      */
@@ -73,6 +83,7 @@ export class ListWorkerJobsComponent implements OnInit {
         })
       } */
     })
+  }
   }
   /*
    * When the worker clicks request on a job.

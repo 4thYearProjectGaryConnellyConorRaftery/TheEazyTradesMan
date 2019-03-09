@@ -30,7 +30,7 @@ export class ListJobsComponent implements OnInit {
   ngOnInit() {
 
     if(localStorage.getItem('CustomerID') == "x"){
-      this.message = "Only logged in customers can view this page." // For testing.
+      this.message = "Only logged in customers can view this page.(try refreshing)" // For testing.
     }
     else{
 

@@ -18,6 +18,10 @@
   </ul>
 </nav>
 
+<h4>{{message}}</h4>
+
+<div *ngIf="isWorker">
+
 
 <h1>Your requested Jobs:</h1>
 <div *ngFor="let job of jobs">
@@ -81,4 +85,6 @@
 </div>
 </div>
 </div>
+</div>
+
 </div>
