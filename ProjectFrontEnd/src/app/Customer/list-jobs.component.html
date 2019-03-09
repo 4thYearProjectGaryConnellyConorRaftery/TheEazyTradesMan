@@ -1,16 +1,17 @@
-<nav class = "navbar navbar-default">
+<!--<nav class = "navbar navbar-default">-->
+  <nav class = "navbar fixed-top navbar-inverse bg-primary">
   <ul class = "nav navbar-nav">
      <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navListJobs()">Jobs</button>
+       <button type="button" class="btn btn-link navbar-btn" (click)="navListJobs()">Jobs</button><span class="glyphicon glyphicon-list-alt"></span>
     </li>
       <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navMyJobs()">My Jobs</button>
+       <button type="button" class="btn btn-link navbar-btn" (click)="navMyJobs()">My Jobs</button><span class="glyphicon glyphicon-th-list"></span>
     </li>
      <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navPostJob()">Post a Job</button>
+       <button type="button" class="btn btn-link navbar-btn" (click)="navPostJob()">Post a Job</button><span class="glyphicon glyphicon-pencil"></span>
     </li>
     <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="logout()">Logout</button>
+       <button type="button" class="btn btn-link navbar-btn" (click)="logout()">Logout</button><span class="glyphicon glyphicon-off"></span>
     </li>
   </ul>
 </nav>
