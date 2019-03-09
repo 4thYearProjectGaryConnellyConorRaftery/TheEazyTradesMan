@@ -16,7 +16,10 @@
 </nav>
 
 
+<h4>{{message}}</h4>
 
+
+<div *ngIf="isCustomer">
 <form #postJobForm="ngForm" (ngSubmit)="update(updateJob)">
   <!-- (ngSubmit)="postJob(postJobForm)" ;;;;;; Removed from above -->
 <div class = "panel panel-primary">
@@ -70,10 +73,14 @@
    <button type="submit" class="btn btn-primary">Update</button>
   </div>
 
-    </div>
+</div>
+
+    
 
     </form>
 
-    <a href="listJobs">Home</a>
+  </div>
+
+   <!-- <a href="listJobs">Home</a> -->
 
     {{postJobForm.value | json}}

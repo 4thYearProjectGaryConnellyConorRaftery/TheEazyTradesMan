@@ -16,6 +16,8 @@ export class PostJobComponent implements OnInit {
 
   constructor(private jobService: JobsService, private confirmationService: CustomerConfirmationService,  private router: Router, private authService: AuthService) { }
 
+  message: string = "";
+  isCustomer: boolean = false;
   /*
    * Create a blank job object for the user to fill out.
    */
@@ -35,7 +37,15 @@ export class PostJobComponent implements OnInit {
  
 
   ngOnInit() { 
-    /*
+
+    if(localStorage.getItem('CustomerID') == "x"){
+      this.message = "Only logged in customers can view this page." // For testing.
+      console.log("here" + this.message)
+    }
+    else{
+    this.isCustomer = true;
+
+     /*
      * Get a handle on the current user id and set it as a field for the job.
      */
     this.job.customer = localStorage.getItem('CustomerID'); // Hard coded for now.
@@ -52,6 +62,8 @@ export class PostJobComponent implements OnInit {
     //console.log(dd + "---" + mm + "---" + yyyy)
     this.job.date = (dd + "/" + mm + "/" + yyyy) /// TODO.
     this.job.accepted = false;
+    }
+   
   }
 
    /*

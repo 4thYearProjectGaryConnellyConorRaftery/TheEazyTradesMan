@@ -22,6 +22,8 @@ export class EditJobComponentComponent implements OnInit {
 
   currentJob: Job;
   id: string;
+  message: string = "";
+  isCustomer: boolean = false;
   /* 
    * Create an empty job object to polulate from the form.
    */
@@ -43,11 +45,26 @@ export class EditJobComponentComponent implements OnInit {
 
   ngOnInit() {
 
+    if(localStorage.getItem('CustomerID') == "x"){
+      this.message = "Only logged in customers can view this page." // For testing.
+      console.log("here" + this.message)
+    }
+    else{
+    this.isCustomer = true;
+    
+
     this.id = this.jobService.getCurrentJob()
 
     this.jobService.getJob(this.id).subscribe(data => {
       this.updateJob = data;
     })
+     if(localStorage.getItem('CustomerID') == "x"){
+      this.message = "Only logged in customers can view this page." // For testing.
+    }
+
+    console.log("no")
+  
+  }
 
 
   }

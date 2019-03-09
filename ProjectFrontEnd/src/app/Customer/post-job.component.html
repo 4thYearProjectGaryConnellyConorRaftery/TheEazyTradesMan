@@ -16,6 +16,11 @@
 </nav>
 
 
+<h4>{{message}}</h4>
+
+
+<div *ngIf="isCustomer">
+
 <form #postJobForm="ngForm" (ngSubmit)="postJob(job)">
 <div class = "panel panel-primary">
   <div class="panel-heading">
@@ -54,6 +59,8 @@
     </div>
 
     </form>
+
+    </div>
 
     {{postJobForm.value | json}}
 

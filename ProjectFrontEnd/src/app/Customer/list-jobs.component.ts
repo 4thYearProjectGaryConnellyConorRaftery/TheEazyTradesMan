@@ -16,6 +16,7 @@ export class ListJobsComponent implements OnInit {
 
   firstName: string = "";
   secondName: string = "";
+  message: string = "";
   customer: Customer;
   jobs: Job[];
   listJobs: Job[] = [];
@@ -27,6 +28,13 @@ export class ListJobsComponent implements OnInit {
   private customerService: CustomersService) { }
 
   ngOnInit() {
+
+    if(localStorage.getItem('CustomerID') == "x"){
+      this.message = "Only logged in customers can view this page." // For testing.
+    }
+    else{
+
+    
     /*
     * Get a handle on all of the jobs.
      */
@@ -48,6 +56,8 @@ export class ListJobsComponent implements OnInit {
 
 
       });
+
+    }
   }
 
   /* 

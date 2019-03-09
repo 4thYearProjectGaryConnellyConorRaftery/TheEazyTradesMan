@@ -41,6 +41,12 @@ export class RegisterComponent {
   ) {
     this.createForm();
    }
+
+   ngOnInit() {
+     console.log("INIT.")
+    localStorage.setItem('CustomerID', "x")
+    localStorage.setItem('WorkerID', "x")
+   }
    /*
     * Create blank Customer and Worker objects to be filled out by the user.
     */

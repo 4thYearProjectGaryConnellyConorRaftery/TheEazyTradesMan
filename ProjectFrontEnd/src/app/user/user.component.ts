@@ -42,6 +42,22 @@ export class UserComponent implements OnInit{
         this.createForm(this.user.name);
       }
     })
+
+    if(localStorage.getItem('WorkerID') != "x"){
+      this.router.navigate(["/listJobsWorker"])
+    }
+
+    if(localStorage.getItem('CustomerID') != "x"){
+      this.router.navigate(["/listJobs"])
+    }
+
+    if(localStorage.getItem('CustomerID') != "x" && localStorage.getItem('WorkerID') != "x"){
+      this.router.navigate(["/login"])
+    }
+
+    if(localStorage.getItem('CustomerID') == "x" && localStorage.getItem('WorkerID') == "x"){
+      this.router.navigate(["/login"])
+    }
   }
 
   createForm(name) {

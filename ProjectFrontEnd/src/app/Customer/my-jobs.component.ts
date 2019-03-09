@@ -35,8 +35,11 @@ export class MyJobsComponent implements OnInit {
   ngOnInit() {
 
     if(localStorage.getItem('CustomerID') == "x"){
-      this.message = "Unauthorized user." // For testing.
+      this.message = "Only logged in customers can view this page." // For testing.
     }
+    else{
+
+    
     /*
      * Get a handle on all of the jobs.
      */
@@ -44,6 +47,8 @@ export class MyJobsComponent implements OnInit {
       this.jobs = data
       this.jobs.reverse();
     });
+
+  }
   }
 
    /*

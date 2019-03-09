@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -33,6 +33,11 @@ export class LoginComponent {
     this.createForm();
   }
 
+  ngOnInit() {
+    console.log("INIT.")
+   localStorage.setItem('CustomerID', "x")
+   localStorage.setItem('WorkerID', "x")
+  }
   createForm() {
     this.loginForm = this.fb.group({
       email: ['', Validators.required ],
