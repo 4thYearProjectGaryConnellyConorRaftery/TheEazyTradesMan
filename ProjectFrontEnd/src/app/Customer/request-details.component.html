@@ -28,9 +28,9 @@
   <div class = "panel-body">
     <h3>Trade: {{worker.trade}}</h3>
     <h3>Rating: {{worker.displayedRating}}</h3>
-    <button type="button" class="btn btn-success" (click)="acceptRequest(worker.id)">Accept</button>
-    <button type="button" class="btn btn-primary" (click)="viewProfile(worker.id)">View Profile</button>
-    <button type="button" class="btn btn-primary" (click)="jobComplete(worker.id)">Job Complete</button>
+    <button type="button" class="btn btn-success" (click)="acceptRequest(worker.id)">Accept <span class="glyphicon glyphicon-wrench"></span></button>
+    <button type="button" class="btn btn-primary" (click)="viewProfile(worker.id)">View Profile <span class="glyphicon glyphicon-user"></span></button>
+    <button type="button" class="btn btn-success" (click)="jobComplete(worker.id)">Job Complete <span class="glyphicon glyphicon-thumbs-up"></span></button>
   </div>
 
 </div>

@@ -28,7 +28,7 @@
  
 
   <div class="panel-heading">
-   <h3>Posted on: {{job.date}}</h3>
+   <h3>Posted on: {{job.date}} </h3><span class="glyphicon glyphicon-calendar"></span>
   </div>
 
   <div class = "panel-body">
@@ -40,8 +40,8 @@
       <h3>Is completed? </h3><h4>{{job.complete}}</h4>
        <h3>Is accepted? </h3><h4>{{job.accepted}}</h4>
       <!-- <h3>Requests: </h3><h4>{{job.requests}}</h4> -->
-      <button type="button" class="btn btn-success" (click)="requests(job)">View Requests</button>
-      <button type="button" class="btn btn-success" (click)="getMap(job)">View Map</button>
+      <button type="button" class="btn btn-success" (click)="requests(job)">View Requests <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+      <button type="button" class="btn btn-success" (click)="getMap(job)">View Map <span class="glyphicon glyphicon-map-marker"></span></button>
   </div>
 
 
@@ -49,8 +49,8 @@
     <!-- TODO -->
   <!-- <a href="editJob/0">Edit</a> -->
    
-   <button class="btn btn-primary" (click) = "edit(job)">Edit</button>
-   <button class="btn btn-danger" (click) = "remove(job)">Remove Job</button>
+   <button class="btn btn-primary" (click) = "edit(job)">Edit <span class="glyphicon glyphicon-edit"></span></button>
+   <button class="btn btn-danger" (click) = "remove(job)">Remove Job <span class="glyphicon glyphicon-trash"></span></button>
   
   </div>
   </div>
