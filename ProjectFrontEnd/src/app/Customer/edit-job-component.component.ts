@@ -25,7 +25,7 @@ export class EditJobComponentComponent implements OnInit {
   /* 
    * Create an empty job object to polulate from the form.
    */
-  updateJob: Job ={
+  updateJob: Job;/* ={
     id: null,
     trade: "",
     description: "",
@@ -38,9 +38,18 @@ export class EditJobComponentComponent implements OnInit {
     contact: ""
 
   }
+  */
  
 
   ngOnInit() {
+
+    this.id = this.jobService.getCurrentJob()
+
+    this.jobService.getJob(this.id).subscribe(data => {
+      this.updateJob = data;
+    })
+
+
   }
 
 
@@ -52,34 +61,56 @@ export class EditJobComponentComponent implements OnInit {
     /* 
      * Get a handle on the id of the job they are editing.
      */
-    this.id = this.jobService.getCurrentJob()
+  //  this.id = this.jobService.getCurrentJob()
+
+  this.jobService.putJob(job).subscribe(data => {
+    console.log(data)
+
+    this.confirmationService.setConfirmationMessage("Your Job has been updated!")
+    this.router.navigate(["/customerConfirmation"]);
+  })
+
+
+
+
+
+
+
+
     /* 
      * Get a handle on the current Job using its id.
      */
-    this.jobService.getJob(this.id).subscribe(data => {
-      this.currentJob = data;
+ //   this.jobService.getJob(this.id).subscribe(data => {
+ //     this.currentJob = data;
 
       /*
        * Update the fields of the Job with the data they filed into the forms. 
        */
 
-      this.currentJob.trade = job.trade;
-      this.currentJob.description = job.description;
-      this.currentJob.location = job.location;
-      this.currentJob.contact = job.contact;
+  //    this.currentJob.trade = job.trade;
+  //    this.currentJob.description = job.description;
+  //    this.currentJob.location = job.location;
+  //    this.currentJob.contact = job.contact;
 
       /* 
        * Send the updated job through the web api to be updated on the database.
        */
-      this.jobService.putJob(this.currentJob).subscribe(data => {
-        console.log(data)
+   //   this.jobService.putJob(this.currentJob).subscribe(data => {
+   //     console.log(data)
         /*
          * Set the confirmation message and navigate the user.
          */
-        this.confirmationService.setConfirmationMessage("Your Job has been updated!")
-        this.router.navigate(["/customerConfirmation"]);
-      })
-    })
+    //    this.confirmationService.setConfirmationMessage("Your Job has been updated!")
+     //   this.router.navigate(["/customerConfirmation"]);
+    //  })
+  //  })
+
+
+
+
+
+
+
   }
 
 
