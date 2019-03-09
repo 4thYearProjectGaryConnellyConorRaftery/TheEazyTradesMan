@@ -1,15 +1,21 @@
-<nav class = "navbar navbar-default">
- <ul class = "nav navbar-nav">
-     <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navListJobs()">List Jobs</button>
-    </li>
-      <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navMyProfile()">My Profile</button>
-    </li>
-     <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navEditProfile()">Edit Profile</button>
-    </li>
-  </ul>
-</nav>
+<nav class = "navbar fixed-top navbar-inverse bg-primary">
+    <ul class = "nav navbar-nav">
+        <li>
+          <button type="button" class="btn btn-link navbar-btn" (click)="navListJobs()">List Jobs <span class="glyphicon glyphicon-list-alt"></span></button>
+       </li>
+         <li>
+          <button type="button" class="btn btn-link navbar-btn" (click)="navMyProfile()">My Profile <span class="glyphicon glyphicon-user"></span></button>
+       </li>
+        <li>
+          <button type="button" class="btn btn-link navbar-btn" (click)="navEditProfile()">Edit Profile <span class="glyphicon glyphicon-edit"></span></button>
+       </li>
+       <li>
+          <button type="button" class="btn btn-link navbar-btn" (click)="navMyRequests()">My Jobs <span class="glyphicon glyphicon-th-list"></span></button>
+       </li>
+        <li>
+          <button type="button" class="btn btn-link navbar-btn" (click)="logout()">Logout <span class="glyphicon glyphicon-off"></span></button>
+       </li>
+     </ul>
+   </nav>
 
 <h1>{{message}}</h1>

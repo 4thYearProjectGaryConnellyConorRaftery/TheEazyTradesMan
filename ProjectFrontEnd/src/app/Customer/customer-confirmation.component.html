@@ -1,16 +1,20 @@
-<nav class = "navbar navbar-default">
-  <ul class = "nav navbar-nav">
-     <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navListJobs()">Jobs</button>
-    </li>
-      <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navMyJobs()">My Jobs</button>
-    </li>
-     <li>
-       <button type="button" class="btn btn-link navbar-btn" (click)="navPostJob()">Post a Job</button>
-    </li>
-  </ul>
-</nav>
+<!--<nav class = "navbar navbar-default">-->
+    <nav class = "navbar fixed-top navbar-inverse bg-primary">
+        <ul class = "nav navbar-nav">
+           <li>
+             <button type="button" class="btn btn-link navbar-btn" (click)="navListJobs()">Jobs <span class="glyphicon glyphicon-list-alt"></span></button>
+          </li>
+            <li>
+             <button type="button" class="btn btn-link navbar-btn" (click)="navMyJobs()">My Jobs <span class="glyphicon glyphicon-th-list"></span></button>
+          </li>
+           <li>
+             <button type="button" class="btn btn-link navbar-btn" (click)="navPostJob()">Post a Job <span class="glyphicon glyphicon-pencil"></span></button>
+          </li>
+          <li>
+             <button type="button" class="btn btn-link navbar-btn" (click)="logout()">Logout <span class="glyphicon glyphicon-off"></span></button>
+          </li>
+        </ul>
+      </nav>
 
 
 <h1>{{message}}</h1>

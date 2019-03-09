@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkerConfirmationService } from '../Services/workerConfirmation.service';
 import { Router, Params } from '@angular/router';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-worker-confirmation',
@@ -11,7 +12,7 @@ export class WorkerConfirmationComponent implements OnInit {
 
   message: string;
 
-  constructor(private service: WorkerConfirmationService, private router: Router) { }
+  constructor(private authService: AuthService, private service: WorkerConfirmationService, private router: Router) { }
 
   ngOnInit() {
     /* 
@@ -31,6 +32,21 @@ export class WorkerConfirmationComponent implements OnInit {
 
    navEditProfile(): void{
     this.router.navigate(["/editProfile"]);
+  }
+
+  navMyRequests(): void{
+    this.router.navigate(["/myrequests"]);
+  }
+
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('WorkerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
   }
 
   // End Navigation.
