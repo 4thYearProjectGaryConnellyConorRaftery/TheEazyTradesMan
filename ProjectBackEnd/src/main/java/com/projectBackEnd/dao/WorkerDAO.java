@@ -43,7 +43,7 @@ public class WorkerDAO {
 	 * Gets a handle on the Worker object in the database that has a
 	 * particular id. If such a Worker exists, it is mapped to the Worker
 	 * class and returned as a Worker object.
-	 * @param id
+	 * @param id, the id of the Worker object to be returned.
 	 * @return Worker, the Worker object, if one exists in the database with the same id as the given parameter.
 	 */
 	public Worker findById(final String id) {
@@ -55,7 +55,7 @@ public class WorkerDAO {
 	 * Uses the Entity manager to begin a transaction, and merges the existing 
 	 * Worker in the database with the Worker object that was passed in as a parameter,
 	 * then ends the Entity manager transaction.
-	 * @param worker
+	 * @param worker, the Worker object to be updated.
 	 */
 	public void update(final Worker worker) {
 		em.getTransaction().begin();
@@ -67,7 +67,7 @@ public class WorkerDAO {
 	 * Allows for the creation of a new Worker object in the mongo database.
 	 * Uses Entity manager to begin a transaction. and persists the Worker
 	 * object that was passed in as a parameter before closing the transaction.
-	 * @param worker
+	 * @param worker, the Worker object to be created.
 	 */
 	public void create(final Worker worker) {
 		em.getTransaction().begin();
@@ -79,7 +79,7 @@ public class WorkerDAO {
 	 * Allows for the deletion of Worker objects in the mongo database.
 	 * Uses Entity manager to begin a transaction, then removes the Worker
 	 * object that was passed in as a parameter before closing the transaction.
-	 * @param worker
+	 * @param worker, the Worker object to be deleted.
 	 */
 	public void delete(final Worker worker) {
 		em.getTransaction().begin();

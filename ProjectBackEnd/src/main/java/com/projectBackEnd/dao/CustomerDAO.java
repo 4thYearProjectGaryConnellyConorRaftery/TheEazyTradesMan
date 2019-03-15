@@ -45,7 +45,7 @@ public class CustomerDAO {
 	 * Gets a handle on the Customer object in the database that has a
 	 * particular id. If such a Customer exists, it is mapped to the Customer
 	 * class and returned as a Customer object.
-	 * @param id
+	 * @param id, the id of the Customer object to be returned.
 	 * @return Customer, the Customer object, if one exists in the database with the same id as the given parameter.
 	 */
 	public Customer findById(final String id) {
@@ -57,7 +57,7 @@ public class CustomerDAO {
 	 * Uses the Entity manager to begin a transaction, and merges the existing 
 	 * Customer in the database with the Customer object that was passed in as a parameter,
 	 * then ends the Entity manager transaction.
-	 * @param customer
+	 * @param customer, the Customer object to be updated.
 	 */
 	public void update(final Customer customer) {
         em.getTransaction().begin();
@@ -69,7 +69,7 @@ public class CustomerDAO {
 	 * Allows for the creation of a new Customer object in the mongo database.
 	 * Uses Entity manager to begin a transaction. and persists the Customer
 	 * object that was passed in as a parameter before closing the transaction.
-	 * @param customer
+	 * @param customer, the Customer object to be updated.
 	 */
 	public void create(final Customer customer) {
         em.getTransaction().begin();
@@ -81,7 +81,7 @@ public class CustomerDAO {
 	 * Allows for the deletion of Customer objects in the mongo database.
 	 * Uses Entity manager to begin a transaction, then removes the Customer
 	 * object that was passed in as a parameter before closing the transaction.
-	 * @param customer
+	 * @param customer, the Customer object to be deleted.
 	 */
 	public void delete(final Customer customer) {
         em.getTransaction().begin();

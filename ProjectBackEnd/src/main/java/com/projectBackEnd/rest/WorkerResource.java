@@ -70,7 +70,7 @@ public class WorkerResource {
 	 * The manually maps the existing Worker to the fields in the Worker that was passed in 
 	 * as a parameter, using the Getter and Setter methods.
 	 * @param id, the id of the Worker object to be modified.
-	 * @param worker
+	 * @param worker, the Worker object to be updated.
 	 * @return Response, the HTTP status Response indicating whether the transaction succeeded or not.
 	 */
 	@PUT

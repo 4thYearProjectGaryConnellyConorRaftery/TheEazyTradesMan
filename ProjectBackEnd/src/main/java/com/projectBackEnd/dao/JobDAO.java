@@ -44,7 +44,7 @@ public class JobDAO {
 	 * Gets a handle on the Job object in the database that has a
 	 * particular id. If such a Job exists, it is mapped to the Job
 	 * class and returned as a Job object.
-	 * @param id
+	 * @param id, the id of the Job to be returned.
 	 * @return Job, the Job object, if one exists in the database with the same id as the given parameter.
 	 */
 	public Job findById(final String id) {
@@ -56,7 +56,7 @@ public class JobDAO {
 	 * Uses the Entity manager to begin a transaction, and merges the existing 
 	 * Job in the database with the Job object that was passed in as a parameter,
 	 * then ends the Entity manager transaction.
-	 * @param job
+	 * @param job, the Job object to be updated.
 	 */
 	public void update(final Job job) {
         em.getTransaction().begin();
@@ -68,7 +68,7 @@ public class JobDAO {
 	 * Allows for the creation of a new Job object in the mongo database.
 	 * Uses Entity manager to begin a transaction. and persists the Job
 	 * object that was passed in as a parameter before closing the transaction.
-	 * @param job
+	 * @param job, the Job object to be created.
 	 */
 	public void create(final Job job) {
         em.getTransaction().begin();
@@ -80,7 +80,7 @@ public class JobDAO {
 	 * Allows for the deletion of Job objects in the mongo database.
 	 * Uses Entity manager to begin a transaction, then removes the Job
 	 * object that was passed in as a parameter before closing the transaction.
-	 * @param job
+	 * @param job, the Job object to be deleted.
 	 */
 	public void delete(final Job job) {
         em.getTransaction().begin();
