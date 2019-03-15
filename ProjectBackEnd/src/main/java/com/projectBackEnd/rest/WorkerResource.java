@@ -16,19 +16,46 @@ import javax.ws.rs.core.Response;
 import com.projectBackEnd.dao.WorkerDAO;
 import com.projectBackEnd.model.Worker;
 
+/**
+ * WorkerResource class is responsible for the RESTful interactions with Worker objects.
+ * This class uses Jax-rs to create java methods that can be mapped to HTTP methods.
+ * The HTTP methods that interact with this class allow for CRUD operations to be performed
+ * on the Worker objects over HTTP.
+ * @author Gary Connelly
+ *
+ */
+
 @ApplicationScoped
 @Path("workers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class WorkerResource {
+	
+	/**
+	 * Inject a WorkerDAO class to allow this class to indirectly communicate 
+	 * with the database.
+	 */
 	@Inject
 	private WorkerDAO workerDAO;
 
+	/**
+	 * Gets a handle on all of the Worker objects that exist in the database and
+	 * returns them in a list in JSON format. This list can then be consumed and read
+	 * by any client subscribed to this web service. 
+	 * @return Response, the HTTP Response object containing the list of Workers.
+	 */
 	@GET
 	public Response getAll() {
 		return Response.ok(workerDAO.getAll()).build();
 	}
 	
+	/**
+	 * Gets a handle on the Worker object, if one exists with the given id that
+	 * is passed in as a parameter. It then returns that Worker in the form of 
+	 * a HTTP Response object.
+	 * @param id, the id of the Worker object that is to be returned.
+	 * @return Response, the HTTP Response object containing the Worker with the given id.
+	 */
 	@GET
     @Path("{id}")
     public Response getWorker(@PathParam("id") final String id) {
@@ -37,6 +64,15 @@ public class WorkerResource {
         return Response.ok(worker).build();
     }
 	
+	/**
+	 * Allows an existing Worker object to be modified. Takes the id of the Worker 
+	 * to be modified, as well as a new Worker object that contains the updated information.
+	 * The manually maps the existing Worker to the fields in the Worker that was passed in 
+	 * as a parameter, using the Getter and Setter methods.
+	 * @param id, the id of the Worker object to be modified.
+	 * @param worker
+	 * @return Response, the HTTP status Response indicating whether the transaction succeeded or not.
+	 */
 	@PUT
     @Path("{id}")
     public Response update(@PathParam("id") final String id, final Worker worker) {
@@ -58,6 +94,12 @@ public class WorkerResource {
 		return Response.ok().build();
 	}
 
+	/**
+	 * Allows for the creation of a Worker object on the database, using the 
+	 * Worker object passed in as a parameter.
+	 * @param worker, the Worker object to be created.
+	 * @return Response, the HTTP status Response indicating whether the transaction succeeded or not.
+	 */
 	@POST
 	public Response create(final Worker worker) {
 		workerDAO.create(worker);
@@ -65,6 +107,13 @@ public class WorkerResource {
 		return Response.ok().build();
 	}
 	
+	/**
+	 * Allows for the deletion of a Worker object on the database, using the 
+	 * Worker object passed in as a parameter, and the id parameter to identify which
+	 * Worker needs to be deleted.
+	 * @param id, the id of the Worker object to be deleted.
+	 * @return Response, the HTTP status Response indicating whether the transaction succeeded or not.
+	 */
 	 @DELETE
 	    @Path("{id}")
 	    public Response delete(@PathParam("id") final String id) {

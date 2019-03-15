@@ -20,26 +20,49 @@ import com.projectBackEnd.model.Customer;
 import com.projectBackEnd.dao.JobDAO;
 import com.projectBackEnd.model.Job;
 
+/**
+ * JobResource class is responsible for the RESTful interactions with Job objects.
+ * This class uses Jax-rs to create java methods that can be mapped to HTTP methods.
+ * The HTTP methods that interact with this class allow for CRUD operations to be performed
+ * on the Job objects over HTTP.
+ * @author Gary Connelly
+ *
+ */
+
 @ApplicationScoped
 @Path("jobs")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class JobResource {
 	
+
+	/**
+	 * Inject a JobDAO class to allow this class to indirectly communicate 
+	 * with the database.
+	 */
 	@Inject
 	private JobDAO jobDAO;
 	
+	/**
+	 * Gets a handle on all of the Job objects that exist in the database and
+	 * returns them in a list in JSON format. This list can then be consumed and read
+	 * by any client subscribed to this web service. 
+	 * @return Response, the HTTP Response object containing the list of Jobs.
+	 */
 	@GET
 	public Response getAll() {
 		
-		//return Response.ok(jobDAO.getAll()).build();
 		return Response.ok(jobDAO.getAll()).build();
-		/*
-		.header("Access-Control-Allow-Origin", "*")
-		.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
-		.allow("OPTIONS")*/
+		
 	}
 	
+	/**
+	 * Gets a handle on the Job object, if one exists with the given id that
+	 * is passed in as a parameter. It then returns that Job in the form of 
+	 * a HTTP Response object.
+	 * @param id, the id of the Job object that is to be returned.
+	 * @return Response, the HTTP Response object containing the Job with the given id.
+	 */
 	@GET
     @Path("{id}")
     public Response getCustomer(@PathParam("id") final String id) {
@@ -48,6 +71,15 @@ public class JobResource {
         return Response.ok(job).build();
     }
 	
+	/**
+	 * Allows an existing Job object to be modified. Takes the id of the Job 
+	 * to be modified, as well as a new Job object that contains the updated information.
+	 * The manually maps the existing Job to the fields in the Job that was passed in 
+	 * as a parameter, using the Getter and Setter methods.
+	 * @param id, the id of the Job object to be modified.
+	 * @param job, the new Job object with the updated information.
+	 * @return Response, the HTTP status Response indicating whether the transaction succeeded or not.
+	 */
 	@PUT
     @Path("{id}")
     public Response update(@PathParam("id") final String id, final Job job) {
@@ -68,6 +100,12 @@ public class JobResource {
         return Response.ok().build();
     }
 	
+	/**
+	 * Allows for the creation of a Job object on the database, using the 
+	 * Job object passed in as a parameter.
+	 * @param job, the Job object to be created.
+	 * @return Response, the HTTP status Response indicating whether the transaction succeeded or not.
+	 */
 	@POST
     public Response create(final Job job) {
 		System.out.println("Inside post jobs");
@@ -77,6 +115,13 @@ public class JobResource {
         return Response.ok().build();
     }
 	
+	/**
+	 * Allows for the deletion of a Job object on the database, using the 
+	 * Job object passed in as a parameter, and the id parameter to identify which
+	 * Job needs to be deleted.
+	 * @param id, the id of the Job object to be deleted.
+	 * @return Response, the HTTP status Response indicating whether the transaction succeeded or not.
+	 */
 	@DELETE
 	@Path("{id}")
 	public Response delete(@PathParam("id") final String id) {
