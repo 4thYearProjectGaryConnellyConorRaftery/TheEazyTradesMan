@@ -7,9 +7,19 @@ import javax.persistence.NamedQuery;
 
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * The object representing a Worker. Worker objects will get persisted to the mongo database.
+ * @author Gary
+ *
+ */
+
 @Entity
 @NamedQuery(name = "Worker.findAll", query = "SELECT w FROM Worker w")
 public class Worker {
+	
+	/**
+	 * Getter and setter methods for each field, including unique ID generators.
+	 */
 	
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -28,10 +38,6 @@ public class Worker {
 	private String jobsRequested;
 	
 	private String jobsAccepted;
-	
-	
-	
-	
 	
 	
 	public String getJobsAccepted() {
@@ -120,6 +126,12 @@ public class Worker {
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
+	
+	/**
+	 * ToString method that prints out all the fields with the values for each field for a particular 
+	 * instance.
+	 * @return String, the fields and values for the fields.
+	 */
 	@Override
 	public String toString() {
 		return "Worker [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", address=" + address

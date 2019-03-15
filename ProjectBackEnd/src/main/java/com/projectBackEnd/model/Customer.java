@@ -9,9 +9,20 @@ import javax.persistence.NamedQuery;
 
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * The object representing a Customer. Customer objects will get persisted to the mongo database.
+ * @author Gary
+ *
+ */
+
 @Entity
 @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
 public class Customer {
+	
+	/**
+	 * Pojo object that only contains getter and setter methods for each field.
+	 */
+	
 
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -73,6 +84,12 @@ public class Customer {
 		this.age = age;
 	}
 
+	/**
+	 * ToString method that prints out all the fields with the values for each field for a particular 
+	 * instance.
+	 * @return String, the fields and values for the fields.
+	 */
+	
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", address="
