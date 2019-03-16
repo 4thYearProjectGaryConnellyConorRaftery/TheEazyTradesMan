@@ -3,6 +3,7 @@ import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { GeocodeService } from './geocode.service';
 import { Location } from './location-model';
+import { Router, Params } from '@angular/router';
 
 
 @Component({
@@ -18,10 +19,26 @@ export class GmapComponent implements OnInit {
   constructor(
     private geocodeService: GeocodeService,
     private ref: ChangeDetectorRef,
+    private router: Router
   ) {}
   
   ngOnInit() {
     this.showLocation();
+  }
+
+  back(){
+    console.log("Customer ID --->" + localStorage.getItem('CustomerID'))
+    console.log("Worker ID --->" + localStorage.getItem('WorkerID'))
+
+    if(localStorage.getItem('CustomerID') != "x"){
+      this.router.navigate(["/listJobs"])
+    }
+    else if(localStorage.getItem('WorkerID') != "x"){
+      this.router.navigate(["/listJobsWorker"])
+    }
+    /*else{
+      this.router.na
+    }*/
   }
 
   showLocation() {

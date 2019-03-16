@@ -81,7 +81,7 @@ export class PostJobComponent implements OnInit {
       /*
        * Set the confirmation message and navigate the user.
        */
-      this.confirmationService.setConfirmationMessage("Your Job had been posted!");
+      this.confirmationService.setConfirmationMessage("Your Job has been posted!");
       this.router.navigate(["/customerConfirmation"]);
     });
   }

@@ -21,6 +21,11 @@ export class WorkerConfirmationComponent implements OnInit {
     this.message = this.service.getConfirmationMessage();
   }
 
+  ok(): void{
+    this.router.navigate(["/listJobsWorker"]);
+  }
+
+
    // Navigation.
   navListJobs(): void{
     this.router.navigate(["/listJobsWorker"]);

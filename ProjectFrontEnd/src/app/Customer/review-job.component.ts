@@ -31,6 +31,7 @@ export class ReviewJobComponent implements OnInit {
   amount: number = null;
   sum: number = null;
   total: string = "";
+  errorMessage: string = "";
   /*
    * Get a handle on the current worker the user is trying to view.
    */
@@ -42,6 +43,11 @@ export class ReviewJobComponent implements OnInit {
 
   showRating(){
     console.log(this.rating)
+
+    //if
+    if(this.rating > 0 && this.rating <= 100){
+
+    
      /*
      * Get a handle on the current worker the user is trying to rate.
      */
@@ -75,7 +81,7 @@ export class ReviewJobComponent implements OnInit {
         this.jobService.getJob(this.currentJobId).subscribe(data => {
           this.currentJob = data
           this.currentJob.complete = true;
-          console.log("Yurt")
+         
           this.jobService.putJob(this.currentJob).subscribe(data =>{
             console.log(data)
             //this.router.navigate(["/listJobs"])
@@ -86,6 +92,13 @@ export class ReviewJobComponent implements OnInit {
       })
 
     })
+  }
+    //end if
+    else{
+      this.confirmation.setConfirmationMessage("Error: Rating must be between 0 and 100.")
+        this.router.navigate(["/customerConfirmation"]);
+
+    }
   }
 
   cancel(){
