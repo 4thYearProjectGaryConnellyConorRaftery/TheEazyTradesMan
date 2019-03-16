@@ -37,10 +37,21 @@ export class WorkerProfileComponent implements OnInit {
     
     this.workerService.getWorker(this.workerid).subscribe(data =>{
       this.worker = data
+      console.log("RATING --->" + this.worker.rating)
       this.ratingArray = this.worker.rating.split(",")
       this.amount = parseInt(this.ratingArray[0])
       this.sum = parseInt(this.ratingArray[1]) 
-      this.worker.displayedRating = (this.sum/this.amount).toFixed().toString()
+
+      if(this.amount == 0 || this.sum == 0){
+        this.worker.displayedRating = "0"
+      }
+      else{
+
+       
+          this.worker.displayedRating = (this.sum/this.amount).toFixed().toString()
+        
+      
+      }
       
     })
   }

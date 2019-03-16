@@ -36,11 +36,19 @@ export class ViewProfileComponent implements OnInit {
      */
     this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data =>{
       this.worker = data
-
+     
       this.ratingArray = this.worker.rating.split(",")
+     
       this.amount = parseInt(this.ratingArray[0])
       this.sum = parseInt(this.ratingArray[1]) 
-      this.worker.displayedRating = (this.sum/this.amount).toFixed().toString()
+
+      if(this.amount == 0 || this.sum == 0){
+        this.worker.displayedRating = "0"
+      }
+      else{
+        this.worker.displayedRating = (this.sum/this.amount).toFixed().toString()
+      }
+      
     })
 
      console.log(this.worker.firstName);
