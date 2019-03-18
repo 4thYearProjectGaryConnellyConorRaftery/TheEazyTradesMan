@@ -1,6 +1,7 @@
 package com.projectBackEnd.rest;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -25,7 +26,8 @@ import com.projectBackEnd.model.Worker;
  *
  */
 
-@ApplicationScoped
+//@ApplicationScoped
+@RequestScoped
 @Path("workers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

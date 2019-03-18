@@ -48,13 +48,13 @@ export class JobsService{
 
      //GET Jobs.
      getJobs(): Observable<Job[]> {
-    
+        console.log("Get jobs.")
         return this.client.get<Job[]>(this.base);
     }//End GET.
 
     //GET Job.
     getJob(id: string): Observable<Job>{
-
+     // console.log("---> " + )
       return this.client.get<Job>(this.base + id)
 
     }//End GET Job.
