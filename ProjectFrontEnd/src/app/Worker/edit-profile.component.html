@@ -30,7 +30,16 @@
   <div class = "panel-body">
     <div class="form-group">
       <label for="firstName">First Name</label>
-      <input id="firstName" name="firstName" [(ngModel)]="worker.firstName" type="text" class="form-control" #firstNameVar="ngModel">
+      <input id="firstName" name="firstName" [(ngModel)]="worker.firstName" type="text" class="form-control" required pattern="^[A-Za-z -]+$" #firstNameVar="ngModel">
+    </div>
+    <div *ngIf="firstNameVar.invalid && (firstNameVar.dirty || firstNameVar.touched)"
+          class="alert alert-danger">
+          <div *ngIf="firstNameVar.errors.required">
+            First name is required.
+          </div>
+          <div *ngIf="firstNameVar.errors.pattern">
+            Only characters A-Z allowed.
+          </div>
     </div>
 
     <div class="form-group">
