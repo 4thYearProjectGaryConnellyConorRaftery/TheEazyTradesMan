@@ -26,8 +26,8 @@ import com.projectBackEnd.model.Worker;
  *
  */
 
-//@ApplicationScoped
-@RequestScoped
+@ApplicationScoped
+//@RequestScoped
 @Path("workers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -48,6 +48,7 @@ public class WorkerResource {
 	 */
 	@GET
 	public Response getAll() {
+		//System.out.println("Worker firebase id: ---> ");
 		return Response.ok(workerDAO.getAll()).build();
 	}
 	
@@ -62,6 +63,7 @@ public class WorkerResource {
     @Path("{id}")
     public Response getWorker(@PathParam("id") final String id) {
         final Worker worker = workerDAO.findById(id);
+        System.out.println("-------------------" + worker.toString());
 
         return Response.ok(worker).build();
     }

@@ -125,8 +125,8 @@ export class LoginComponent {
       
 
       for(let i = 0; i < this.workers.length; i++){
-        console.log("HERE")
-        console.log("Worker: " + this.workers[i].firebaseUid + "id: " + id)
+        console.log(this.workers.length)
+        console.log("Worker: " + this.workers[i].firebaseUid + " id: " + id)
         if(this.workers[i].firebaseUid == id){
           console.log("Searching workers table.")
           console.log("WORKER FOUND ---> " + id)

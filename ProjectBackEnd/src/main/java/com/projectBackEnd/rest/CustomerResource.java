@@ -1,6 +1,6 @@
 package com.projectBackEnd.rest;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -25,8 +25,8 @@ import com.projectBackEnd.model.Customer;
  *
  */
 
-//@ApplicationScoped
-@RequestScoped
+@ApplicationScoped
+//@RequestScoped
 @Path("customers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

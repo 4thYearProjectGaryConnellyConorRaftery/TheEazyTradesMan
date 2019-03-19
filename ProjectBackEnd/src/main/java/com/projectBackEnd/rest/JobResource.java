@@ -30,8 +30,8 @@ import com.projectBackEnd.model.Job;
  *
  */
 
-//@ApplicationScoped
-@RequestScoped
+@ApplicationScoped
+//@RequestScoped
 @Path("jobs")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
