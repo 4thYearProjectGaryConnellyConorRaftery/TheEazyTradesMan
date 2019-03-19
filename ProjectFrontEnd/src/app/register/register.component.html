@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-
+        <form #regForm="ngForm" name="regForm">
 <div class="form-group">
       <div>
         <label>First Name:</label>
-        <input type="text" class="form-control" [(ngModel)]="firstName" value="firstname" required minlength="4" #fname="ngModel">
+        <input type="text" name="fName" class="form-control" [(ngModel)]="firstName" value="firstname" required minlength="4" #fname="ngModel">
       </div>
       
       <div *ngIf="fname.invalid && (fname.dirty || fname.touched)"
@@ -21,7 +21,7 @@
 
       <div>
         <label>Second Name:</label>
-        <input type="text" class="form-control" [(ngModel)]="secondName" value="secondname" required minlength="4" #sname="ngModel">
+        <input type="text" name="sName" class="form-control" [(ngModel)]="secondName" value="secondname" required minlength="4" #sname="ngModel">
       </div>
 
       <div *ngIf="sname.invalid && (sname.dirty || sname.touched)"
@@ -34,7 +34,7 @@
           </div>
       </div>
 </div>
-
+</form>
       <form [formGroup]="registerForm">
           
 
@@ -52,8 +52,8 @@
 
 
 
-        <button type="submit" ng-disabled="myForm.$invalid" (click)="tryRegisterCustomer(registerForm.value, firstname)" class="btn btn-default">Register as Customer</button>
-        <button type="submit" ng-disabled="myForm.$invalid" (click)="tryRegisterWorker(registerForm.value)" class="btn btn-default">Register as Worker</button>
+        <button type="submit" [disabled]="!regForm.valid" (click)="tryRegisterCustomer(registerForm.value, firstname)" class="btn btn-default">Register as Customer</button>
+        <button type="submit" [disabled]="!regForm.valid" (click)="tryRegisterWorker(registerForm.value)" class="btn btn-default">Register as Worker</button>
       </form>
     </div>
   </div>
