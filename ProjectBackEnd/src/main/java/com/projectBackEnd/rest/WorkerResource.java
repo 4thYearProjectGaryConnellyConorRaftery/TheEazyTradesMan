@@ -1,5 +1,7 @@
 package com.projectBackEnd.rest;
 
+import java.util.List;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -11,7 +13,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
 import com.projectBackEnd.dao.WorkerDAO;
@@ -77,7 +82,9 @@ public class WorkerResource {
 	 */
 	@PUT
     @Path("{id}")
-    public Response update(@PathParam("id") final String id, final Worker worker) {
+    public Response update(@PathParam("id") final String id, final Worker worker, @Context  HttpHeaders headers) {
+		MultivaluedMap<String, String> rh = headers.getRequestHeaders();
+		List<String> token = rh.get("token");
         final Worker updateWorker = workerDAO.findById(id);
         updateWorker.setFirstName(worker.getFirstName());
         updateWorker.setSecondName(worker.getSecondName());
@@ -91,9 +98,17 @@ public class WorkerResource {
         updateWorker.setFirebaseUid(worker.getFirebaseUid());
         updateWorker.setJobsRequested(worker.getJobsRequested());
         updateWorker.setJobsAccepted(worker.getJobsAccepted());
-        workerDAO.update(updateWorker);
         
-		return Response.ok().build();
+        for(String myToken: token) {
+        	if(myToken.contentEquals("xxxxxxx")) {
+        		 workerDAO.update(updateWorker);
+        	        
+        		 return Response.ok().build();
+        	}
+        }
+        
+        return Response.status(404).build();
+       
 	}
 
 	/**

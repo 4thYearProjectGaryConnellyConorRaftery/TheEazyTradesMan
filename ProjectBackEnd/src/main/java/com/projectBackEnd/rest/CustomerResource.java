@@ -106,7 +106,7 @@ public class CustomerResource {
 		List<String> token = rh.get("token");
 		for(String myToken: token) {
 			System.out.println("-----------------" + myToken + "-----------------");
-			if(myToken.contentEquals("xxxxx")) {
+			if(myToken.contentEquals("xxxxxxx")) {
 				System.out.println("-------------------yurt");
 				customerDAO.create(customer);
 

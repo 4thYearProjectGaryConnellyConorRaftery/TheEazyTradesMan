@@ -27,7 +27,8 @@ export class WorkersService{
      console.log("This is the path ---> " + this.base + worker.id);
       return this.client.put<Worker>(this.base + worker.id, worker,{
        headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "token": "xxxxxxx"
         })
       });
     }//End PUT.
