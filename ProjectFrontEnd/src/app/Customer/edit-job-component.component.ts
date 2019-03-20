@@ -11,6 +11,12 @@ import { CustomerConfirmationService } from '../Services/customerConfirmation.se
   templateUrl: './edit-job-component.component.html',
   styleUrls: ['./edit-job-component.component.css']
 })
+
+/**
+ * EditJobComponentComponent is the component that gets rendered when the Customer
+ * clicks the "Edit Job" button on the myJobs component. This component displays
+ * a form with the current Job details already filled in for the Customer.
+ */
 export class EditJobComponentComponent implements OnInit {
 
   constructor(
@@ -43,6 +49,11 @@ export class EditJobComponentComponent implements OnInit {
   */
  
 
+  /**
+   * When the component gets initialized, check if it is a logged in customer, 
+   * if it is, load up the data of the current Job in focus and fill out the 
+   * form with those details.
+   */
   ngOnInit() {
 
     if(localStorage.getItem('CustomerID') == "x"){
@@ -70,10 +81,12 @@ export class EditJobComponentComponent implements OnInit {
   }
 
 
-  /* 
-   * When the user fills the form and presses update.
+  /**
+   * When the user fills out the form and pressed the "Update" button,
+   * get a handle on the new Job information and call the PUT method to 
+   * update that Job on the database.
+   * @param job 
    */
-
   update(job: Job): void{
     /* 
      * Get a handle on the id of the job they are editing.
@@ -89,12 +102,70 @@ export class EditJobComponentComponent implements OnInit {
 
 
 
+  }
+
+
+
+   // Navigation.
+
+  /**
+    * When the user click on the "List Jobs" navigation button, redirect them
+    * to listJobs component.
+    */ 
+  navListJobs(): void{
+    this.router.navigate(["/listJobs"]);
+  }
+
+
+  /**
+   * When the user clicks "My Jobs" navigation button, redirect them to
+   * the myJobs component.
+   */
+   navMyJobs(): void{
+    this.router.navigate(["/myJobs"]);
+  }
+
+
+  /**
+   * When the user click the "Post Job" navigation button, redirect
+   * them to the postJob component.
+   */
+   navPostJob(): void{
+    this.router.navigate(["/postJob"]);
+  }
+
+
+  /**
+   * When the user clicks the "Logout" navigation button, logout 
+   * that user and redirect them to the login page. 
+   */
+   logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      //this.location.back(); //login
+       localStorage.setItem('CustomerID', "x")
+      this.router.navigate(["/login"]);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
+  }
+
+
+  // End Navigation.
+
+}
 
 
 
 
 
-    /* 
+
+
+
+
+
+
+ /* 
      * Get a handle on the current Job using its id.
      */
  //   this.jobService.getJob(this.id).subscribe(data => {
@@ -122,41 +193,3 @@ export class EditJobComponentComponent implements OnInit {
     //  })
   //  })
 
-
-
-
-
-
-
-  }
-
-
-
-   // Navigation.
-  navListJobs(): void{
-    this.router.navigate(["/listJobs"]);
-  }
-
-   navMyJobs(): void{
-    this.router.navigate(["/myJobs"]);
-  }
-
-   navPostJob(): void{
-    this.router.navigate(["/postJob"]);
-  }
-
-   logout(){
-    this.authService.doLogout()
-    .then((res) => {
-      //this.location.back(); //login
-       localStorage.setItem('CustomerID', "x")
-      this.router.navigate(["/login"]);
-    }, (error) => {
-      console.log("Logout error", error);
-    });
-  }
-
-
-  // End Navigation.
-
-}

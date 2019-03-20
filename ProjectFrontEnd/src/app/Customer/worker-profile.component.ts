@@ -10,6 +10,12 @@ import { CustomersService } from '../Services/customers.service';
   templateUrl: './worker-profile.component.html',
   styleUrls: ['./worker-profile.component.css']
 })
+
+/**
+ * WorkerProfileComponent gets rendered whenever a Customer clicks the "View
+ * Profile" on a Job request. This component is only responsible for displaying 
+ * the details of the Worker that made a request for the current Customers Job.
+ */
 export class WorkerProfileComponent implements OnInit {
 
   constructor(
@@ -23,14 +29,12 @@ export class WorkerProfileComponent implements OnInit {
   amount: number = null;
   sum: number = null;
  
-  /*
-   * Get a handle on the current worker the user is trying to view.
-   */
+  
   workerid: string;
   worker: Worker;
 
   ngOnInit() {
-    /*
+    /** 
      * Get a handle on the current worker the user is trying to view.
      */
     this.workerid = this.customerService.getCurrentWorker();
@@ -42,33 +46,64 @@ export class WorkerProfileComponent implements OnInit {
       this.amount = parseInt(this.ratingArray[0])
       this.sum = parseInt(this.ratingArray[1]) 
 
+
+      /**
+       * If this Worker has not been rated yet, just display '0'
+       * instead of NaN.
+       */
       if(this.amount == 0 || this.sum == 0){
         this.worker.displayedRating = "0"
       }
       else{
 
-       
-          this.worker.displayedRating = (this.sum/this.amount).toFixed().toString()
-        
-      
+        /**
+         * If the rating for this worker is not 0.
+         * Get the rating by splitting the rating by the comma.
+         * This is done because the format for the Worker rating is
+         * "amount,sum", therfore, if we split this string by comma, parse
+         * each individual string to an integer, then divide the sum by the amount
+         * and round it to the nearest integer, we will have an overall average 
+         * rating.
+         */
+        this.worker.displayedRating = (this.sum/this.amount).toFixed().toString()
       }
       
     })
   }
 
    // Navigation.
+
+   /**
+    * When the user click on the "List Jobs" navigation button, redirect them
+    * to listJobs component.
+    */
   navListJobs(): void{
     this.router.navigate(["/listJobs"]);
   }
 
+
+  /**
+   * When the user clicks "My Jobs" navigation button, redirect them to
+   * the myJobs component.
+   */
    navMyJobs(): void{
     this.router.navigate(["/myJobs"]);
   }
 
+
+  /**
+   * When the user click the "Post Job" navigation button, redirect
+   * them to the postJob component.
+   */
    navPostJob(): void{
     this.router.navigate(["/postJob"]);
   }
 
+
+  /**
+   * When the user clicks the "Logout" navigation button, logout 
+   * that user and redirect them to the login page. 
+   */
    logout(){
     this.authService.doLogout()
     .then((res) => {
