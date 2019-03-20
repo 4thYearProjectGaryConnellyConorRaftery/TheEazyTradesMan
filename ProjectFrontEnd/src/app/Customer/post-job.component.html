@@ -75,9 +75,21 @@
       </div>
 
      <div class="form-group">
-      <label for="contact">Contact (Name-Number. Will only be seen by the workers who's request you accept.)</label>
-      <input id="contact" name="contact" [(ngModel)]="job.contact" type="text" class="form-control" #contactVar = "ngModel">
+      <label for="contact">Contact (Name & Contact Number. Will only be seen by the workers who's request you accept.)</label>
+      <input id="contact" name="contact" [(ngModel)]="job.contact" type="text" class="form-control" required minlength="10" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{0,}$" #contactVar = "ngModel">
     </div>
+    <div *ngIf="contactVar.invalid && (contactVar.dirty || contactVar.touched)"
+          class="alert alert-danger">
+          <div *ngIf="contactVar.errors.required">
+            Contact field is required.
+          </div>
+          <div *ngIf="contactVar.errors.minlength">
+              Has to be more than 10 characters.
+            </div>
+            <div *ngIf="contactVar.errors.pattern">
+                Has to contain atleast 1 digit and 1 alphabetic character.
+              </div>
+      </div>
 
     
 
