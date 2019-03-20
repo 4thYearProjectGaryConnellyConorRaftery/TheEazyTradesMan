@@ -14,6 +14,13 @@ import { WorkersService } from '../Services/workers.service';
   templateUrl: 'login.component.html',
   styleUrls: ['login.scss']
 })
+
+/**
+ * The LoginComponent is the component responsible for logging in users to the system.
+ * It is the Job of the Login component to first check if it is a valid user, then check
+ * whether that user is a Customer or a Worker, then load the details of that user from
+ * the database. The Login component also handles social media logins.
+ */
 export class LoginComponent {
 
   loginForm: FormGroup;
@@ -38,6 +45,11 @@ export class LoginComponent {
    localStorage.setItem('CustomerID', "x")
    localStorage.setItem('WorkerID', "x")
   }
+
+
+  /**
+   * Create the form to be displayed to the user.
+   */
   createForm() {
     this.loginForm = this.fb.group({
       email: ['', Validators.required ],
@@ -45,6 +57,12 @@ export class LoginComponent {
     });
   }
 
+
+  /**
+   * This method handles Facebook logins. If the user authentication with firebase is 
+   * successful, use the Firebase UID to retrieve that Customers details from the database
+   * through the web API.
+   */
   tryFacebookLogin(){
     this.authService.doFacebookLogin()
     .then(res => {
@@ -70,6 +88,13 @@ export class LoginComponent {
     })
   }
 
+
+  /**
+   * Extract the values entered to the form and authenticate them with Firebase.
+   * If the authentication is successfull, use the Firebase UID to check whether
+   * the user is a Customer or a Worker and retrieve their data from the database.
+   * @param value, the values entered into the form.
+   */
   tryLogin(value){
     
     this.authService.doLogin(value)
@@ -90,9 +115,14 @@ export class LoginComponent {
     
   }
 
+ 
   /**
- * @param text  Comment for parameter ´text´.
- */ 
+   * This method is used once the user has been authenticated through Firebase
+   * to check whether the user is a Customer or a Worker. Once the user is found,
+   * set their id into local storage so that is is globally accessible, and redirect
+   * them to the corresponding user page.
+   * @param id 
+   */
   getUser(id: string): void{
     /*
      * Get the customers from the database.
@@ -141,5 +171,5 @@ export class LoginComponent {
     })
   }
   
-  }
+  }//End getuser()
 }
