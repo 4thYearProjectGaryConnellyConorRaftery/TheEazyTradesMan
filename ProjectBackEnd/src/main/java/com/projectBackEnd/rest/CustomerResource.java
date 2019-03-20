@@ -102,14 +102,20 @@ public class CustomerResource {
 	 */
 	@POST
 	public Response create(final Customer customer, @Context  HttpHeaders headers) {
-		//MultivaluedMap<String, String> rh = headers.getRequestHeaders();
-		//List<String> token = rh.get("token");
-		//for(String myToken: token) {
-		//	System.out.println("-------------" + myToken);
-		//}
-		customerDAO.create(customer);
+		MultivaluedMap<String, String> rh = headers.getRequestHeaders();
+		List<String> token = rh.get("token");
+		for(String myToken: token) {
+			System.out.println("-----------------" + myToken + "-----------------");
+			if(myToken.contentEquals("xxxxx")) {
+				System.out.println("-------------------yurt");
+				customerDAO.create(customer);
 
-		return Response.ok().build();
+				return Response.ok().build();
+			}
+		}
+		
+		return Response.status(404).build();
+		
 	}
 
 	/**

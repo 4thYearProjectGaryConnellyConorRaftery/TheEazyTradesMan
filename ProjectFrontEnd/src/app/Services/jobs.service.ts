@@ -99,7 +99,8 @@ export class JobsService{
     console.log(job);
     return this.client.post<Job>(this.base, job,{
        headers: new HttpHeaders({ 
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "token": "xxxxxxx"
       })
     });
   }//End POST.
@@ -115,7 +116,8 @@ export class JobsService{
      console.log("This is the path ---> " + this.base + putJob.id);
       return this.client.put<Job>(this.base + putJob.id, putJob,{
        headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "token": "xxxxxxx"
       })
     });
 }// End PUT.
@@ -131,7 +133,8 @@ deleteJob(deleteJob: Job): Observable<Job>{
 
   return this.client.delete<Job>(this.base + deleteJob.id,{
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "token": "xxxxxxx"
     })
   })
 }
