@@ -24,6 +24,7 @@
     "angularfire2": "^5.1.1",
     "bootstrap": "^3.4.0",
     "core-js": "^2.5.4",
+    "ebay-node-client": "0.0.8",
     "firebase": "^5.8.1",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.4.0",

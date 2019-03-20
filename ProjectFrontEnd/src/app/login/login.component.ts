@@ -90,6 +90,9 @@ export class LoginComponent {
     
   }
 
+  /**
+ * @param text  Comment for parameter ´text´.
+ */ 
   getUser(id: string): void{
     /*
      * Get the customers from the database.

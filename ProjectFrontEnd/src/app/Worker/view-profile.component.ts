@@ -72,6 +72,7 @@ export class ViewProfileComponent implements OnInit {
     this.router.navigate(["myrequests"]);
   }
 
+  
   logout(){
     this.authService.doLogout()
     .then((res) => {

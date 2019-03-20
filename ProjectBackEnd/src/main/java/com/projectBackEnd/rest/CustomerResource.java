@@ -1,5 +1,7 @@
 package com.projectBackEnd.rest;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -10,7 +12,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
 import com.projectBackEnd.dao.CustomerDAO;
@@ -96,7 +101,12 @@ public class CustomerResource {
 	 * @return Response, the HTTP status Response indicating whether the transaction succeeded or not.
 	 */
 	@POST
-	public Response create(final Customer customer) {
+	public Response create(final Customer customer, @Context  HttpHeaders headers) {
+		//MultivaluedMap<String, String> rh = headers.getRequestHeaders();
+		//List<String> token = rh.get("token");
+		//for(String myToken: token) {
+		//	System.out.println("-------------" + myToken);
+		//}
 		customerDAO.create(customer);
 
 		return Response.ok().build();
