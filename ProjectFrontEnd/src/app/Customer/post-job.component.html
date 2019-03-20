@@ -51,8 +51,17 @@
 
     <div class="form-group">
       <label for="description">Description</label>
-      <input id="description" name="description" [(ngModel)]="job.description" type="text" class="form-control" #descriptionVar = "ngModel">
+      <input id="description" name="description" [(ngModel)]="job.description" type="text" class="form-control" required minlength="20" #descriptionVar = "ngModel">
     </div>
+    <div *ngIf="descriptionVar.invalid && (descriptionVar.dirty || descriptionVar.touched)"
+          class="alert alert-danger">
+          <div *ngIf="descriptionVar.errors.required">
+            Description is required.
+          </div>
+          <div *ngIf="descriptionVar.errors.minlength">
+            Has to be more than 20 characters.
+          </div>
+          </div>
 
     <div class="form-group">
       <label for="location">Location</label>
