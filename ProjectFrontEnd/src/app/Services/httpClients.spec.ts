@@ -9,7 +9,10 @@ import { JobsService } from './jobs.service';
 import { CustomersService } from './customers.service';
 import { WorkersService } from './workers.service';
 
-
+/**
+ * This test suite tests all of the Http client methods using stubs and mocks to make the
+ * tests completely independant. This suite contains 16 specs.
+ */
 describe('HTTPclients', () =>{
     let jobService: JobsService;
     let customerService: CustomersService;
@@ -31,16 +34,19 @@ describe('HTTPclients', () =>{
   
 });
 
-/*
+/** 
 ----- Testing the Jobs service http client.
 */
 
+/**
+ * Testing that the Jobs service has been created.
+ */
 it('should create Jobs Service.', inject([ JobsService ], (service: JobsService)=>{
     expect(service).toBeTruthy();
 }))
 
 
-/*
+/** 
 Test the GET jobs method.
 */
 it('Should GET jobs from API.', ()=>{
@@ -81,10 +87,9 @@ jobService.getJobs().subscribe(data =>{
 })
 })
 
-/*
-Test the GET Job method.
+/** 
+  Test the GET job method.
 */
-
 it('Should GET one job from API.', ()=>{
    
     const mockJobs: Job[] = [{
@@ -124,9 +129,9 @@ jobService.getJob("xxx").subscribe(data =>{
 })
 })
 
-/*
-Test POST job method.
-*/
+/**
+ * Test POST Job method.
+ */
 it('Should POST one job to API.', ()=>{
    
     const mockJobs: Job[] = [{
@@ -166,9 +171,9 @@ jobService.postJob(mockJobs[0]).subscribe(data =>{
 })
 })
 
-/*
-Test PUT job method.
-*/
+/**
+ * Test PUT Job method.
+ */
 it('Should PUT one job from API.', ()=>{
    
     const mockJobs: Job[] = [{
@@ -208,9 +213,9 @@ jobService.putJob(mockJobs[0]).subscribe(data =>{
 })
 })
 
-/*
-Test DELETE job method.
-*/
+/**
+ * Test DELETE Job method.
+ */
 it('Should DELETE one job from API.', ()=>{
    
     const mockJobs: Job[] = [{
@@ -258,9 +263,9 @@ it('should create Customer Service.', inject([ CustomersService ], (service: Cus
     expect(service).toBeTruthy();
 }))
 
-/*
-Test the GET customers method.
-*/
+/**
+ * Test GET Customers method.
+ */
 it('Should GET customers from API.', ()=>{
     const mockCustomers: Customer[] = [{
         id: "xxx",
@@ -290,10 +295,9 @@ customerService.getCustomers().subscribe(data =>{
 })
 
 
-/*
-Test the GET Customer method.
-*/
-
+/**
+ * Test GET Customer method.
+ */
 it('Should GET one customer from API.', ()=>{
    
     const mockCustomers: Customer[] = [{
@@ -323,9 +327,9 @@ customerService.getCustomer("xxx").subscribe(data =>{
 })
 })
 
-/*
-Test POST customer method.
-*/
+/**
+ * Test POST Customer method.
+ */
 it('Should POST one customer to API.', ()=>{
    
     const mockCustomers: Customer[] = [{
@@ -363,9 +367,9 @@ it('should create Workers Service.', inject([ WorkersService ], (service: Worker
     expect(service).toBeTruthy();
 }))
 
-/*
-Test the GET workers method.
-*/
+/**
+ * Test GET Workers method.
+ */
 it('Should GET workers from API.', ()=>{
     const mockWorkers: Worker[] = [{
         id: "xxx",
@@ -413,10 +417,9 @@ workerService.getWorkers().subscribe(data =>{
 })
 
 
-/*
-Test the GET Worker method.
-*/
-
+/**
+ * Test GET Worker method.
+ */
 it('Should GET one worker from API.', ()=>{
    
     const mockWorkers: Worker[] = [{
@@ -465,9 +468,9 @@ workerService.getWorker("xxx").subscribe(data =>{
 })
 
 
-/*
-Test POST worker method.
-*/
+/**
+ * Test POST Worker method.
+ */
 it('Should POST one worker to API.', ()=>{
    
     const mockWorkers: Worker[] = [{
@@ -517,9 +520,9 @@ workerService.postWorker(mockWorkers[0]).subscribe(data =>{
 
 })
 
-/*
-Test PUT worker method.
-*/
+/**
+ * Test PUT Worker method.
+ */
 it('Should PUT one worker from API.', ()=>{
    
     const mockWorkers: Worker[] = [{

@@ -33,7 +33,7 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import { AngularFireAuthModule } from "angularfire2/auth";
 
 /**
- * This test suite tests auto tests all of the routes in the application.
+ * This test suite tests auto tests all of the routes in the application. It contains 17 specs.
  */
 describe('Routing', ()=>{
 
