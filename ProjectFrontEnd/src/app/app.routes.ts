@@ -20,6 +20,14 @@ import { WorkerConfirmationComponent } from './Worker/worker-confirmation.compon
 import { MyRequestsComponent } from './Worker/my-requests.component';
 import { WorkerProfileComponent } from './Customer/worker-profile.component';
 
+/**
+ * Routes is the object that is used by the router-outlet to determine which
+ * component to render. Routes contains a list of mapping between the desired 
+ * routes and the corresponding components for those routes. When the user types
+ * 'listJobs' into the URL search bar, the router-outlet checks these routes and 
+ * finds that 'listJobs' is mapped to ListJobsComponent, before rendering the
+ * ListJobsComponent component.
+ */
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },

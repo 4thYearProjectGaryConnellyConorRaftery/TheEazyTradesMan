@@ -121,7 +121,7 @@ export class LoginComponent {
    * to check whether the user is a Customer or a Worker. Once the user is found,
    * set their id into local storage so that is is globally accessible, and redirect
    * them to the corresponding user page.
-   * @param id 
+   * @param id, the Firebase UID of the authenticated user.
    */
   getUser(id: string): void{
     /*
