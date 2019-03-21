@@ -6,6 +6,9 @@ import { WorkerConfirmationService } from '../Services/workerConfirmation.servic
 import { Router, Params } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 
+/**
+ * This class is used for editing the workers profile and updating the new details within the MongoDB.
+ */
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -13,59 +16,53 @@ import { AuthService } from '../core/auth.service';
 })
 export class EditProfileComponent implements OnInit {
 
-  constructor(private workerService: WorkersService, 
-  private confirmationService: WorkerConfirmationService, 
-  private router: Router, 
-  private authService: AuthService) { }
+  /**
+   * Null constructor
+   * @param workerService 
+   * @param confirmationService 
+   * @param router 
+   * @param authService 
+   */
+  constructor(private workerService: WorkersService,
+    private confirmationService: WorkerConfirmationService,
+    private router: Router,
+    private authService: AuthService) { }
 
   getRequests: Worker;
   message: string = "";
   isWorker: boolean = false;
-  /*
+
+  /**
    * Create an empty worker object for the user to fill out.
    */
-  worker: Worker;/* ={
-    id: localStorage.getItem('WorkerID'),
-    firstName: "",
-    secondName: "",
-    address: "",
-    trade: "",
-    rating: "", // This will need to be calculated later rather than setting the value here.
-    phoneNumber: "",
-    email:"",
-    website: "",
-    firebaseUid: "",
-    jobsRequested: "",
-    jobsAccepted: ""
-    //photoPath: null
-  }
-  */
+  worker: Worker;
 
+    /**
+     * If the user is a Worker, then let them see the data.
+     */
   ngOnInit() {
-
-    if(localStorage.getItem('WorkerID') == "x"){
+    if (localStorage.getItem('WorkerID') == "x") {
       this.message = "Only logged in workers can view this page." // For testing.
       console.log("here" + this.message)
     }
-    else{
-    this.isWorker = true;
+    else {
+      this.isWorker = true;
 
-    this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
-      this.worker = data;
-      console.log("Got worker ---> " + this.worker.firstName)
-    })
-    
+      /**
+       * Get handle on worker ID via local storage.
+       */
+      this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
+        this.worker = data;
+        console.log("Got worker ---> " + this.worker.firstName)
+      })
     }
-   
- 
   }
 
-
-
-   /*
-    * When the user clicks update.
-    */
-   update(updateWorker: Worker): void{
+  /**
+   * When the user clicks update. Save the new worker object with new worker details to MongoDB.
+   * Notify the user of the update.
+   */
+  update(updateWorker: Worker): void {
 
     this.workerService.putWorker(updateWorker).subscribe(data => {
       console.log(data)
@@ -74,58 +71,45 @@ export class EditProfileComponent implements OnInit {
       this.router.navigate(["/workerConfirmation"]);
     })
 
-    /*
-     * Create an empty worker object for the user to fill out.
-     */
-//    this.worker.rating = "";  // Just hardcode the rating for now.
-    /*
-     * Get a handle on the worker we are updating.
-     */
- //   this.workerService.getWorker(localStorage.getItem('WorkerID')).subscribe(data => {
- //   this.getRequests = data;
- //   updateWorker.jobsRequested = this.getRequests.jobsRequested
- //   updateWorker.firebaseUid = this.getRequests.firebaseUid;
- //   updateWorker.jobsAccepted = this.getRequests.jobsAccepted;
- //   updateWorker.rating = this.getRequests.rating;
-    /*
-    this.worker.jobsRequested = this.getRequests.jobsRequested;
-    this.worker.firebaseUid = this.getRequests.firebaseUid;
-    this.worker.jobsAccepted = this.getRequests.jobsAccepted;
-    this.worker.rating = this.getRequests.rating;
-    */
-
-     /*
-      * Send the updated worker through the serverside to be updated on the database.
-      */
-  //   this.workerService.putWorker(updateWorker).subscribe((data: Worker) =>{
-  //   console.log(data);
-  //  console.log(updateWorker.jobsRequested)
-  //   this.confirmationService.setConfirmationMessage("Your profile has been updated!");
-  //  this.router.navigate(["/workerConfirmation"]);
-  //  });
-
-  //});
-  
-   
   }
 
-  // Navigation.
-  navListJobs(): void{
+  /**
+    * When the user click on the "List Jobs" navigation button, redirect them
+    * to listJobsWorker component.
+    */
+   navListJobs(): void{
     this.router.navigate(["/listJobsWorker"]);
   }
 
+  /**
+   * When the user clicks "View Profile" navigation button, redirect them to
+   * the viewProfile component.
+   */
    navMyProfile(): void{
     this.router.navigate(["/viewProfile"]);
   }
 
+  /**
+   * When the user clicks "Edit Profile" navigation button, redirect them to
+   * the editProfile component.
+   */
    navEditProfile(): void{
     this.router.navigate(["/editProfile"]);
   }
 
+  /**
+   * When the user clicks "My Jobs" navigation button, redirect them to
+   * the myrequests component.
+   */
   navMyRequests(): void{
-    this.router.navigate(["myrequests"]);
+    this.router.navigate(["/myrequests"]);
   }
 
+  /**
+   * When the user clicks the "Logout" navigation button, logout 
+   * that user and redirect them to the login page. Change the local
+   *  storage to remove access for site navigation.
+   */
    logout(){
     this.authService.doLogout()
     .then((res) => {
@@ -136,8 +120,5 @@ export class EditProfileComponent implements OnInit {
       console.log("Logout error", error);
     });
   }
-
-  // End Navigation.
-
 
 }
