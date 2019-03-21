@@ -9,6 +9,12 @@ import { CustomersService } from '../Services/customers.service';
 import { Worker } from '../models/worker.model';
 import { WorkersService } from '../Services/workers.service';
 
+/**
+ * This class is used for registering new users. It adds the new users details
+ *  to Firebase (Password, Email and UUID) and MongoDB. It also checks if 
+ * the user already has an account created. It also takes a handle on each 
+ * user to allow web navigation throughout the website.
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -31,7 +37,14 @@ export class RegisterComponent {
   fbnamearray: string[] = [];
   exists: boolean = false;
 
-
+  /**
+   * Constructor for initialization.
+   * @param authService 
+   * @param router 
+   * @param fb 
+   * @param customerService 
+   * @param workerService 
+   */
   constructor(
     public authService: AuthService,
     private router: Router,
@@ -42,13 +55,17 @@ export class RegisterComponent {
     this.createForm();
    }
 
+   /**
+    * When the class is initially loaded, store the users ID in local storage for navigation.
+    */
    ngOnInit() {
      console.log("INIT.")
     localStorage.setItem('CustomerID', "x")
     localStorage.setItem('WorkerID', "x")
    }
-   /*
-    * Create blank Customer and Worker objects to be filled out by the user.
+ 
+   /**
+    * Create blank Worker objects to be filled out by the user.
     */
    customer: Customer = {
     id: null,
@@ -59,6 +76,9 @@ export class RegisterComponent {
     firebaseUid: ""
    };
 
+   /**
+    * Create blank Worker objects to be filled out by the user.
+    */
    worker: Worker = {
       id: null,
       firstName: null,
@@ -75,6 +95,9 @@ export class RegisterComponent {
       jobsAccepted: ""
    }
 
+   /**
+    * Create the Registeration form.
+    */
    createForm() {
      this.registerForm = this.fb.group({
        email: ['', Validators.required ],
@@ -82,15 +105,15 @@ export class RegisterComponent {
      });
    }
 
+   /**
+    * Attempt facebook login. Check if the user already exists by searching through an array of customers,
+    * if the firebase uid matches the current users uid, then they already exist and it will automatically
+    * redirect them to their page.
+    */
    tryFacebookLogin(){
      this.authService.doFacebookLogin()
      .then(res =>{
       
-       
-      /*
-       * Check if the user already exists by searching through an array of customers, if the firebase uid
-       * matches the current users uid, then they already exist and it will automatically redirect them to their page.
-       */
        this.customerService.getCustomers().subscribe(data =>{
          this.customers = data;
          
@@ -102,26 +125,29 @@ export class RegisterComponent {
             }
          }
 
-        /*
-         * If the user doesn't exist, create it.
-         */
+         /**
+          * If the user doesn't exist, create it.
+          */
          if(this.exists == false){ 
           console.log("Facebook --> " + firebase.auth().currentUser.displayName.toString());
-          /*
+         
+          /**
            * Get a handle on the users first and second name from their facebook.
            */
           this.fbname = firebase.auth().currentUser.displayName.toString();
           this.fbnamearray = this.fbname.split(" ")
           this.firstName = this.fbnamearray[0];
           this.secondName = this.fbnamearray[1];
-          /*
+          
+          /**
            * Set the default values for the customer.
            */
           this.createCustomer();
           this.customer.firebaseUid = firebase.auth().currentUser.uid.toString();
           
           console.log("First FB name ---> " + this.fbfirstname);
-          /*
+         
+          /**
            * Send the customer through the web api and add it to the database, then navigate the user.
            */
           this.customerService.postCustomer(this.customer).subscribe((data: Customer) => {
@@ -141,6 +167,9 @@ export class RegisterComponent {
      )
    }
 
+   /**
+    * Attempt Twitter login.
+    */
    tryTwitterLogin(){
      this.authService.doTwitterLogin()
      .then(res =>{
@@ -149,6 +178,9 @@ export class RegisterComponent {
      )
    }
 
+   /**
+    * Attempt Google login.
+    */
    tryGoogleLogin(){
      this.authService.doGoogleLogin()
      .then(res =>{
@@ -157,13 +189,17 @@ export class RegisterComponent {
      )
    }
 
+   /**
+    * Attempt to register the user(customer).
+    */
    tryRegisterCustomer(value){
      
      this.authService.doRegister(value)
      .then(res => {
        console.log(res);
        console.log("Register --> " + firebase.auth().currentUser.uid.toString());
-       /*
+
+       /**
         * Set the default values for the customer and send it to the server side to be added to the database.
         */
        this.createCustomer();
@@ -171,7 +207,8 @@ export class RegisterComponent {
        this.customerService.postCustomer(this.customer).subscribe((data: Customer) => {
          console.log(data);
          console.log("Creating new customer with firebase uid of ---> " + this.customer.firebaseUid)
-         /*
+         
+         /**
           * Set the users id in local storage so we can easily access it later.
           */
          this.getUser(firebase.auth().currentUser.uid.toString());
@@ -188,6 +225,10 @@ export class RegisterComponent {
 
    }
 
+   /**
+    * Attempt user registration (Worker)
+    * @param value
+    */
    tryRegisterWorker(value){
     console.log("NAME ---> " + this.firstName);
     console.log(value);
@@ -195,7 +236,8 @@ export class RegisterComponent {
      .then(res => {
        console.log(res);
        console.log("Register --> " + firebase.auth().currentUser.uid.toString());
-       /*
+       
+       /**
         * Set the default values for the worker and send it to the server side to be added to the database.
         */
        this.createWorker();
@@ -203,7 +245,8 @@ export class RegisterComponent {
        this.workerService.postWorker(this.worker).subscribe((data: Worker) => {
          console.log(data);
          console.log("Creating a new worker with firebase uid of ---> " + this.worker.firebaseUid);
-         /*
+        
+         /**
           * Set the users id in local storage so we can easily access it later.
           */
          this.getUser(firebase.auth().currentUser.uid.toString());
@@ -214,7 +257,9 @@ export class RegisterComponent {
        
        
 
-       //Get UID and PUT to MongoDB here, set user as worker
+       /**
+        * Get UID and PUT to MongoDB here, set user as worker
+        */
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
@@ -222,24 +267,32 @@ export class RegisterComponent {
      })
     }
 
+    /**
+     * Create customer object.
+     */
     createCustomer(): void{
       this.customer.firstName = this.firstName;
       this.customer.secondName = this.secondName;
     }
 
+    /**
+     * Create worker object.
+     */
      createWorker(): void{
       this.worker.firstName = this.firstName;
       this.worker.secondName = this.secondName;
     }
 
-     /*
+     /**
       * This method is used to set the current users id in local storage so the users data
-      *  can be accessed from anywhere in the application.
+      * can be accessed from anywhere in the application.
+      * @param id 
       */
      getUser(id: string): void{
     this.customerService.getCustomers().subscribe(data =>  {
       this.customers = data
-      /* 
+      
+      /**
        * Search the database for the user with the same firebase uid as the current user,
        * and set it in local storage.
        */
