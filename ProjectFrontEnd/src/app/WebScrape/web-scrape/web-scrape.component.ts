@@ -13,7 +13,12 @@ import * as eBay from 'ebay-node-client';
 //const cheerio = require("cheerio");
 
 
-
+/**
+ * This class is not in use but was going to be used by webscraping a website to create a shopping section
+ * within our Application. The second function of this class was to use the Ebay API to obtain the same functionality.
+ * It failed due to CORS policy restriction that has been recently added. This code works when used as JavaScript,
+ * but falls down when being used as TypeScript as it is not done in 'The Angular Way'.
+ */
 @Component({
   selector: 'app-web-scrape',
   templateUrl: './web-scrape.component.html',
@@ -23,8 +28,17 @@ import * as eBay from 'ebay-node-client';
   providedIn: 'root'
 })
 export class WebScrapeComponent implements OnInit {
+  /**
+   * Null constructor
+   * @param http 
+   * @param _jsonp 
+   * @param httpClient 
+   */
   constructor(private http: HttpClient, private _jsonp: Jsonp, private httpClient: HttpClient) { }
 
+  /**
+   * Was trying to obtain JSONP data as Json/HTML data requires CORS authentication.
+   */
   getData() {
     const url = "https://svcs.ebay.com/services/search/FindingService/v1"
     + "?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=ConorRaf-TheEazyT-PRD-d55b8f6ea-a1f297a5&GLOBAL-ID=EBAY-US&RESPONSE-DATA-FORMAT=JSON&callback=JSONP_CALLBACK&REST-PAYLOAD&keywords=harry%20potter&paginationInput.entriesPerPage=3";
@@ -38,6 +52,11 @@ export class WebScrapeComponent implements OnInit {
     return this.http.jsonp(url, 'callback');
   }
   
+  /**
+   * This method was used to find certain items by keyword within the Ebay website.
+   *  It was done by editing the search URL.
+   * @param root 
+   */
   _cb_findItemsByKeywords(root) {
     var items = root.findItemsByKeywordsResponse[0].searchResult[0].item || [];
     var html = [];
@@ -58,11 +77,11 @@ export class WebScrapeComponent implements OnInit {
     //return html;
   }  // End _cb_findItemsByKeywords() function
 
-
+/**
+ * When this class was initialized, the URL was constructed with search parameters and the Ebay API personal key.
+ */
   ngOnInit() {
    // this.getData();
-    
-
     var url = "https://svcs.ebay.com/services/search/FindingService/v1";
     url += "?OPERATION-NAME=findItemsByKeywords";
     url += "&SERVICE-VERSION=1.0.0";

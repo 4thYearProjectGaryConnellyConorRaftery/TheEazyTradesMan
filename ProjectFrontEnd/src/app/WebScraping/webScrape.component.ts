@@ -15,6 +15,10 @@ import { Observable } from 'rxjs';
 // Write Headers
 //writeStream.write(`Title,Link,Date \n`);
 
+/**
+ * This class is not used but it was going to be used to
+ *  webscrape a given website to obtain HTML by using the cheerio & request imports. 
+ */
 @Component({
   selector: 'web-scrape',
   templateUrl: './webScrape.component.html'
