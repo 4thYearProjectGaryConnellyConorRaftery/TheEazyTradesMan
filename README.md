@@ -28,3 +28,10 @@
 | **Project Supervisor** | Mr Gerard Harrison |
 | **Module Supervisor** | Dr John Healy |
 | **Project Title** | TheEazyTradesMan |
+
+[Top](#contents) 
+# Introduction<a name = "intro"></a>
+For the final year project, we decided to create a dynamic web-application that connects trade workers with customers. Working as a team and following the Agile methodology, we developed an application that allows customers to post any jobs they need to have done that would require a tradesman(for example, to service a car), onto a platform where trades workers can view and request to do the job. The corresponding customer that posted the job can then accept of reject the workers request. It is a three-tier application, using MongoDB and Firebase as the Data Tier, Java Jax-rs for the Logic Tier, and Angular 6 for the Presentation Tier.
+
+[Top](#contents) 
+
