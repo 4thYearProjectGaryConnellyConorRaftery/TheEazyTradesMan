@@ -33,5 +33,46 @@
 # Introduction<a name = "intro"></a>
 For the final year project, we decided to create a dynamic web-application that connects trade workers with customers. Working as a team and following the Agile methodology, we developed an application that allows customers to post any jobs they need to have done that would require a tradesman(for example, to service a car), onto a platform where trades workers can view and request to do the job. The corresponding customer that posted the job can then accept of reject the workers request. It is a three-tier application, using MongoDB and Firebase as the Data Tier, Java Jax-rs for the Logic Tier, and Angular 6 for the Presentation Tier.
 
+[Top](#contents)
+
+# Video Demo<a name = "demo"></a>
+
 [Top](#contents) 
 
+# Dissertation<a name = "dissertation"></a>
+
+Link to dissertation here.
+
+[Top](#contents) 
+# Project Wiki<a name = "wiki"></a>
+Link to project wiki here.
+
+[Top](#contents) 
+
+# Architecture<a name = "arc"></a>
+The following is an overview of the Technologies/Architecture used to create TheEazyTradesMan.   
+
+### Data Tier
+### Logic Tier
+### Presentation Tier
+
+[Top](#contents) 
+
+# Features<a name = "features"></a>
+List the main app features here.
+
+[Top](#contents) 
+
+# Application Preview<a name = "preview"></a>
+
+Preview of the different application views here.
+
+[Top](#contents) 
+
+# Deployment<a name = "deploy"></a>
+Discuss how the application is deployed.
+
+## Deploy Locally
+## Link to hosted app
+
+[Top](#contents) 
