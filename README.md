@@ -24,7 +24,7 @@
 | **Course** | BSc (Hons) in Software Development  |
 | **Module** |  Applied Project and Minor Dissertation |
 | **College** | [GMIT](http://www.gmit.ie/) Galway |
-| **Students** | [Patrick Moran](https://www.linkedin.com/in/patrick-moran-7a349014b/)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G00179039<br/>[Gereard Naughton](https://www.linkedin.com/in/gerard-naughton-732193150/)&nbsp; G00209309<br/>[Andrei Petruk](https://www.linkedin.com/in/andrei-petruk-33b135ab/)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G00328108 |
-| **Project Supervisor** | Daniel Cregg |
+| **Students** | [Gary Connelly](https://www.linkedin.com/in/gary-connelly-555106170/)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G00336837<br/>[Conor Raftery](https://www.linkedin.com/in/conor-raftery-090b88150/)&nbsp; G00274094 |
+| **Project Supervisor** | Gerard Harrison |
 | **Module Supervisor** | John Healy |
-| **Project Title** | Digs |
+| **Project Title** | TheEazyTradesMan |
