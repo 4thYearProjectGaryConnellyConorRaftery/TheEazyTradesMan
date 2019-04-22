@@ -73,9 +73,11 @@ List the main app features here.
 [Top](#contents) 
 
 # Deployment<a name = "deploy"></a>
-Discuss how the application is deployed.
+This application is currently deployed on an AWS instance. Fore more information about how this was configured, please take a look at the [AWS Configuration](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/AWS-Configuration) page of this repository's wiki.
 
 ## Deploy Locally
+
+If you wish to deploy this project locally, please see the [Developer Guide](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Developer-Guide) in this repository's wiki.
 ## Link to hosted app
 
 [Top](#contents) 
