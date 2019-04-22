@@ -45,16 +45,19 @@ Link to dissertation here.
 
 [Top](#contents) 
 # Project Wiki<a name = "wiki"></a>
-Link to project wiki here.
+[Wiki](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki)
 
 [Top](#contents) 
 
 # Architecture<a name = "arc"></a>
-The following is an overview of the Technologies/Architecture used to create TheEazyTradesMan.   
+[Architecture](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Architecture)
 
 ### Data Tier
+[Data Tier](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Data-Tier)
 ### Logic Tier
+[Logic Tier](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Logic-Tier)
 ### Presentation Tier
+[Presentation Tier](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Presentation-Tier)
 
 [Top](#contents) 
 
