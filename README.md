@@ -53,11 +53,11 @@ Link to dissertation here.
 [Architecture](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Architecture)
 
 ### Data Tier
-[Data Tier](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Data-Tier)
+[Data Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Data-Tier)
 ### Logic Tier
-[Logic Tier](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Logic-Tier)
+[Logic Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Logic-Tier)
 ### Presentation Tier
-[Presentation Tier](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Presentation-Tier)
+[Presentation Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Presentation-Tier)
 
 [Top](#contents) 
 
@@ -68,7 +68,7 @@ List the main app features here.
 
 # Application Preview<a name = "preview"></a>
 
-Preview of the different application views here.
+[Application Preview.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Application-Preview)
 
 [Top](#contents) 
 
