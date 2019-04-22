@@ -62,7 +62,23 @@ Link to dissertation here.
 [Top](#contents) 
 
 # Features<a name = "features"></a>
-List the main app features here.
+The main features of this application can be broken down into two sub-sections; Customer oriented features and Tradesman oriented features. 
+
+## Customer Oriented Features
+* Browse other customer job listings.
+* Post their own job listing.
+* Edit the jobs they posted. 
+* View the profiles of the workers that requested their patricular job listings.
+* Accept/Ignore these job requests.
+* Rate the worker/s that completed the job.
+* Remove job listings they posted.
+
+## Worker Oriented Features
+* Browse job listings.
+* View the location of individual job listings on Google Maps.
+* Request jobs.
+* Edit their user profile.
+* View the jobs they requested, with the status of each request.
 
 [Top](#contents) 
 
