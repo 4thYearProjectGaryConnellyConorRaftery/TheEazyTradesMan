@@ -85,6 +85,12 @@ If you wish to deploy this project locally, please see the [Developer Guide](htt
 
 [Top](#contents) 
 
+# Relevant Documentation<a name = "documentation"></a>
+
+Relevant documentation has been compiled to this [Wiki](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Documentation) page.
+
+[Top](#contents) 
+
 # Architecture<a name = "arc"></a>
 [Architecture](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Architecture)
 
