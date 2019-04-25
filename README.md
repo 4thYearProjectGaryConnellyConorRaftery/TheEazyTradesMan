@@ -68,6 +68,13 @@ The main features of this application can be broken down into two sub-sections; 
 Link to dissertation here.
 
 [Top](#contents) 
+
+# Application Preview<a name = "preview"></a>
+
+[Application Preview.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Application-Preview)
+
+[Top](#contents) 
+
 # Project Wiki<a name = "wiki"></a>
 [Wiki](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki)
 
@@ -82,12 +89,6 @@ Link to dissertation here.
 [Logic Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Logic-Tier)
 ### Presentation Tier
 [Presentation Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Presentation-Tier)
-
-[Top](#contents) 
-
-# Application Preview<a name = "preview"></a>
-
-[Application Preview.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Application-Preview)
 
 [Top](#contents) 
 
