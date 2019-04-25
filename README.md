@@ -9,13 +9,15 @@
 ## [Contents](#contents)
 * [Project Details](#details)
 * [Introduction](#intro)
+* [Features](#features)
 * [Video Demo](#demo)
 * [Dissertation](#dissertation)
-* [Project Wiki](#wiki)
-* [Architecture](#arc) 
-* [Features](#features)
 * [App Preview](#preview)
 * [Deployment](#deploy)
+* [Relevant Documentation](#documentation)
+* [Architecture](#arc) 
+* [Project Wiki](#wiki)
+
 
 
 # Project Details<a name = "details"></a>
@@ -35,6 +37,27 @@
 For the final year project, we decided to create a dynamic web-application that connects trade workers with customers. Working as a team and following the Agile methodology, we developed an application that allows customers to post any jobs they need to have done that would require a tradesman(for example, to service a car), onto a platform where trades workers can view and request to do the job. The corresponding customer that posted the job can then accept of reject the workers request. It is a three-tier application, using MongoDB and Firebase as the Data Tier, Java Jax-rs for the Logic Tier, and Angular 6 for the Presentation Tier.
 
 [Top](#contents)
+
+# Features<a name = "features"></a>
+The main features of this application can be broken down into two sub-sections; Customer oriented features and Tradesman oriented features. 
+
+## Customer Oriented Features
+* Browse other customer job listings.
+* Post their own job listing.
+* Edit the jobs they posted. 
+* View the profiles of the workers that requested their patricular job listings.
+* Accept/Ignore these job requests.
+* Rate the worker/s that completed the job.
+* Remove job listings they posted.
+
+## Worker Oriented Features
+* Browse job listings.
+* View the location of individual job listings on Google Maps.
+* Request jobs.
+* Edit their user profile.
+* View the jobs they requested, with the status of each request.
+
+[Top](#contents) 
 
 # Video Demo<a name = "demo"></a>
 
@@ -59,27 +82,6 @@ Link to dissertation here.
 [Logic Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Logic-Tier)
 ### Presentation Tier
 [Presentation Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Presentation-Tier)
-
-[Top](#contents) 
-
-# Features<a name = "features"></a>
-The main features of this application can be broken down into two sub-sections; Customer oriented features and Tradesman oriented features. 
-
-## Customer Oriented Features
-* Browse other customer job listings.
-* Post their own job listing.
-* Edit the jobs they posted. 
-* View the profiles of the workers that requested their patricular job listings.
-* Accept/Ignore these job requests.
-* Rate the worker/s that completed the job.
-* Remove job listings they posted.
-
-## Worker Oriented Features
-* Browse job listings.
-* View the location of individual job listings on Google Maps.
-* Request jobs.
-* Edit their user profile.
-* View the jobs they requested, with the status of each request.
 
 [Top](#contents) 
 
