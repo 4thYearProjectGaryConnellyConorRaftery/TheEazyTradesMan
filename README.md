@@ -97,5 +97,7 @@ If you wish to deploy this project locally, please see the [Developer Guide](htt
 
 [Top](#contents) 
 
+# Wiki<a name = "wiki"></a>
+[Project Wiki](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki)
 
-
+[Top](#contents) 
