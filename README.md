@@ -85,11 +85,6 @@ If you wish to deploy this project locally, please see the [Developer Guide](htt
 
 [Top](#contents) 
 
-# Project Wiki<a name = "wiki"></a>
-[Wiki](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki)
-
-[Top](#contents) 
-
 # Architecture<a name = "arc"></a>
 [Architecture](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Architecture)
 
@@ -101,4 +96,6 @@ If you wish to deploy this project locally, please see the [Developer Guide](htt
 [Presentation Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Presentation-Tier)
 
 [Top](#contents) 
+
+
 
