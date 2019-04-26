@@ -62,10 +62,10 @@ The main features of this application can be broken down into two sub-sections; 
 
 # Video Demo<a name = "demo"></a>
 
-## Quick 2 Minute Video
+## Brief Video Demo
 <kbd>[![2 Minute Video](https://user-images.githubusercontent.com/22517432/56829713-66a6d400-685c-11e9-9398-ca6451145dc3.PNG)](https://youtu.be/JxoHPQVQr_A)</kbd>
 
-## More In Depth Video
+## In-Depth Video Demo
 <kbd>[![Indepth Video](https://user-images.githubusercontent.com/22517432/56829616-29424680-685c-11e9-9885-35d9364a9d11.PNG)](https://youtu.be/zbEItHRyYdw)</kbd>
 
 [Top](#contents) 
