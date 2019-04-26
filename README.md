@@ -92,6 +92,8 @@ This application is currently deployed on an AWS instance. Fore more information
 If you wish to deploy this project locally, please see the [Developer Guide](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Developer-Guide) in this repository's wiki.
 ## Link to hosted app
 
+[TheEazyTradesMan](http://3.16.111.121:4200/login)
+
 [Top](#contents) 
 
 # Relevant Documentation<a name = "documentation"></a>
