@@ -16,6 +16,7 @@
 * [Deployment](#deploy)
 * [Relevant Documentation](#documentation)
 * [Architecture](#arc) 
+* [Prototyping](#prototype)
 * [Project Wiki](#wiki)
 
 
@@ -102,6 +103,12 @@ Relevant documentation has been compiled to this [Wiki](https://github.com/4thYe
 [Presentation Tier.](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Presentation-Tier)
 
 [Top](#contents) 
+
+# Prototyping<a name = "prototype"></a>
+[Prototyping](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki/Prototyping)
+
+[Top](#contents) 
+
 
 # Wiki<a name = "wiki"></a>
 [Project Wiki](https://github.com/4thYearProjectGaryConnellyConorRaftery/TheEazyTradesMan/wiki)
