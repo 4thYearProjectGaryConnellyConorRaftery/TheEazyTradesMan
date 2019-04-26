@@ -72,7 +72,9 @@ The main features of this application can be broken down into two sub-sections; 
 
 # Dissertation<a name = "dissertation"></a>
 
-Link to dissertation here.
+Click on the image below to view the dissertation.
+<kbd>[![Dissertation](https://user-images.githubusercontent.com/22517432/56830288-e08b8d00-685d-11e9-8d16-0d18a1e35c0d.PNG)](https://github.com/4thYearProjectGaryConnellyConorRaftery/Dissertation/blob/master/Dissertation.pdf)</kbd>
+
 
 [Top](#contents) 
 
