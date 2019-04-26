@@ -11,6 +11,7 @@
 * [Introduction](#intro)
 * [Features](#features)
 * [Video Demo](#demo)
+* [Dissertation Abstract](#abstract)
 * [Dissertation](#dissertation)
 * [App Preview](#preview)
 * [Deployment](#deploy)
@@ -67,6 +68,10 @@ The main features of this application can be broken down into two sub-sections; 
 
 ## In-Depth Video Demo
 <kbd>[![Indepth Video](https://user-images.githubusercontent.com/22517432/56829616-29424680-685c-11e9-9885-35d9364a9d11.PNG)](https://youtu.be/zbEItHRyYdw)</kbd>
+
+[Top](#contents) 
+
+# Dissertation Abstract<a name = "abstract"></a>
 
 [Top](#contents) 
 
