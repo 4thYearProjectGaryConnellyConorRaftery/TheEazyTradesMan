@@ -72,6 +72,17 @@ The main features of this application can be broken down into two sub-sections; 
 [Top](#contents) 
 
 # Dissertation Abstract<a name = "abstract"></a>
+This dissertation is based on the project 'TheEazyTradesman', which was completed as part of the module 'Applied Project and Minor Dissertation'. This project is a dynamic web-application that connects trade workers with customers. It is a three-tier application, using MongoDB and Firebase for the Data Tier, Java JAX-RS for the Logic Tier, and Angular 6 for the Presentation Tier. These technologies have been at the forefront of web applications development in the past decade.
+
+In recent years, there has been an increasing demand for scalable systems in the age of big data. Through this demand, NoSQL Database technologies have emerged. Over the past few decades, SQL has been the dominant database technology, however, the relational nature of SQL technology complicates data scalability beyond practicality.
+
+The objectives of this study was to incorporate the technologies mentioned above with a non-relational database. An investigation took place that researched the feasibility of using established technologies with the Hibernate Persistence Engine to interact with a NoSQL database. An additional objective was to gain an understanding of the complexities behind the development of a full stack dynamic web application. 
+
+To conduct this investigation, an agile approach was taken to develop a system that uses a MongoDB database with the Hibernate OGM(Object Grid Mapping) persistence engine to create a RESTful service using the JAX-RS Java API that can be consumed by an Angular web application.
+
+Throughout this investigation, it was found that the Hibernate OGM persistence engine functioned well in conjunction with a NoSQL database. Data transactions were easily managed once the developer had a basic understanding of the JPA(Java Persistence API).
+
+Throughout the development process, a thorough understanding was gained of the full stack development life cycle. The various technical skills needed at the specific layers of the stack were obtained or improved as the application evolved. It was realised late into the development of the application that a better implementation of security features may be needed going forward. 
 
 [Top](#contents) 
 
